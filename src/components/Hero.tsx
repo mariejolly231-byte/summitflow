@@ -1,14 +1,11 @@
 import { ArrowDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroBg})`
+    }}>
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
       </div>
 
@@ -19,7 +16,7 @@ const Hero = () => {
             Progressez léger avec Summit Flow
           </h1>
           
-          <p className="text-xl md:text-2xl text-primary font-semibold mb-6">
+          <p className="text-xl md:text-2xl font-semibold mb-6 text-primary-foreground">
             Des solutions No Code & IA pour alléger votre quotidien professionnel
           </p>
           
@@ -29,12 +26,7 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="https://calendly.com/summitflowfr/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-hero"
-            >
+            <a href="https://calendly.com/summitflowfr/30min" target="_blank" rel="noopener noreferrer" className="btn-hero">
               Prendre rendez-vous
             </a>
             <a href="#roi" className="btn-secondary-hero">
@@ -50,8 +42,6 @@ const Hero = () => {
           </a>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
