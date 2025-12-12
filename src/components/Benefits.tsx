@@ -4,17 +4,17 @@ const benefits = [
   {
     icon: Clock,
     title: "Gain de temps",
-    description: "Libérez des heures chaque semaine en automatisant vos tâches répétitives"
+    description: "Liberez des heures chaque semaine en automatisant vos taches repetitives"
   },
   {
     icon: Sparkles,
-    title: "Simplicité",
-    description: "Des outils intuitifs, sans jargon technique, adaptés à votre réalité"
+    title: "Simplicite",
+    description: "Des outils intuitifs, sans jargon technique, adaptes a votre realite"
   },
   {
     icon: Rocket,
-    title: "Rapidité",
-    description: "Déploiement en quelques semaines, pas en 6 mois"
+    title: "Rapidite",
+    description: "Deploiement en quelques semaines, pas en 6 mois"
   },
   {
     icon: Users,
@@ -23,8 +23,8 @@ const benefits = [
   },
   {
     icon: Brain,
-    title: "Charge mentale réduite",
-    description: "Moins de stress, plus de sérénité au quotidien"
+    title: "Charge mentale reduite",
+    description: "Moins de stress, plus de serenite au quotidien"
   }
 ];
 
@@ -32,8 +32,8 @@ const Benefits = () => {
   return (
     <section className="section-padding">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-pacifico text-3xl md:text-4xl text-foreground mb-4">
+        <div className="text-center mb-16 animate-fade-up">
+          <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
             Pourquoi choisir Summit Flow ?
           </h2>
         </div>
@@ -42,7 +42,8 @@ const Benefits = () => {
           {benefits.map((benefit, index) => (
             <div 
               key={benefit.title}
-              className="text-center p-6 group"
+              className="text-center p-6 group animate-fade-up"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <benefit.icon className="w-8 h-8 text-primary" />
@@ -59,9 +60,9 @@ const Benefits = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 animate-fade-up" style={{ animationDelay: '500ms' }}>
           <a href="#roi" className="btn-secondary-hero inline-block">
-            Calculez votre ROI personnalisé
+            Calculez votre ROI personnalise
           </a>
         </div>
       </div>

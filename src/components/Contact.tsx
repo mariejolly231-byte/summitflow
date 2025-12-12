@@ -18,25 +18,23 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Send email via mailto link as fallback
       const subject = encodeURIComponent(`Contact Summit Flow - ${formData.name}`);
       const body = encodeURIComponent(
-        `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company || 'Non renseigné'}\n\nMessage:\n${formData.message}`
+        `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company || 'Non renseigne'}\n\nMessage:\n${formData.message}`
       );
       
-      // Open mailto link
       window.location.href = `mailto:contact@summitflow.fr?subject=${subject}&body=${body}`;
       
       toast({
         title: "Redirection vers votre client mail",
-        description: "Votre message sera envoyé via votre application de messagerie.",
+        description: "Votre message sera envoye via votre application de messagerie.",
       });
       
       setIsSubmitted(true);
     } catch (error) {
       toast({
         title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer.",
+        description: "Une erreur est survenue. Veuillez reessayer.",
         variant: "destructive",
       });
     }
@@ -54,7 +52,7 @@ const Contact = () => {
   return (
     <section id="contact" className="section-padding">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
             Parlons de votre projet
           </h2>
@@ -65,7 +63,7 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Rendez-vous */}
-          <div className="card-service flex flex-col">
+          <div className="card-service flex flex-col animate-fade-up">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                 <Calendar className="w-6 h-6 text-primary" />
@@ -84,7 +82,7 @@ const Contact = () => {
               href="https://calendly.com/summitflowfr/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-hero w-full text-center flex items-center justify-center gap-2"
+              className="btn-hero w-full text-center flex items-center justify-center gap-2 mt-auto"
             >
               <Calendar className="w-5 h-5" />
               Prendre RDV
@@ -92,7 +90,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="card-service">
+          <div className="card-service flex flex-col animate-fade-up" style={{ animationDelay: '100ms' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
                 <Mail className="w-6 h-6 text-secondary-foreground" />
@@ -104,13 +102,13 @@ const Contact = () => {
             </div>
 
             {isSubmitted ? (
-              <div className="text-center py-12">
+              <div className="text-center py-12 flex-grow flex flex-col items-center justify-center">
                 <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
                 <h4 className="text-xl font-semibold text-foreground mb-2">Message pret a envoyer</h4>
                 <p className="text-muted-foreground">Finalisez l'envoi dans votre client mail.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4 flex flex-col flex-grow">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
                     Nom *
@@ -158,7 +156,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div>
+                <div className="flex-grow">
                   <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1">
                     Message *
                   </label>
@@ -177,7 +175,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-hero w-full flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="btn-hero w-full flex items-center justify-center gap-2 disabled:opacity-50 mt-auto"
                 >
                   {isSubmitting ? (
                     "Preparation..."

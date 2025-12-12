@@ -1,65 +1,67 @@
-import { Award, MapPin, Linkedin } from "lucide-react";
+import { MapPin, Award, Linkedin } from "lucide-react";
 import photoAbout from "@/assets/photo-about.jpg";
 
 const About = () => {
   return (
-    <section id="about" className="section-padding bg-muted/30">
+    <section id="about" className="section-padding relative overflow-hidden">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl text-foreground mb-4">
+        <div className="text-center mb-16 animate-fade-up">
+          <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
             A propos
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Basee dans le <strong className="text-foreground">Sud toulousain</strong>, Summit Flow accompagne les entreprises dans leur transformation digitale avec des solutions No Code et IA pragmatiques.
-            </p>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Notre approche : des outils simples, efficaces, deployes rapidement. Pas de projets interminables ni de jargon technique. Juste des solutions qui repondent a vos vrais besoins operationnels.
-            </p>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Specialisation dans l'automatisation des processus metier, les applications internes sur mesure et l'optimisation de la productivite des equipes.
-            </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          {/* Left Column - Text Content */}
+          <div className="space-y-6 animate-fade-up">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-foreground">
+                Summit Flow
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Summit Flow accompagne les TPE, PME, artisans, associations et independants du Sud Toulousain et des Pyrenees dans leur transformation numerique. Notre mission : rendre le No Code et l'IA accessibles a tous, sans jargon technique ni deploiements interminables.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Nous concevons des outils simples, efficaces et durables : sites vitrines, applications web sur mesure, automatisations et workflows intelligents. Chaque projet est pense pour vous faire gagner du temps et reduire votre charge mentale.
+              </p>
+            </div>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-              <div className="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
-                <MapPin className="w-4 h-4" />
-                <span className="font-medium">Sud Toulousain</span>
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="w-5 h-5 text-primary" />
+                <span>Sud Toulousain et Pyrenees</span>
               </div>
-              <div className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full">
-                <Award className="w-4 h-4" />
-                <span className="font-medium">Certifiee RNCP Niveau 6</span>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Award className="w-5 h-5 text-primary" />
+                <span>Certifie Make Expert</span>
               </div>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="card-service p-0 overflow-hidden">
+          {/* Right Column - Photo with overlay */}
+          <div className="relative animate-fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="relative rounded-2xl overflow-hidden">
               <img 
                 src={photoAbout} 
-                alt="Marie Jolly - Fondatrice Summit Flow"
-                className="w-full h-auto object-cover"
-                loading="lazy"
+                alt="Marie Jolly en montagne avec ses chiens"
+                className="w-full h-auto object-cover aspect-square"
               />
-              <div className="p-6 bg-card">
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Marie Jolly
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Ingenieure de formation avec 10 ans d'experience dans l'aeronautique et l'industrie. Certifiee Product Builder No Code & IA (RNCP niveau 6). Passionnee par l'optimisation des processus et la resolution de problemes concrets.
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+              
+              {/* Text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-foreground">
+                <h4 className="text-xl font-bold mb-2">Marie Jolly</h4>
+                <p className="text-sm text-foreground/90 leading-relaxed mb-4">
+                  Passionnee de montagne et de technologie, j'ai fait le choix de combiner ces deux univers. Apres un parcours en gestion de projets et organisation, j'ai decouvert le No Code et l'IA comme des outils puissants pour simplifier le quotidien des entrepreneurs. Comme en montagne, chaque ascension demande preparation, methode et perseverance. Mon role : vous guider vers vos sommets numeriques, en allant a l'essentiel.
                 </p>
-                <a
-                  href="https://www.linkedin.com/in/mariejolly"
-                  target="_blank"
+                <a 
+                  href="https://www.linkedin.com/in/mariejolly" 
+                  target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
                 >
                   <Linkedin className="w-5 h-5" />
-                  Voir le profil LinkedIn
+                  Voir mon profil LinkedIn
                 </a>
               </div>
             </div>
