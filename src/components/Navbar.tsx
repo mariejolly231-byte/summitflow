@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Calendar } from "lucide-react";
 import logo from "@/assets/logo.png";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { href: "#services", label: "Services" },
-    { href: "#about", label: "À propos" },
-    { href: "#examples", label: "Exemples" },
-    { href: "#roi", label: "Calculette ROI" },
+    { href: "#examples", label: "Cas clients" },
+    { href: "#roi", label: "Calculateur ROI" },
+    { href: "#about", label: "A propos" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -18,11 +19,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <a href="#" className="flex items-center gap-3">
-            <img src={logo} alt="Summit Flow" className="h-12 min-h-[45px] w-auto" />
+            <img src={logo} alt="Summit Flow" className="h-14 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -32,24 +33,29 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <ThemeToggle />
             <a
               href="https://calendly.com/summitflowfr/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-hero text-base px-6 py-3"
+              className="btn-hero text-base px-6 py-3 flex items-center gap-2"
             >
+              <Calendar className="w-4 h-4" />
               Prendre RDV
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -70,9 +76,10 @@ const Navbar = () => {
                 href="https://calendly.com/summitflowfr/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-hero text-center mt-2"
+                className="btn-hero text-center mt-2 flex items-center justify-center gap-2"
                 onClick={() => setIsOpen(false)}
               >
+                <Calendar className="w-4 h-4" />
                 Prendre RDV
               </a>
             </div>

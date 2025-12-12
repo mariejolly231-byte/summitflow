@@ -1,45 +1,40 @@
-import { Globe, Layers, Zap, Check } from "lucide-react";
+import { Zap, Layers, Settings, Check } from "lucide-react";
 
 const services = [
   {
-    icon: Globe,
-    title: "Site Vitrine",
-    tools: "Framer / Lovable",
-    price: "500€ - 1 500€",
-    description: "Site web professionnel, sur mesure, adapté à tous les écrans.",
+    icon: Zap,
+    title: "Automatisation & IA",
+    description: "Automatisez vos taches repetitives et liberez du temps pour ce qui compte vraiment.",
     features: [
-      "Design moderne et responsive",
-      "SEO local optimisé",
-      "Identité visuelle respectée",
-      "Maintenance incluse"
+      "Workflows multi-outils",
+      "Extraction et scraping de donnees",
+      "Traitement de datasets",
+      "Automatisation cabinet d'avocats",
+      "Veille appels d'offres marches publics"
     ],
     accent: "primary"
   },
   {
     icon: Layers,
-    title: "Application Web/SaaS",
-    tools: "Bubble / Lovable",
-    price: "2 500€ - 5 000€",
-    description: "Application web sur mesure pour gérer adhérents, projets, commandes, planning.",
+    title: "Applications No Code",
+    description: "Des outils internes sur mesure, sans code, adaptes a vos besoins metier.",
     features: [
-      "100% personnalisée",
-      "Interface intuitive",
-      "Suivi fidèle du projet",
-      "Maintenance incluse"
+      "Outils internes personnalises",
+      "Dashboards de pilotage",
+      "Portails clients",
+      "Applications metiers sur mesure"
     ],
     accent: "secondary"
   },
   {
-    icon: Zap,
-    title: "Automatisation",
-    tools: "Make / n8n / Agents IA",
-    price: "390€ - 2 500€",
-    description: "Automatisez relances, notifications, documents, synchronisation outils et analyse données.",
+    icon: Settings,
+    title: "Optimisation & Productivite",
+    description: "Restructurez vos processus pour gagner en efficacite et en clarte.",
     features: [
-      "Automatisation tâches répétitives",
-      "Connexion outils existants",
-      "Gain de temps immédiat",
-      "Formation incluse"
+      "Audit de vos processus",
+      "Refonte et standardisation",
+      "Organisation systeme interne",
+      "Formation equipes"
     ],
     accent: "primary"
   }
@@ -47,14 +42,14 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding">
+    <section id="services" className="section-padding bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-pacifico text-3xl md:text-4xl text-foreground mb-4">
-            Nos offres Summit Flow
+          <h2 className="text-3xl md:text-4xl text-foreground mb-4">
+            Nos expertises
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Des solutions concrètes pour chaque besoin métier
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Des solutions concretes pour automatiser, construire et optimiser votre activite
           </p>
         </div>
 
@@ -71,23 +66,15 @@ const Services = () => {
                 <service.icon className="w-7 h-7" />
               </div>
 
-              <h3 className="text-2xl font-semibold text-foreground mb-2">
+              <h3 className="text-2xl font-semibold text-foreground mb-3">
                 {service.title}
               </h3>
               
-              <p className="text-sm text-muted-foreground mb-2">
-                Outils : {service.tools}
-              </p>
-              
-              <p className="text-xl font-bold text-primary mb-4">
-                {service.price}
-              </p>
-              
-              <p className="text-muted-foreground mb-6 flex-grow">
+              <p className="text-muted-foreground mb-6">
                 {service.description}
               </p>
 
-              <ul className="space-y-3">
+              <ul className="space-y-3 flex-grow">
                 {service.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />

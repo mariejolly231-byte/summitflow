@@ -2,21 +2,39 @@ import { useState } from "react";
 import { Calculator, TrendingUp, Clock, Euro } from "lucide-react";
 
 const ROICalculator = () => {
-  const [hoursPerWeek, setHoursPerWeek] = useState(5);
-  const [hourlyRate, setHourlyRate] = useState(35);
-  const [projectCost, setProjectCost] = useState(2000);
-  const [weeksPerYear, setWeeksPerYear] = useState(46);
+  const [timePerOccurrence, setTimePerOccurrence] = useState(2); // hours
+  const [frequencyPerWeek, setFrequencyPerWeek] = useState(3);
+  const [durationYears, setDurationYears] = useState(2);
+  const [rateType, setRateType] = useState<"hourly" | "salary">("hourly");
+  const [hourlyRate, setHourlyRate] = useState(50);
+  const [annualSalary, setAnnualSalary] = useState(45000);
+  const [projectCost, setProjectCost] = useState(3000);
 
-  const yearlyTimeSaved = hoursPerWeek * weeksPerYear;
-  const yearlySavings = yearlyTimeSaved * hourlyRate;
-  const roi = ((yearlySavings - projectCost) / projectCost) * 100;
-  const paybackMonths = projectCost / (yearlySavings / 12);
+  // Calculate effective hourly rate from salary (52 weeks * 35h/week)
+  const effectiveHourlyRate = rateType === "hourly" ? hourlyRate : annualSalary / (52 * 35);
+  
+  // Weekly hours saved
+  const weeklyHoursSaved = timePerOccurrence * frequencyPerWeek;
+  
+  // Total hours saved over the duration
+  const totalHoursSaved = weeklyHoursSaved * 52 * durationYears;
+  
+  // Total value saved
+  const totalValueSaved = totalHoursSaved * effectiveHourlyRate;
+  
+  // ROI calculation
+  const roi = ((totalValueSaved - projectCost) / projectCost) * 100;
+
+  const formatTime = (hours: number) => {
+    if (hours < 1) return `${Math.round(hours * 60)} min`;
+    return `${hours}h`;
+  };
 
   return (
-    <section id="roi" className="section-padding bg-gradient-to-br from-primary/5 via-background to-secondary/10">
+    <section id="roi" className="section-padding bg-gradient-to-br from-primary/5 via-background to-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-pacifico text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl text-foreground mb-4">
             Calculez votre ROI
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -24,90 +42,169 @@ const ROICalculator = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8">
             {/* Inputs */}
             <div className="card-service space-y-6">
               <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
                 <Calculator className="w-5 h-5 text-primary" />
-                Vos données
+                Parametres
               </h3>
 
+              {/* Time per occurrence */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Heures de tâches répétitives / semaine
+                  Temps par occurrence
+                </label>
+                <input
+                  type="range"
+                  min="0.5"
+                  max="6"
+                  step="0.5"
+                  value={timePerOccurrence}
+                  onChange={(e) => setTimePerOccurrence(Number(e.target.value))}
+                  className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                />
+                <div className="flex justify-between text-sm text-muted-foreground mt-1">
+                  <span>30 min</span>
+                  <span className="text-primary font-bold">{formatTime(timePerOccurrence)}</span>
+                  <span>6h</span>
+                </div>
+              </div>
+
+              {/* Frequency per week */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Frequence hebdomadaire
                 </label>
                 <input
                   type="range"
                   min="1"
-                  max="40"
-                  value={hoursPerWeek}
-                  onChange={(e) => setHoursPerWeek(Number(e.target.value))}
+                  max="10"
+                  value={frequencyPerWeek}
+                  onChange={(e) => setFrequencyPerWeek(Number(e.target.value))}
                   className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                 />
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                  <span>1h</span>
-                  <span className="text-primary font-bold">{hoursPerWeek}h</span>
-                  <span>40h</span>
+                  <span>1x</span>
+                  <span className="text-primary font-bold">{frequencyPerWeek}x / semaine</span>
+                  <span>10x</span>
                 </div>
               </div>
 
+              {/* Duration in years */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Votre taux horaire (€/h)
+                  Duree de projection
                 </label>
                 <input
                   type="range"
-                  min="10"
-                  max="150"
-                  step="5"
-                  value={hourlyRate}
-                  onChange={(e) => setHourlyRate(Number(e.target.value))}
+                  min="1"
+                  max="5"
+                  value={durationYears}
+                  onChange={(e) => setDurationYears(Number(e.target.value))}
                   className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                 />
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                  <span>10€</span>
-                  <span className="text-primary font-bold">{hourlyRate}€</span>
-                  <span>150€</span>
+                  <span>1 an</span>
+                  <span className="text-primary font-bold">{durationYears} ans</span>
+                  <span>5 ans</span>
                 </div>
               </div>
 
+              {/* Rate type toggle */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  Base de calcul
+                </label>
+                <div className="flex gap-4">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="rateType"
+                      checked={rateType === "hourly"}
+                      onChange={() => setRateType("hourly")}
+                      className="w-4 h-4 accent-primary"
+                    />
+                    <span className="text-foreground">Taux horaire</span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="rateType"
+                      checked={rateType === "salary"}
+                      onChange={() => setRateType("salary")}
+                      className="w-4 h-4 accent-primary"
+                    />
+                    <span className="text-foreground">Salaire annuel brut</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Hourly rate or salary slider */}
+              {rateType === "hourly" ? (
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Taux horaire
+                  </label>
+                  <input
+                    type="range"
+                    min="15"
+                    max="200"
+                    step="5"
+                    value={hourlyRate}
+                    onChange={(e) => setHourlyRate(Number(e.target.value))}
+                    className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                  />
+                  <div className="flex justify-between text-sm text-muted-foreground mt-1">
+                    <span>15 EUR</span>
+                    <span className="text-primary font-bold">{hourlyRate} EUR/h</span>
+                    <span>200 EUR</span>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Salaire annuel brut
+                  </label>
+                  <input
+                    type="range"
+                    min="25000"
+                    max="120000"
+                    step="1000"
+                    value={annualSalary}
+                    onChange={(e) => setAnnualSalary(Number(e.target.value))}
+                    className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                  />
+                  <div className="flex justify-between text-sm text-muted-foreground mt-1">
+                    <span>25k EUR</span>
+                    <span className="text-primary font-bold">{(annualSalary / 1000).toFixed(0)}k EUR/an</span>
+                    <span>120k EUR</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Equivalent : {effectiveHourlyRate.toFixed(0)} EUR/h
+                  </p>
+                </div>
+              )}
+
+              {/* Project cost */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Budget estimé du projet (€)
+                  Budget projet estime
                 </label>
                 <input
                   type="range"
                   min="500"
-                  max="10000"
-                  step="100"
+                  max="15000"
+                  step="250"
                   value={projectCost}
                   onChange={(e) => setProjectCost(Number(e.target.value))}
                   className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                 />
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                  <span>500€</span>
-                  <span className="text-primary font-bold">{projectCost.toLocaleString()}€</span>
-                  <span>10 000€</span>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Semaines travaillées / an
-                </label>
-                <input
-                  type="range"
-                  min="40"
-                  max="52"
-                  value={weeksPerYear}
-                  onChange={(e) => setWeeksPerYear(Number(e.target.value))}
-                  className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-                />
-                <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                  <span>40</span>
-                  <span className="text-primary font-bold">{weeksPerYear}</span>
-                  <span>52</span>
+                  <span>500 EUR</span>
+                  <span className="text-primary font-bold">{projectCost.toLocaleString()} EUR</span>
+                  <span>15 000 EUR</span>
                 </div>
               </div>
             </div>
@@ -116,20 +213,22 @@ const ROICalculator = () => {
             <div className="card-service bg-gradient-to-br from-primary/10 to-accent/10 space-y-6">
               <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-primary" />
-                Vos résultats
+                Resultats
               </h3>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-card rounded-xl p-4 text-center">
                   <Clock className="w-8 h-8 text-primary mx-auto mb-2" />
-                  <p className="text-3xl font-bold text-foreground">{yearlyTimeSaved}h</p>
-                  <p className="text-sm text-muted-foreground">Temps gagné / an</p>
+                  <p className="text-3xl font-bold text-foreground">{Math.round(totalHoursSaved)}h</p>
+                  <p className="text-sm text-muted-foreground">Temps economise</p>
+                  <p className="text-xs text-muted-foreground">sur {durationYears} an{durationYears > 1 ? 's' : ''}</p>
                 </div>
 
                 <div className="bg-card rounded-xl p-4 text-center">
                   <Euro className="w-8 h-8 text-primary mx-auto mb-2" />
-                  <p className="text-3xl font-bold text-foreground">{yearlySavings.toLocaleString()}€</p>
-                  <p className="text-sm text-muted-foreground">Économies / an</p>
+                  <p className="text-3xl font-bold text-foreground">{Math.round(totalValueSaved).toLocaleString()} EUR</p>
+                  <p className="text-sm text-muted-foreground">Valeur economisee</p>
+                  <p className="text-xs text-muted-foreground">sur {durationYears} an{durationYears > 1 ? 's' : ''}</p>
                 </div>
               </div>
 
@@ -138,8 +237,8 @@ const ROICalculator = () => {
                 <p className={`text-5xl font-bold ${roi > 0 ? 'text-primary' : 'text-destructive'}`}>
                   {roi > 0 ? '+' : ''}{Math.round(roi)}%
                 </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Rentabilisé en <span className="font-semibold text-foreground">{Math.ceil(paybackMonths)} mois</span>
+                <p className="text-sm text-muted-foreground mt-4">
+                  Economies hebdo : <span className="font-semibold text-foreground">{weeklyHoursSaved}h</span> soit <span className="font-semibold text-foreground">{Math.round(weeklyHoursSaved * effectiveHourlyRate)} EUR</span>
                 </p>
               </div>
 
