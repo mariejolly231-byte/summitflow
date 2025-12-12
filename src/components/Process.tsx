@@ -52,7 +52,7 @@ const Process = () => {
                 <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary/30 to-transparent -translate-x-4" />
               )}
               
-              <div className="card-service text-center group">
+              <div className="card-service text-center group h-full flex flex-col">
                 <div className="relative mb-6">
                   <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
                     <step.icon className="w-10 h-10 text-primary" />
@@ -66,7 +66,7 @@ const Process = () => {
                   {step.title}
                 </h3>
                 
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm flex-grow">
                   {step.description}
                 </p>
               </div>
