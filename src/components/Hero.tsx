@@ -40,7 +40,7 @@ const Hero = () => {
             Transformez vos processus, créez vos outils et automatisez votre activité.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a 
               href="https://calendly.com/summitflowfr/30min" 
               target="_blank" 
