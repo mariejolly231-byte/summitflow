@@ -17,15 +17,30 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission (replace with actual email service)
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // Send email via mailto link as fallback
+      const subject = encodeURIComponent(`Contact Summit Flow - ${formData.name}`);
+      const body = encodeURIComponent(
+        `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company || 'Non renseigné'}\n\nMessage:\n${formData.message}`
+      );
+      
+      // Open mailto link
+      window.location.href = `mailto:contact@summitflow.fr?subject=${subject}&body=${body}`;
+      
+      toast({
+        title: "Redirection vers votre client mail",
+        description: "Votre message sera envoyé via votre application de messagerie.",
+      });
+      
+      setIsSubmitted(true);
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    }
     
-    toast({
-      title: "Message envoyé !",
-      description: "Je vous répondrai dans les plus brefs délais.",
-    });
-    
-    setIsSubmitted(true);
     setIsSubmitting(false);
   };
 
@@ -40,7 +55,7 @@ const Contact = () => {
     <section id="contact" className="section-padding">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-pacifico text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
             Parlons de votre projet
           </h2>
           <p className="text-xl text-muted-foreground">
@@ -49,7 +64,7 @@ const Contact = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Calendly */}
+          {/* Rendez-vous */}
           <div className="card-service flex flex-col">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -57,21 +72,23 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-foreground">Rendez-vous en ligne</h3>
-                <p className="text-sm text-muted-foreground">30 min • Gratuit • Sans engagement</p>
+                <p className="text-sm text-muted-foreground">30 min - Gratuit - Sans engagement</p>
               </div>
             </div>
             
-            <p className="text-muted-foreground mb-6">
-              Réservez un créneau pour un échange découverte. On discute de vos besoins et je vous propose des solutions adaptées.
+            <p className="text-muted-foreground mb-6 flex-grow">
+              Reservez un creneau pour un echange decouverte. On discute de vos besoins et je vous propose des solutions adaptees.
             </p>
 
-            <div className="flex-grow">
-              <iframe 
-                src="https://calendly.com/summitflowfr/30min?hide_gdpr_banner=1&background_color=ffffff&primary_color=4FD1C5"
-                className="w-full h-[400px] rounded-xl border-0"
-                title="Calendly Summit Flow"
-              />
-            </div>
+            <a
+              href="https://calendly.com/summitflowfr/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero w-full text-center flex items-center justify-center gap-2"
+            >
+              <Calendar className="w-5 h-5" />
+              Prendre RDV
+            </a>
           </div>
 
           {/* Contact Form */}
@@ -82,15 +99,15 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-foreground">Formulaire de contact</h3>
-                <p className="text-sm text-muted-foreground">Réponse sous 24-48h</p>
+                <p className="text-sm text-muted-foreground">Reponse sous 24-48h</p>
               </div>
             </div>
 
             {isSubmitted ? (
               <div className="text-center py-12">
                 <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h4 className="text-xl font-semibold text-foreground mb-2">Message envoyé !</h4>
-                <p className="text-muted-foreground">Je vous répondrai très vite.</p>
+                <h4 className="text-xl font-semibold text-foreground mb-2">Message pret a envoyer</h4>
+                <p className="text-muted-foreground">Finalisez l'envoi dans votre client mail.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -153,7 +170,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                    placeholder="Décrivez votre projet ou votre besoin..."
+                    placeholder="Decrivez votre projet ou votre besoin..."
                   />
                 </div>
 
@@ -163,7 +180,7 @@ const Contact = () => {
                   className="btn-hero w-full flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    "Envoi en cours..."
+                    "Preparation..."
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
@@ -171,6 +188,9 @@ const Contact = () => {
                     </>
                   )}
                 </button>
+                <p className="text-xs text-muted-foreground text-center">
+                  Envoi via contact@summitflow.fr
+                </p>
               </form>
             )}
           </div>
