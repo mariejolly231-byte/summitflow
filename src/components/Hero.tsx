@@ -13,21 +13,25 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Calculate opacity for text fade effect
-  const textOpacity = Math.max(0, 1 - scrollY / 400);
-  const textTranslateY = scrollY * 0.5;
+  // Calculate opacity for text fade effect - starts fading after scrollY > 100
+  const textOpacity = Math.max(0, 1 - Math.max(0, scrollY - 100) / 300);
+  const textTranslateY = scrollY * 0.3;
+
+  // Mountain rises up from bottom as user scrolls
+  const mountainTranslateY = Math.max(-scrollY * 0.6, -300);
 
   return (
-    <section className="relative min-h-screen flex items-start justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30 pt-24">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
 
       {/* Content - behind the mountain, fades as user scrolls */}
       <div 
-        className="relative z-10 container mx-auto px-4 text-center mt-8"
+        className="relative z-10 container mx-auto px-4 text-center"
         style={{ 
           opacity: textOpacity,
           transform: `translateY(${textTranslateY}px)`,
+          transition: 'opacity 0.1s ease-out',
         }}
       >
         <div className="max-w-4xl mx-auto animate-fade-up">
@@ -61,26 +65,27 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Parallax Mountain Image - passes OVER the text on scroll */}
+      {/* Parallax Mountain Image - starts at bottom, rises up on scroll */}
       <div 
-        className="absolute bottom-[12vh] left-0 right-0 w-full z-20 pointer-events-none overflow-hidden"
+        className="absolute left-1/2 -translate-x-1/2 w-[120%] max-w-[1600px] z-20 pointer-events-none"
         style={{ 
-          transform: `translateY(${-scrollY * 0.5}px)`,
-          height: '45vh',
+          bottom: '-15vh',
+          transform: `translateX(-50%) translateY(${mountainTranslateY}px)`,
+          transition: 'transform 0.05s linear',
         }}
       >
         <img 
           src={heroMountains} 
           alt="Montagnes enneigées" 
-          className="w-full h-full object-cover object-top"
+          className="w-full h-auto object-contain"
         />
-        {/* Gradient overlay for smooth transition */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        {/* Gradient overlay for smooth blend with content above */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background via-background/50 to-transparent" />
       </div>
       
-      {/* Mist overlay for smooth transition to next section */}
+      {/* Bottom gradient for smooth transition to next section */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-[25vh] bg-gradient-to-t from-background via-background/90 to-transparent z-30"
+        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-30"
       />
     </section>
   );
