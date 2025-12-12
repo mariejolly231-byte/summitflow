@@ -18,16 +18,16 @@ const Hero = () => {
   const textTranslateY = scrollY * 0.5;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30">
+    <section className="relative min-h-screen flex items-start justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
 
-      {/* Content - scrolls up and fades out */}
+      {/* Content - positioned at top, scrolls and fades */}
       <div 
-        className="relative z-10 container mx-auto px-4 pt-32 pb-48 text-center transition-opacity duration-100"
+        className="relative z-30 container mx-auto px-4 pt-32 pb-16 text-center"
         style={{ 
           opacity: textOpacity,
-          transform: `translateY(${textTranslateY}px)`,
+          transform: `translateY(${-textTranslateY}px)`,
         }}
       >
         <div className="max-w-4xl mx-auto animate-fade-up">
@@ -61,11 +61,11 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Parallax Mountain Image - stays fixed, content scrolls behind */}
+      {/* Parallax Mountain Image - at bottom, content passes behind it */}
       <div 
-        className="absolute bottom-0 left-0 right-0 w-full z-20 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 w-full z-10 pointer-events-none"
         style={{ 
-          transform: `translateY(${scrollY * 0.15}px)`,
+          transform: `translateY(${scrollY * 0.3}px)`,
         }}
       >
         <img 
@@ -77,8 +77,8 @@ const Hero = () => {
       
       {/* Mist overlay for depth */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-background via-background/80 to-transparent z-30"
-        style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+        className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-background via-background/80 to-transparent"
+        style={{ transform: `translateY(${scrollY * 0.4}px)` }}
       />
     </section>
   );
