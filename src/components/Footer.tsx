@@ -1,4 +1,4 @@
-import { Mail, MapPin, Linkedin } from "lucide-react";
+import { Mail, MapPin, Linkedin, Calendar } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -10,13 +10,22 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Logo & Slogan */}
           <div className="md:col-span-2">
-            <img src={logo} alt="Summit Flow" className="h-20 w-auto mb-4" />
-            <p className="text-xl font-pacifico text-primary-light mb-4">
-              Progressez léger
+            <img src={logo} alt="Summit Flow" className="h-16 w-auto mb-4" />
+            <p className="text-xl font-semibold text-primary-light mb-4">
+              Progressez leger
             </p>
-            <p className="text-background/70 max-w-md">
-              Solutions No Code & IA pour TPE, PME, artisans et associations du Sud toulousain et des Pyrénées.
+            <p className="text-background/70 max-w-md mb-6">
+              Solutions No Code et IA pour automatiser, construire et optimiser votre activite.
             </p>
+            <a
+              href="https://calendly.com/summitflowfr/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors"
+            >
+              <Calendar className="w-4 h-4" />
+              Prendre RDV
+            </a>
           </div>
 
           {/* Navigation */}
@@ -29,18 +38,18 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-background/70 hover:text-primary transition-colors">
-                  À propos
-                </a>
-              </li>
-              <li>
                 <a href="#examples" className="text-background/70 hover:text-primary transition-colors">
-                  Exemples
+                  Cas clients
                 </a>
               </li>
               <li>
                 <a href="#roi" className="text-background/70 hover:text-primary transition-colors">
-                  Calculette ROI
+                  Calculateur ROI
+                </a>
+              </li>
+              <li>
+                <a href="#about" className="text-background/70 hover:text-primary transition-colors">
+                  A propos
                 </a>
               </li>
               <li>
@@ -57,7 +66,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-background/70">
                 <MapPin className="w-4 h-4 text-primary" />
-                Sud Toulousain & Pyrénées
+                Sud Toulousain
               </li>
               <li>
                 <a 
@@ -70,7 +79,7 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="https://linkedin.com/company/summitflow"
+                  href="https://www.linkedin.com/in/mariejolly"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-background/70 hover:text-primary transition-colors"
@@ -86,18 +95,18 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-background/50">
-            © {currentYear} Summit Flow. Tous droits réservés.
+            {currentYear} Summit Flow. Tous droits reserves.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-background/50 hover:text-background transition-colors">
-              Mentions légales
+              Mentions legales
             </a>
             <a href="#" className="text-background/50 hover:text-background transition-colors">
-              Politique de confidentialité
+              Politique de confidentialite
             </a>
           </div>
           <p className="text-sm text-background/50">
-            Certifiée RNCP Niveau 6 - Product Builder No Code & IA
+            Certifiee RNCP Niveau 6
           </p>
         </div>
       </div>
