@@ -63,10 +63,10 @@ const Hero = () => {
       
       {/* Parallax Mountain Image - passes OVER the text on scroll */}
       <div 
-        className="absolute bottom-[5vh] left-0 right-0 w-full z-20 pointer-events-none overflow-hidden"
+        className="absolute bottom-[12vh] left-0 right-0 w-full z-20 pointer-events-none overflow-hidden"
         style={{ 
           transform: `translateY(${-scrollY * 0.5}px)`,
-          height: '50vh',
+          height: '45vh',
         }}
       >
         <img 
