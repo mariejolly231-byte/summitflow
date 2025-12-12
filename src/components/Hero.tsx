@@ -13,33 +13,23 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Calculate opacity for text fade effect
+  const textOpacity = Math.max(0, 1 - scrollY / 400);
+  const textTranslateY = scrollY * 0.5;
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
-      
-      {/* Parallax Mountain Image */}
+
+      {/* Content - scrolls up and fades out */}
       <div 
-        className="absolute bottom-0 left-0 right-0 w-full"
+        className="relative z-10 container mx-auto px-4 pt-32 pb-48 text-center transition-opacity duration-100"
         style={{ 
-          transform: `translateY(${scrollY * 0.3}px)`,
+          opacity: textOpacity,
+          transform: `translateY(${textTranslateY}px)`,
         }}
       >
-        <img 
-          src={heroMountains} 
-          alt="Montagnes enneigées" 
-          className="w-full h-auto object-cover object-bottom"
-        />
-      </div>
-      
-      {/* Mist overlay for depth */}
-      <div 
-        className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-background via-background/80 to-transparent"
-        style={{ transform: `translateY(${scrollY * 0.4}px)` }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 pt-32 pb-24 text-center">
         <div className="max-w-4xl mx-auto animate-fade-up">
           <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-8 font-extrabold tracking-tight">
             <span className="text-foreground drop-shadow-lg">Progressez léger avec le </span>
@@ -55,14 +45,14 @@ const Hero = () => {
               href="https://calendly.com/summitflowfr/30min" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-hero inline-flex items-center justify-center gap-2"
+              className="btn-hero inline-flex items-center justify-center gap-2 hover:scale-105 transition-transform duration-300"
             >
               <Calendar className="w-5 h-5" />
               Prendre RDV
             </a>
             <a 
               href="#roi" 
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 bg-card border border-border text-foreground hover:bg-muted hover:border-primary/50"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 bg-card border border-border text-foreground hover:bg-muted hover:border-primary/50 hover:scale-105"
             >
               <Calculator className="w-5 h-5" />
               Calculer votre ROI
@@ -70,6 +60,26 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      
+      {/* Parallax Mountain Image - stays fixed, content scrolls behind */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 w-full z-20 pointer-events-none"
+        style={{ 
+          transform: `translateY(${scrollY * 0.15}px)`,
+        }}
+      >
+        <img 
+          src={heroMountains} 
+          alt="Montagnes enneigées" 
+          className="w-full h-auto object-cover object-bottom"
+        />
+      </div>
+      
+      {/* Mist overlay for depth */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-background via-background/80 to-transparent z-30"
+        style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+      />
     </section>
   );
 };
