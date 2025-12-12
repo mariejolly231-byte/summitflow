@@ -40,29 +40,32 @@ const About = () => {
 
           {/* Right Column - Photo with overlay */}
           <div className="relative animate-fade-up" style={{ animationDelay: '100ms' }}>
-            <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <img 
                 src={photoAbout} 
                 alt="Marie Jolly en montagne avec ses chiens"
                 className="w-full h-auto object-cover aspect-square"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+              {/* Stronger overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
               
-              {/* Text overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-foreground">
-                <h4 className="text-xl font-bold mb-2">Marie Jolly</h4>
-                <p className="text-sm text-foreground/90 leading-relaxed mb-4">
-                  Passionnee de montagne et de technologie, j'ai fait le choix de combiner ces deux univers. Apres un parcours en gestion de projets et organisation, j'ai decouvert le No Code et l'IA comme des outils puissants pour simplifier le quotidien des entrepreneurs. Comme en montagne, chaque ascension demande preparation, methode et perseverance. Mon role : vous guider vers vos sommets numeriques, en allant a l'essentiel.
-                </p>
-                <a 
-                  href="https://www.linkedin.com/in/mariejolly" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
-                >
-                  <Linkedin className="w-5 h-5" />
-                  Voir mon profil LinkedIn
-                </a>
+              {/* Text overlay with better contrast */}
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="bg-background/80 backdrop-blur-sm rounded-xl p-5 border border-border/50">
+                  <h4 className="text-xl font-bold mb-2 text-foreground">Marie Jolly</h4>
+                  <p className="text-sm text-foreground/90 leading-relaxed mb-4">
+                    Passionnée de montagne et de technologie, j'ai fait le choix de combiner ces deux univers. Après un parcours en gestion de projets et organisation, j'ai découvert le No Code et l'IA comme des outils puissants pour simplifier le quotidien des entrepreneurs. Comme en montagne, chaque ascension demande préparation, méthode et persévérance. Mon rôle : vous guider vers vos sommets numériques, en allant à l'essentiel.
+                  </p>
+                  <a 
+                    href="https://www.linkedin.com/in/mariejolly" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-all duration-300 font-medium hover:translate-x-1"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                    Voir mon profil LinkedIn
+                  </a>
+                </div>
               </div>
             </div>
           </div>
