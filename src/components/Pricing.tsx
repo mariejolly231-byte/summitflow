@@ -25,8 +25,7 @@ const offers = [
       "Interface intuitive",
       "Suivi fidèle du projet",
       "Maintenance incluse"
-    ],
-    highlighted: true
+    ]
   },
   {
     icon: Zap,
@@ -56,20 +55,13 @@ const Pricing = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
           {offers.map((offer, index) => (
             <div 
               key={offer.title}
-              className={`card-service relative flex flex-col animate-fade-up ${
-                offer.highlighted ? 'ring-2 ring-primary' : ''
-              }`}
+              className="card-service relative flex flex-col animate-fade-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {offer.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                  Populaire
-                </div>
-              )}
               
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -102,11 +94,7 @@ const Pricing = () => {
                 href="https://calendly.com/summitflowfr/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full text-center py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
-                  offer.highlighted 
-                    ? 'btn-hero' 
-                    : 'bg-muted text-foreground hover:bg-muted/80 border border-border'
-                }`}
+                className="w-full text-center py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-muted text-foreground hover:bg-primary hover:text-primary-foreground border border-border"
               >
                 <Calendar className="w-4 h-4" />
                 Prendre RDV
