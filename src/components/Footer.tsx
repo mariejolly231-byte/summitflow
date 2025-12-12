@@ -10,12 +10,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Logo & Slogan */}
           <div className="md:col-span-2">
-            <img src={logo} alt="Summit Flow" className="h-20 w-auto mb-4" />
+            <img src={logo} alt="Summit Flow" className="h-12 w-auto mb-4" />
             <p className="text-xl font-semibold text-primary-light mb-4">
-              Progressez leger
+              Progressez léger
             </p>
             <p className="text-background/70 max-w-md mb-6">
-              Solutions No Code et IA pour automatiser, construire et optimiser votre activite.
+              Solutions No Code et IA pour automatiser, construire et optimiser votre activité.
             </p>
             <a
               href="https://calendly.com/summitflowfr/30min"
@@ -49,7 +49,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#about" className="text-background/70 hover:text-primary transition-colors">
-                  A propos
+                  À propos
                 </a>
               </li>
               <li>
@@ -95,18 +95,18 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-background/50">
-            {currentYear} Summit Flow. Tous droits reserves.
+            {currentYear} Summit Flow. Tous droits réservés.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-background/50 hover:text-background transition-colors">
-              Mentions legales
+              Mentions légales
             </a>
             <a href="#" className="text-background/50 hover:text-background transition-colors">
-              Politique de confidentialite
+              Politique de confidentialité
             </a>
           </div>
           <p className="text-sm text-background/50">
-            Certifiee RNCP Niveau 6
+            Certifiée RNCP Niveau 6
           </p>
         </div>
       </div>

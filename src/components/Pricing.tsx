@@ -48,7 +48,7 @@ const Pricing = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Nos offres Summit Flow
+            Mes offres Summit Flow
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Des solutions concrètes pour chaque besoin métier

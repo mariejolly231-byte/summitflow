@@ -20,21 +20,21 @@ const Contact = () => {
     try {
       const subject = encodeURIComponent(`Contact Summit Flow - ${formData.name}`);
       const body = encodeURIComponent(
-        `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company || 'Non renseigne'}\n\nMessage:\n${formData.message}`
+        `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company || 'Non renseigné'}\n\nMessage:\n${formData.message}`
       );
       
       window.location.href = `mailto:contact@summitflow.fr?subject=${subject}&body=${body}`;
       
       toast({
         title: "Redirection vers votre client mail",
-        description: "Votre message sera envoye via votre application de messagerie.",
+        description: "Votre message sera envoyé via votre application de messagerie.",
       });
       
       setIsSubmitted(true);
     } catch (error) {
       toast({
         title: "Erreur",
-        description: "Une erreur est survenue. Veuillez reessayer.",
+        description: "Une erreur est survenue. Veuillez réessayer.",
         variant: "destructive",
       });
     }
@@ -75,7 +75,7 @@ const Contact = () => {
             </div>
             
             <p className="text-muted-foreground mb-6 flex-grow">
-              Reservez un creneau pour un echange decouverte. On discute de vos besoins et je vous propose des solutions adaptees.
+              Réservez un créneau pour un échange découverte. On discute de vos besoins et je vous propose des solutions adaptées.
             </p>
 
             <a
@@ -97,14 +97,14 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-foreground">Formulaire de contact</h3>
-                <p className="text-sm text-muted-foreground">Reponse sous 24-48h</p>
+                <p className="text-sm text-muted-foreground">Réponse sous 24-48h</p>
               </div>
             </div>
 
             {isSubmitted ? (
               <div className="text-center py-12 flex-grow flex flex-col items-center justify-center">
                 <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h4 className="text-xl font-semibold text-foreground mb-2">Message pret a envoyer</h4>
+                <h4 className="text-xl font-semibold text-foreground mb-2">Message prêt à envoyer</h4>
                 <p className="text-muted-foreground">Finalisez l'envoi dans votre client mail.</p>
               </div>
             ) : (
@@ -168,7 +168,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                    placeholder="Decrivez votre projet ou votre besoin..."
+                    placeholder="Décrivez votre projet ou votre besoin..."
                   />
                 </div>
 
@@ -178,7 +178,7 @@ const Contact = () => {
                   className="btn-hero w-full flex items-center justify-center gap-2 disabled:opacity-50 mt-auto"
                 >
                   {isSubmitting ? (
-                    "Preparation..."
+                    "Préparation..."
                   ) : (
                     <>
                       <Send className="w-5 h-5" />

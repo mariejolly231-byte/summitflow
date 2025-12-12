@@ -4,26 +4,26 @@ const steps = [
   {
     icon: MessageCircle,
     number: "01",
-    title: "Echange decouverte",
+    title: "Échange découverte",
     description: "On discute de vos besoins, vos contraintes et vos objectifs lors d'un appel de 30 minutes."
   },
   {
     icon: Search,
     number: "02",
     title: "Audit & Proposition",
-    description: "J'analyse votre situation et vous propose une solution adaptee avec un devis detaille."
+    description: "J'analyse votre situation et vous propose une solution adaptée avec un devis détaillé."
   },
   {
     icon: Wrench,
     number: "03",
-    title: "Conception & Developpement",
-    description: "Je construis votre solution en vous tenant informe a chaque etape du projet."
+    title: "Conception & Développement",
+    description: "Je construis votre solution en vous tenant informé à chaque étape du projet."
   },
   {
     icon: Rocket,
     number: "04",
     title: "Livraison & Formation",
-    description: "Je vous livre l'outil finalise avec une formation pour le prendre en main en autonomie."
+    description: "Je vous livre l'outil finalisé avec une formation pour le prendre en main en autonomie."
   }
 ];
 
@@ -33,10 +33,10 @@ const Process = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Comment ca marche
+            Comment ça marche
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Un processus simple et transparent pour vous accompagner de A a Z.
+            Un processus simple et transparent pour vous accompagner de A à Z.
           </p>
         </div>
 

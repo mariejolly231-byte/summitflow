@@ -4,27 +4,27 @@ const benefits = [
   {
     icon: Clock,
     title: "Gain de temps",
-    description: "Liberez des heures chaque semaine en automatisant vos taches repetitives"
+    description: "Libérez des heures chaque semaine en automatisant vos tâches répétitives"
   },
   {
     icon: Sparkles,
-    title: "Simplicite",
-    description: "Des outils intuitifs, sans jargon technique, adaptes a votre realite"
+    title: "Simplicité",
+    description: "Des outils intuitifs, sans jargon technique, adaptés à votre réalité"
   },
   {
     icon: Rocket,
-    title: "Rapidite",
-    description: "Deploiement en quelques semaines, pas en 6 mois"
+    title: "Rapidité",
+    description: "Déploiement en quelques semaines, pas en 6 mois"
   },
   {
     icon: Users,
     title: "Accompagnement local",
-    description: "Un interlocuteur unique, disponible, qui comprend votre contexte"
+    description: "Une interlocutrice unique, disponible, qui comprend votre contexte"
   },
   {
     icon: Brain,
-    title: "Charge mentale reduite",
-    description: "Moins de stress, plus de serenite au quotidien"
+    title: "Charge mentale réduite",
+    description: "Moins de stress, plus de sérénité au quotidien"
   }
 ];
 
@@ -62,7 +62,7 @@ const Benefits = () => {
 
         <div className="text-center mt-12 animate-fade-up" style={{ animationDelay: '500ms' }}>
           <a href="#roi" className="btn-secondary-hero inline-block">
-            Calculez votre ROI personnalise
+            Calculez votre ROI personnalisé
           </a>
         </div>
       </div>

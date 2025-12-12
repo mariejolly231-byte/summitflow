@@ -19,7 +19,7 @@ const trustPoints = [
   {
     icon: MapPin,
     title: "Ancrage local",
-    description: "Présente dans le Sud toulousain et les Pyrénées"
+    description: "Présente dans le Sud Toulousain et les Pyrénées"
   }
 ];
 
