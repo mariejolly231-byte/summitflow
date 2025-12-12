@@ -1,70 +1,77 @@
-import { MessageCircle, Search, CheckCircle, Code2, GraduationCap } from "lucide-react";
+import { MessageCircle, Search, Wrench, Rocket } from "lucide-react";
 
 const steps = [
   {
     icon: MessageCircle,
-    title: "Rendez-vous découverte",
-    description: "Échange gratuit pour comprendre vos besoins et défis"
+    number: "01",
+    title: "Echange decouverte",
+    description: "On discute de vos besoins, vos contraintes et vos objectifs lors d'un appel de 30 minutes."
   },
   {
     icon: Search,
-    title: "Analyse",
-    description: "Audit de vos processus et identification des opportunités"
+    number: "02",
+    title: "Audit & Proposition",
+    description: "J'analyse votre situation et vous propose une solution adaptee avec un devis detaille."
   },
   {
-    icon: CheckCircle,
-    title: "Validation",
-    description: "Proposition sur mesure avec planning et budget clairs"
+    icon: Wrench,
+    number: "03",
+    title: "Conception & Developpement",
+    description: "Je construis votre solution en vous tenant informe a chaque etape du projet."
   },
   {
-    icon: Code2,
-    title: "Développement",
-    description: "Création de votre solution avec points d'étape réguliers"
-  },
-  {
-    icon: GraduationCap,
-    title: "Formation & accompagnement",
-    description: "Prise en main et suivi pour garantir votre autonomie"
+    icon: Rocket,
+    number: "04",
+    title: "Livraison & Formation",
+    description: "Je vous livre l'outil finalise avec une formation pour le prendre en main en autonomie."
   }
 ];
 
 const Process = () => {
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-muted/30">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-pacifico text-3xl md:text-4xl text-foreground mb-4">
-            Comment ça marche ?
+        <div className="text-center mb-16 animate-fade-up">
+          <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
+            Comment ca marche
           </h2>
-          <p className="text-xl text-muted-foreground">
-            5 étapes simples vers votre transformation digitale
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Un processus simple et transparent pour vous accompagner de A a Z.
           </p>
         </div>
 
-        <div className="relative">
-          {/* Connection line - hidden on mobile */}
-          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
-            {steps.map((step, index) => (
-              <div key={step.title} className="relative text-center">
-                <div className="w-24 h-24 rounded-full bg-card border-4 border-primary flex items-center justify-center mx-auto mb-4 relative z-10">
-                  <step.icon className="w-10 h-10 text-primary" />
-                  <span className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-sm">
-                    {index + 1}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map((step, index) => (
+            <div 
+              key={step.title} 
+              className="relative animate-fade-up"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {/* Connector line */}
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary/30 to-transparent -translate-x-4" />
+              )}
+              
+              <div className="card-service text-center group">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <step.icon className="w-10 h-10 text-primary" />
+                  </div>
+                  <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center">
+                    {step.number}
                   </span>
                 </div>
-                
-                <h3 className="font-semibold text-foreground mb-2">
+
+                <h3 className="text-lg font-semibold text-foreground mb-3">
                   {step.title}
                 </h3>
                 
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   {step.description}
                 </p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ const Navbar = () => {
 
   const navLinks = [
     { href: "#services", label: "Services" },
+    { href: "#tarifs", label: "Tarifs" },
     { href: "#examples", label: "Cas clients" },
     { href: "#roi", label: "Calculateur ROI" },
     { href: "#about", label: "A propos" },
@@ -17,9 +18,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           <a href="#" className="flex items-center gap-3">
-            <img src={logo} alt="Summit Flow" className="h-16 w-auto min-h-[48px]" />
+            <img src={logo} alt="Summit Flow" className="h-20 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
