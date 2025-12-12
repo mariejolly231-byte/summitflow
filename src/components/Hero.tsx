@@ -18,25 +18,25 @@ const Hero = () => {
   const textTranslateY = scrollY * 0.5;
 
   return (
-    <section className="relative min-h-[85vh] flex items-start justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
 
       {/* Content - behind the mountain, fades as user scrolls */}
       <div 
-        className="relative z-10 container mx-auto px-4 pt-24 text-center"
+        className="relative z-10 container mx-auto px-4 text-center -mt-16"
         style={{ 
           opacity: textOpacity,
           transform: `translateY(${textTranslateY}px)`,
         }}
       >
         <div className="max-w-4xl mx-auto animate-fade-up">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-6 font-extrabold tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 font-extrabold tracking-tight">
             <span className="text-foreground drop-shadow-lg">Progressez léger avec le </span>
             <span className="text-primary drop-shadow-lg">No Code et l'IA</span>
           </h1>
           
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
             Transformez vos processus, créez vos outils et automatisez votre activité.
           </p>
 
@@ -61,12 +61,12 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Parallax Mountain Image - passes OVER the text on scroll, cropped from bottom */}
+      {/* Parallax Mountain Image - passes OVER the text on scroll */}
       <div 
         className="absolute bottom-0 left-0 right-0 w-full z-20 pointer-events-none overflow-hidden"
         style={{ 
           transform: `translateY(${-scrollY * 0.5}px)`,
-          height: '45vh',
+          height: '55vh',
         }}
       >
         <img 
