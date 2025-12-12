@@ -33,8 +33,8 @@ const ROICalculator = () => {
   return (
     <section id="roi" className="section-padding bg-gradient-to-br from-primary/5 via-background to-muted/30">
       <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl text-foreground mb-4">
+        <div className="text-center mb-12 animate-fade-up">
+          <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
             Calculez votre ROI
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -42,13 +42,13 @@ const ROICalculator = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto animate-fade-up" style={{ animationDelay: '100ms' }}>
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Inputs */}
             <div className="card-service space-y-6">
               <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
                 <Calculator className="w-5 h-5 text-primary" />
-                Parametres
+                Paramètres
               </h3>
 
               {/* Time per occurrence */}
@@ -75,7 +75,7 @@ const ROICalculator = () => {
               {/* Frequency per week */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Frequence hebdomadaire
+                  Fréquence hebdomadaire
                 </label>
                 <input
                   type="range"
@@ -95,7 +95,7 @@ const ROICalculator = () => {
               {/* Duration in years */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Duree de projection
+                  Durée de projection
                 </label>
                 <input
                   type="range"
@@ -190,7 +190,7 @@ const ROICalculator = () => {
               {/* Project cost */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Budget projet estime
+                  Budget projet estimé
                 </label>
                 <input
                   type="range"
@@ -213,21 +213,21 @@ const ROICalculator = () => {
             <div className="card-service bg-gradient-to-br from-primary/10 to-accent/10 space-y-6">
               <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-primary" />
-                Resultats
+                Résultats
               </h3>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-card rounded-xl p-4 text-center">
                   <Clock className="w-8 h-8 text-primary mx-auto mb-2" />
                   <p className="text-3xl font-bold text-foreground">{Math.round(totalHoursSaved)}h</p>
-                  <p className="text-sm text-muted-foreground">Temps economise</p>
+                  <p className="text-sm text-muted-foreground">Temps économisé</p>
                   <p className="text-xs text-muted-foreground">sur {durationYears} an{durationYears > 1 ? 's' : ''}</p>
                 </div>
 
                 <div className="bg-card rounded-xl p-4 text-center">
                   <Euro className="w-8 h-8 text-primary mx-auto mb-2" />
                   <p className="text-3xl font-bold text-foreground">{Math.round(totalValueSaved).toLocaleString()} EUR</p>
-                  <p className="text-sm text-muted-foreground">Valeur economisee</p>
+                  <p className="text-sm text-muted-foreground">Valeur économisée</p>
                   <p className="text-xs text-muted-foreground">sur {durationYears} an{durationYears > 1 ? 's' : ''}</p>
                 </div>
               </div>
@@ -238,7 +238,7 @@ const ROICalculator = () => {
                   {roi > 0 ? '+' : ''}{Math.round(roi)}%
                 </p>
                 <p className="text-sm text-muted-foreground mt-4">
-                  Economies hebdo : <span className="font-semibold text-foreground">{weeklyHoursSaved}h</span> soit <span className="font-semibold text-foreground">{Math.round(weeklyHoursSaved * effectiveHourlyRate)} EUR</span>
+                  Économies hebdo : <span className="font-semibold text-foreground">{weeklyHoursSaved}h</span> soit <span className="font-semibold text-foreground">{Math.round(weeklyHoursSaved * effectiveHourlyRate)} EUR</span>
                 </p>
               </div>
 

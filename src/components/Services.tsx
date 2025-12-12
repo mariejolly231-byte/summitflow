@@ -4,37 +4,37 @@ const services = [
   {
     icon: Bot,
     title: "Automatisation & IA",
-    description: "Liberez-vous des taches repetitives grace a des workflows intelligents et des agents IA.",
+    description: "Libérez-vous des tâches répétitives grâce à des workflows intelligents et des agents IA.",
     features: [
       "Workflows multi-outils",
       "Extraction / scraping",
       "Traitement dataset",
       "Automatisation cabinet d'avocats",
-      "Veille appels d'offres marches publics"
+      "Veille appels d'offres marchés publics"
     ],
     accent: "from-primary/20 to-accent/20"
   },
   {
     icon: AppWindow,
     title: "Applications No Code",
-    description: "Creez des outils sur mesure pour gerer votre activite sans ecrire une ligne de code.",
+    description: "Créez des outils sur mesure pour gérer votre activité sans écrire une ligne de code.",
     features: [
-      "Outils internes personnalises",
+      "Outils internes personnalisés",
       "Dashboard pilotage",
       "Portail client",
-      "Apps metiers sur mesure"
+      "Apps métiers sur mesure"
     ],
     accent: "from-secondary/30 to-primary/20"
   },
   {
     icon: Settings,
-    title: "Optimisation & Productivite",
-    description: "Analysez et ameliorez vos processus pour gagner en efficacite au quotidien.",
+    title: "Optimisation & Productivité",
+    description: "Analysez et améliorez vos processus pour gagner en efficacité au quotidien.",
     features: [
       "Audit",
       "Refonte processus",
       "Standardisation",
-      "Organisation systeme interne"
+      "Organisation système interne"
     ],
     accent: "from-accent/20 to-secondary/30"
   }
@@ -46,10 +46,10 @@ const Services = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Nos expertises
+            Mes expertises
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Des solutions No Code et IA adaptees aux besoins des TPE, PME et independants.
+            Des solutions No Code et IA adaptées aux besoins des TPE, PME et indépendants.
           </p>
         </div>
 

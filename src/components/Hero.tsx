@@ -18,13 +18,13 @@ const Hero = () => {
   const textTranslateY = scrollY * 0.5;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30">
+    <section className="relative min-h-screen flex items-start justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30 pt-24">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
 
       {/* Content - behind the mountain, fades as user scrolls */}
       <div 
-        className="relative z-10 container mx-auto px-4 text-center -mt-16"
+        className="relative z-10 container mx-auto px-4 text-center mt-8"
         style={{ 
           opacity: textOpacity,
           transform: `translateY(${textTranslateY}px)`,
@@ -66,7 +66,7 @@ const Hero = () => {
         className="absolute bottom-0 left-0 right-0 w-full z-20 pointer-events-none overflow-hidden"
         style={{ 
           transform: `translateY(${-scrollY * 0.5}px)`,
-          height: '55vh',
+          height: '50vh',
         }}
       >
         <img 
@@ -74,11 +74,13 @@ const Hero = () => {
           alt="Montagnes enneigées" 
           className="w-full h-full object-cover object-top"
         />
+        {/* Gradient overlay for smooth transition */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </div>
       
-      {/* Mist overlay for depth */}
+      {/* Mist overlay for smooth transition to next section */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-[20vh] bg-gradient-to-t from-background via-background/80 to-transparent z-30"
+        className="absolute bottom-0 left-0 right-0 h-[25vh] bg-gradient-to-t from-background via-background/90 to-transparent z-30"
       />
     </section>
   );

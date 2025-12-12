@@ -11,7 +11,7 @@ const Navbar = () => {
     { href: "#tarifs", label: "Tarifs" },
     { href: "#examples", label: "Cas clients" },
     { href: "#roi", label: "Calculateur ROI" },
-    { href: "#about", label: "A propos" },
+    { href: "#about", label: "À propos" },
     { href: "#contact", label: "Contact" },
   ];
 

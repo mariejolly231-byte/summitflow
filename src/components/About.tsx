@@ -7,39 +7,39 @@ const About = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            A propos
+            À propos
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 animate-fade-up">
+          <div className="space-y-6 animate-fade-up" style={{ animationDelay: '100ms' }}>
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-foreground">
                 Summit Flow
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Summit Flow accompagne les TPE, PME, artisans, associations et independants du Sud Toulousain et des Pyrenees dans leur transformation numerique. Notre mission : rendre le No Code et l'IA accessibles a tous, sans jargon technique ni deploiements interminables.
+                J'accompagne les TPE, PME, artisans, associations et indépendants du Sud Toulousain et des Pyrénées dans leur transformation numérique. Ma mission : rendre le No Code et l'IA accessibles à tous, sans jargon technique ni déploiements interminables.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Nous concevons des outils simples, efficaces et durables : sites vitrines, applications web sur mesure, automatisations et workflows intelligents. Chaque projet est pense pour vous faire gagner du temps et reduire votre charge mentale.
+                Je conçois des outils simples, efficaces et durables : sites vitrines, applications web sur mesure, automatisations et workflows intelligents. Chaque projet est pensé pour vous faire gagner du temps et réduire votre charge mentale.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span>Sud Toulousain et Pyrenees</span>
+                <span>Sud Toulousain et Pyrénées</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Award className="w-5 h-5 text-primary" />
-                <span>Certifie Make Expert</span>
+                <span>Certifiée Make Expert</span>
               </div>
             </div>
           </div>
 
           {/* Right Column - Photo with overlay */}
-          <div className="relative animate-fade-up" style={{ animationDelay: '100ms' }}>
+          <div className="relative animate-fade-up" style={{ animationDelay: '200ms' }}>
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <img 
                 src={photoAbout} 
