@@ -237,6 +237,9 @@ const ROICalculator = () => {
                 <p className={`text-5xl font-bold ${roi > 0 ? 'text-primary' : 'text-destructive'}`}>
                   {roi > 0 ? '+' : ''}{Math.round(roi)}%
                 </p>
+                <p className="text-sm text-muted-foreground mt-4">
+                  Economies hebdo : <span className="font-semibold text-foreground">{weeklyHoursSaved}h</span> soit <span className="font-semibold text-foreground">{Math.round(weeklyHoursSaved * effectiveHourlyRate)} EUR</span>
+                </p>
               </div>
 
               <a

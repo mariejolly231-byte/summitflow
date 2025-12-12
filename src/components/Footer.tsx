@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Logo & Slogan */}
           <div className="md:col-span-2">
-            <img src={logo} alt="Summit Flow" className="h-20 w-auto mb-4" />
+            <img src={logo} alt="Summit Flow" className="h-16 w-auto mb-4" />
             <p className="text-xl font-semibold text-primary-light mb-4">
               Progressez leger
             </p>
