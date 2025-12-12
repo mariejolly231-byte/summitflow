@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Calculator, TrendingUp, Clock, Euro } from "lucide-react";
-
 const ROICalculator = () => {
   const [timePerOccurrence, setTimePerOccurrence] = useState(2); // hours
   const [frequencyPerWeek, setFrequencyPerWeek] = useState(3);
@@ -12,26 +11,23 @@ const ROICalculator = () => {
 
   // Calculate effective hourly rate from salary (52 weeks * 35h/week)
   const effectiveHourlyRate = rateType === "hourly" ? hourlyRate : annualSalary / (52 * 35);
-  
+
   // Weekly hours saved
   const weeklyHoursSaved = timePerOccurrence * frequencyPerWeek;
-  
+
   // Total hours saved over the duration
   const totalHoursSaved = weeklyHoursSaved * 52 * durationYears;
-  
+
   // Total value saved
   const totalValueSaved = totalHoursSaved * effectiveHourlyRate;
-  
-  // ROI calculation
-  const roi = ((totalValueSaved - projectCost) / projectCost) * 100;
 
+  // ROI calculation
+  const roi = (totalValueSaved - projectCost) / projectCost * 100;
   const formatTime = (hours: number) => {
     if (hours < 1) return `${Math.round(hours * 60)} min`;
     return `${hours}h`;
   };
-
-  return (
-    <section id="roi" className="section-padding bg-gradient-to-br from-primary/5 via-background to-muted/30">
+  return <section id="roi" className="section-padding bg-gradient-to-br from-primary/5 via-background to-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-12 animate-fade-up">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
@@ -42,7 +38,9 @@ const ROICalculator = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto animate-fade-up" style={{ animationDelay: '100ms' }}>
+        <div className="max-w-5xl mx-auto animate-fade-up" style={{
+        animationDelay: '100ms'
+      }}>
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Inputs */}
             <div className="card-service space-y-6">
@@ -56,15 +54,7 @@ const ROICalculator = () => {
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Temps par occurrence
                 </label>
-                <input
-                  type="range"
-                  min="0.5"
-                  max="6"
-                  step="0.5"
-                  value={timePerOccurrence}
-                  onChange={(e) => setTimePerOccurrence(Number(e.target.value))}
-                  className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-                />
+                <input type="range" min="0.5" max="6" step="0.5" value={timePerOccurrence} onChange={e => setTimePerOccurrence(Number(e.target.value))} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
                   <span>30 min</span>
                   <span className="text-primary font-bold">{formatTime(timePerOccurrence)}</span>
@@ -77,14 +67,7 @@ const ROICalculator = () => {
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Fréquence hebdomadaire
                 </label>
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  value={frequencyPerWeek}
-                  onChange={(e) => setFrequencyPerWeek(Number(e.target.value))}
-                  className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-                />
+                <input type="range" min="1" max="10" value={frequencyPerWeek} onChange={e => setFrequencyPerWeek(Number(e.target.value))} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
                   <span>1x</span>
                   <span className="text-primary font-bold">{frequencyPerWeek}x / semaine</span>
@@ -97,14 +80,7 @@ const ROICalculator = () => {
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Durée de projection
                 </label>
-                <input
-                  type="range"
-                  min="1"
-                  max="5"
-                  value={durationYears}
-                  onChange={(e) => setDurationYears(Number(e.target.value))}
-                  className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-                />
+                <input type="range" min="1" max="5" value={durationYears} onChange={e => setDurationYears(Number(e.target.value))} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
                   <span>1 an</span>
                   <span className="text-primary font-bold">{durationYears} ans</span>
@@ -119,63 +95,32 @@ const ROICalculator = () => {
                 </label>
                 <div className="flex gap-4">
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="rateType"
-                      checked={rateType === "hourly"}
-                      onChange={() => setRateType("hourly")}
-                      className="w-4 h-4 accent-primary"
-                    />
+                    <input type="radio" name="rateType" checked={rateType === "hourly"} onChange={() => setRateType("hourly")} className="w-4 h-4 accent-primary" />
                     <span className="text-foreground">Taux horaire</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="rateType"
-                      checked={rateType === "salary"}
-                      onChange={() => setRateType("salary")}
-                      className="w-4 h-4 accent-primary"
-                    />
+                    <input type="radio" name="rateType" checked={rateType === "salary"} onChange={() => setRateType("salary")} className="w-4 h-4 accent-primary" />
                     <span className="text-foreground">Salaire annuel brut</span>
                   </label>
                 </div>
               </div>
 
               {/* Hourly rate or salary slider */}
-              {rateType === "hourly" ? (
-                <div>
+              {rateType === "hourly" ? <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Taux horaire
                   </label>
-                  <input
-                    type="range"
-                    min="15"
-                    max="200"
-                    step="5"
-                    value={hourlyRate}
-                    onChange={(e) => setHourlyRate(Number(e.target.value))}
-                    className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-                  />
+                  <input type="range" min="15" max="200" step="5" value={hourlyRate} onChange={e => setHourlyRate(Number(e.target.value))} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
                   <div className="flex justify-between text-sm text-muted-foreground mt-1">
                     <span>15 EUR</span>
                     <span className="text-primary font-bold">{hourlyRate} EUR/h</span>
                     <span>200 EUR</span>
                   </div>
-                </div>
-              ) : (
-                <div>
+                </div> : <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Salaire annuel brut
                   </label>
-                  <input
-                    type="range"
-                    min="25000"
-                    max="120000"
-                    step="1000"
-                    value={annualSalary}
-                    onChange={(e) => setAnnualSalary(Number(e.target.value))}
-                    className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-                  />
+                  <input type="range" min="25000" max="120000" step="1000" value={annualSalary} onChange={e => setAnnualSalary(Number(e.target.value))} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
                   <div className="flex justify-between text-sm text-muted-foreground mt-1">
                     <span>25k EUR</span>
                     <span className="text-primary font-bold">{(annualSalary / 1000).toFixed(0)}k EUR/an</span>
@@ -184,23 +129,14 @@ const ROICalculator = () => {
                   <p className="text-xs text-muted-foreground mt-1">
                     Equivalent : {effectiveHourlyRate.toFixed(0)} EUR/h
                   </p>
-                </div>
-              )}
+                </div>}
 
               {/* Project cost */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Budget projet estimé
                 </label>
-                <input
-                  type="range"
-                  min="300"
-                  max="15000"
-                  step="100"
-                  value={projectCost}
-                  onChange={(e) => setProjectCost(Number(e.target.value))}
-                  className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
-                />
+                <input type="range" min="300" max="15000" step="100" value={projectCost} onChange={e => setProjectCost(Number(e.target.value))} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
                   <span>300 EUR</span>
                   <span className="text-primary font-bold">{projectCost.toLocaleString()} EUR</span>
@@ -238,24 +174,17 @@ const ROICalculator = () => {
                   {roi > 0 ? '+' : ''}{Math.round(roi)}%
                 </p>
                 <p className="text-sm text-muted-foreground mt-4">
-                  Économies hebdo : <span className="font-semibold text-foreground">{weeklyHoursSaved}h</span> soit <span className="font-semibold text-foreground">{Math.round(weeklyHoursSaved * effectiveHourlyRate)} EUR</span>
+                <span className="font-semibold text-foreground">{weeklyHoursSaved}h</span> soit <span className="font-semibold text-foreground">{Math.round(weeklyHoursSaved * effectiveHourlyRate)} EUR</span>
                 </p>
               </div>
 
-              <a
-                href="https://calendly.com/summitflowfr/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-hero w-full text-center block"
-              >
+              <a href="https://calendly.com/summitflowfr/30min" target="_blank" rel="noopener noreferrer" className="btn-hero w-full text-center block">
                 Discutons de votre projet
               </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ROICalculator;
