@@ -194,15 +194,15 @@ const ROICalculator = () => {
                 </label>
                 <input
                   type="range"
-                  min="500"
+                  min="300"
                   max="15000"
-                  step="250"
+                  step="100"
                   value={projectCost}
                   onChange={(e) => setProjectCost(Number(e.target.value))}
                   className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                 />
                 <div className="flex justify-between text-sm text-muted-foreground mt-1">
-                  <span>500 EUR</span>
+                  <span>300 EUR</span>
                   <span className="text-primary font-bold">{projectCost.toLocaleString()} EUR</span>
                   <span>15 000 EUR</span>
                 </div>

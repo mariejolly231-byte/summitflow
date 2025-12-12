@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <a href="#" className="flex items-center gap-3">
-            <img src={logo} alt="Summit Flow" className="h-14 w-auto" />
+            <img src={logo} alt="Summit Flow" className="h-16 w-auto min-h-[48px]" />
           </a>
 
           {/* Desktop Navigation */}
