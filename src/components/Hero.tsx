@@ -78,7 +78,7 @@ const Hero = () => {
       transform: `translateX(-50%) translateY(${isMobile ? 0 : mountainTranslateY}px)`,
       transition: isMobile ? 'none' : 'transform 0.05s linear'
     }}>
-        <img src={heroMountains} alt="Montagnes enneigées" className="w-full h-auto object-contain" />
+        <img src={heroMountains} alt="toulouse/no-code-ia/pyrénées/automatisation" className="w-full h-auto object-contain" />
         {/* Gradient overlay for smooth blend with content above */}
         <div className="absolute inset-x-0 top-0 h-24 md:h-32 bg-gradient-to-b from-background via-background/50 to-transparent" />
       </div>
