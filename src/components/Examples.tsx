@@ -5,7 +5,7 @@ import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 const examples = [
   {
     icon: Waves,
-    title: "Association Ocean Zero Plastique",
+    title: "Association environnementale",
     description: "Site web, web app et automatisation des inscriptions avec suivi de campagnes en temps réel. Gestion interne commandes et web app pour adhérents avec notifications automatiques.",
     results: "+50% d'inscriptions traitées automatiquement, suivi en temps réel pour 200+ membres",
     tools: ["Bubble", "n8n", "Notion", "Airtable"]
