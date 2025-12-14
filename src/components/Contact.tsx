@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Calendar, Mail, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -18,20 +19,25 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const subject = encodeURIComponent(`Contact Summit Flow - ${formData.name}`);
-      const body = encodeURIComponent(
-        `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company || 'Non renseigné'}\n\nMessage:\n${formData.message}`
-      );
-      
-      window.open(`mailto:contact@summitflow.fr?subject=${subject}&body=${body}`, '_blank');
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+        },
+      });
+
+      if (error) throw error;
       
       toast({
-        title: "Client mail ouvert",
-        description: "Envoyez votre message à contact@summitflow.fr",
+        title: "Message envoyé",
+        description: "Vous recevrez une confirmation par email.",
       });
       
       setIsSubmitted(true);
     } catch (error) {
+      console.error("Error sending email:", error);
       toast({
         title: "Erreur",
         description: "Une erreur est survenue. Veuillez réessayer.",
@@ -104,8 +110,8 @@ const Contact = () => {
             {isSubmitted ? (
               <div className="text-center py-12 flex-grow flex flex-col items-center justify-center">
                 <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h4 className="text-xl font-semibold text-foreground mb-2">Message prêt à envoyer</h4>
-                <p className="text-muted-foreground">Finalisez l'envoi dans votre client mail.</p>
+                <h4 className="text-xl font-semibold text-foreground mb-2">Message envoyé</h4>
+                <p className="text-muted-foreground">Je vous répondrai sous 24-48h.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 flex flex-col flex-grow">
