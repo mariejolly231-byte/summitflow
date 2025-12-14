@@ -8,6 +8,7 @@ import Pricing from "@/components/Pricing";
 import ROICalculator from "@/components/ROICalculator";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -25,6 +26,7 @@ const Index = () => {
       <Pricing />
       <ROICalculator />
       <Testimonials />
+      <FAQ />
       <Contact />
       <Footer />
       <ScrollToTop />
