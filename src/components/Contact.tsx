@@ -23,11 +23,11 @@ const Contact = () => {
         `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company || 'Non renseigné'}\n\nMessage:\n${formData.message}`
       );
       
-      window.location.href = `mailto:contact@summitflow.fr?subject=${subject}&body=${body}`;
+      window.open(`mailto:contact@summitflow.fr?subject=${subject}&body=${body}`, '_blank');
       
       toast({
-        title: "Redirection vers votre client mail",
-        description: "Votre message sera envoyé via votre application de messagerie.",
+        title: "Client mail ouvert",
+        description: "Envoyez votre message à contact@summitflow.fr",
       });
       
       setIsSubmitted(true);
