@@ -15,7 +15,7 @@ const steps = [{
   icon: Wrench,
   number: "03",
   title: "Conception & Développement",
-  description: "Je construis votre solution en vous tenant informé à chaque étape du projet."
+  description: "Je construis votre solution en vous tenant informé à chaque étape du projet. Une fois en place, on ajuste, on améliore et on optimise pour garantir fluidité, efficacité et adoption. Votre solution évolue avec vos besoins."
 }, {
   icon: Rocket,
   number: "04",
