@@ -1,7 +1,9 @@
 import { MapPin, Award, Linkedin } from "lucide-react";
 import photoAbout from "@/assets/photo-about.jpg";
+
 const About = () => {
-  return <section id="about" className="section-padding relative overflow-hidden">
+  return (
+    <section id="about" className="py-12 md:py-16 relative overflow-hidden">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
@@ -11,11 +13,16 @@ const About = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
           {/* Photo - visible on all screens, on top for mobile */}
-          <div className="relative animate-fade-up order-1 lg:order-2" style={{
-          animationDelay: '200ms'
-        }}>
+          <div 
+            className="relative animate-fade-up order-1 lg:order-2" 
+            style={{ animationDelay: '200ms' }}
+          >
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
-              <img src={photoAbout} alt="Marie Jolly en montagne avec ses chiens" className="w-full h-auto object-cover aspect-[4/3] lg:aspect-square" />
+              <img 
+                src={photoAbout} 
+                alt="Marie Jolly en montagne avec ses chiens" 
+                className="w-full h-auto object-cover aspect-[4/3] lg:aspect-square" 
+              />
               {/* Lighter overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
@@ -24,8 +31,15 @@ const About = () => {
             <div className="mt-4 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:p-6">
               <div className="backdrop-blur-sm rounded-xl p-4 md:p-5 border border-border/50 shadow-lg bg-white/[0.73]">
                 <h4 className="text-lg md:text-xl font-bold mb-2 text-foreground">Marie Jolly</h4>
-                <p className="text-sm leading-relaxed mb-3 text-secondary-foreground font-semibold">Aspirante guide de montagne et ingénieure industrielle de 10 ans d'expérience, j’ai trouvé dans la montagne et la technologie une approche fondée sur la méthode et l’efficacité. </p>
-                <a href="https://www.linkedin.com/in/mariejolly" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-all duration-300 font-medium hover:translate-x-1 text-sm md:text-base text-primary">
+                <p className="text-sm leading-relaxed mb-3 text-secondary-foreground font-semibold">
+                  Aspirante guide de montagne et ingénieure industrielle de 10 ans d'expérience, j'ai trouvé dans la montagne et la technologie une approche fondée sur la méthode et l'efficacité.
+                </p>
+                <a 
+                  href="https://www.linkedin.com/in/mariejolly" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-2 transition-all duration-300 font-medium hover:translate-x-1 text-sm md:text-base text-primary"
+                >
                   <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
                   Voir mon profil LinkedIn
                 </a>
@@ -34,9 +48,10 @@ const About = () => {
           </div>
 
           {/* Text Content */}
-          <div className="space-y-4 md:space-y-6 animate-fade-up order-2 lg:order-1" style={{
-          animationDelay: '100ms'
-        }}>
+          <div 
+            className="space-y-4 md:space-y-6 animate-fade-up order-2 lg:order-1" 
+            style={{ animationDelay: '100ms' }}
+          >
             <div className="space-y-3 md:space-y-4">
               <h3 className="text-xl md:text-2xl font-bold text-foreground">
                 Summit Flow
@@ -44,7 +59,9 @@ const About = () => {
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                 J'accompagne les TPE, PME, artisans, associations et indépendants du Sud Toulousain et des Pyrénées dans leur transformation numérique. Ma mission : rendre le No Code et l'IA accessibles à tous, sans jargon technique ni déploiements interminables.
               </p>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">Je conçois des outils simples, efficaces et durables : sites vitrines, applications web sur mesure, automatisations et workflows intelligents. L’objectif est clair : structurer vos outils, automatiser ce qui peut l’être et vous faire gagner du temps, afin d’alléger votre charge mentale et vous concentrer sur l’essentiel.</p>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                Je conçois des outils simples, efficaces et durables : sites vitrines, applications web sur mesure, automatisations et workflows intelligents. L'objectif est clair : structurer vos outils, automatiser ce qui peut l'être et vous faire gagner du temps, afin d'alléger votre charge mentale et vous concentrer sur l'essentiel.
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-3 md:gap-4">
@@ -54,12 +71,14 @@ const About = () => {
               </div>
               <div className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
                 <Award className="w-4 h-4 md:w-5 md:h-5 text-primary flex-shrink-0" />
-                <span>Certifiée RNCP niv.6 </span>
+                <span>Certifiée RNCP niv.6</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default About;

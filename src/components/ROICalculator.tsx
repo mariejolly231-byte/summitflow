@@ -41,7 +41,7 @@ const ROICalculator = () => {
         <div className="container mx-auto">
           <div className="text-center mb-8 animate-fade-up">
             <h2 className="text-2xl sm:text-3xl text-foreground mb-4 font-bold">
-              Calculez votre ROI
+              Calculez votre rentabilité
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
               Estimez le retour sur investissement de votre projet d'automatisation
@@ -51,11 +51,11 @@ const ROICalculator = () => {
           <div className="max-w-md mx-auto animate-fade-up">
             <button
               onClick={() => setIsExpanded(true)}
-              className="w-full btn-hero flex items-center justify-center gap-3 py-4"
+              className="w-full btn-hero flex items-center justify-center gap-3 py-3 text-sm"
             >
-              <Calculator className="w-5 h-5" />
-              Calculer votre retour sur investissement
-              <ChevronDown className="w-5 h-5" />
+              <Calculator className="w-4 h-4" />
+              Accès à la calculatrice
+              <ChevronDown className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -69,7 +69,7 @@ const ROICalculator = () => {
         <div className="text-center mb-8 md:mb-12 animate-fade-up">
           <div className="flex items-center justify-center gap-2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
-              Calculez votre ROI
+              Calculez votre rentabilité
             </h2>
             {isMobileOrTablet && (
               <button
@@ -277,7 +277,7 @@ const ROICalculator = () => {
               </div>
 
               <div className="bg-card rounded-xl p-4 md:p-6 text-center">
-                <p className="text-xs md:text-sm text-muted-foreground mb-2">Retour sur investissement</p>
+                <p className="text-xs md:text-sm text-muted-foreground mb-2">Rentabilité</p>
                 <p className={`text-4xl md:text-5xl font-bold ${roi > 0 ? 'text-primary' : 'text-destructive'}`}>
                   {roi > 0 ? '+' : ''}{Math.round(roi)}%
                 </p>
