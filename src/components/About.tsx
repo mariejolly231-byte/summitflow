@@ -58,7 +58,7 @@ const About = () => {
               </div>
               <div className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
                 <Award className="w-4 h-4 md:w-5 md:h-5 text-primary flex-shrink-0" />
-                <span>Certifiée Make Expert</span>
+                <span>Certifiée RNCP niv.6 </span>
               </div>
             </div>
           </div>
