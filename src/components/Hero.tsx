@@ -64,7 +64,7 @@ const Hero = () => {
               <Calendar className="w-4 h-4" />
               Prendre RDV
             </a>
-            <a href="#rentabilite-no-code-pme" className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold text-base transition-all duration-300 border border-border text-foreground hover:border-primary/50 hover:scale-105 bg-background/90 backdrop-blur-sm">
+            <a href="#rentabilite-no-code-pme" className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold text-base transition-all duration-300 border border-border hover:border-primary/50 hover:scale-105 backdrop-blur-sm text-secondary bg-primary-foreground">
               <Calculator className="w-4 h-4" />
               Calculer la rentabilité de votre projet   
             </a>
