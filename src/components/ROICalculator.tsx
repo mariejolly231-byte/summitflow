@@ -88,7 +88,7 @@ const ROICalculator = () => {
               {/* Time per occurrence */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Temps par occurrence
+                  Temps passé sur une tâche récurrente     
                 </label>
                 <input type="range" min="0.5" max="6" step="0.5" value={timePerOccurrence} onChange={e => setTimePerOccurrence(Number(e.target.value))} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
                 <div className="flex justify-between text-xs sm:text-sm text-muted-foreground mt-1">
