@@ -8,7 +8,7 @@ const examples = [
     title: "Association environnementale",
     description: "Site web, web app et automatisation des inscriptions avec suivi de campagnes en temps réel. Gestion interne commandes et web app pour adhérents avec notifications automatiques.",
     results: "+50% d'inscriptions traitées automatiquement, suivi en temps réel pour 200+ membres",
-    tools: ["Bubble", "n8n", "Notion", "Airtable"]
+    tools: ["Bubble", "Make", "Notion", "Airtable"]
   },
   {
     icon: Building2,
