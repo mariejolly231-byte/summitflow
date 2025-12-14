@@ -10,7 +10,7 @@ const steps = [{
   icon: Search,
   number: "02",
   title: "Audit & Proposition",
-  description: "J'étudie en profondeur votre situation et vos outils existants pour comprendre vos besoins réels. Cette phase de cadrage me permet de concevoir une solution sur mesure et de vous fournir un devis détaillé. Je réalise ensuite une première version (maquette, schéma ou workflow) pour valider l'alignement avant le développement et identifier les processus clés ainsi que les automatisations les plus pertinentes à mettre en place dans votre entreprise."
+  description: "J'analyse en profondeur vos besoins et vos outils existants pour concevoir une solution sur mesure avec un devis détaillé. Une première maquette ou workflow permet de valider l'alignement avant le développement et d'identifier les automatisations les plus pertinentes pour votre entreprise."
 }, {
   icon: Wrench,
   number: "03",
