@@ -15,7 +15,7 @@ const About = () => {
           animationDelay: '200ms'
         }}>
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
-              <img src={photoAbout} alt="Marie Jolly en montagne avec ses chiens" className="w-full h-auto object-cover aspect-[4/3] lg:aspect-square" />
+              <img src={photoAbout} alt="summit-flow/webapp/site/workflow/agentsIA" className="w-full h-auto object-cover aspect-[4/3] lg:aspect-square" />
               {/* Lighter overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
