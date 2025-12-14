@@ -188,7 +188,7 @@ const ROICalculator = () => {
                 Résultats
               </h3>
 
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                 <div className="bg-card rounded-xl p-3 md:p-4 text-center">
                   <Clock className="w-6 h-6 md:w-8 md:h-8 text-primary mx-auto mb-2" />
                   <p className="text-2xl md:text-3xl font-bold text-foreground">{Math.round(totalHoursSaved)}h</p>
@@ -204,7 +204,7 @@ const ROICalculator = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                 <div className="bg-card rounded-xl p-3 md:p-4 text-center">
                   <p className="text-xs md:text-sm text-muted-foreground mb-2">Rentabilité</p>
                   <p className={`text-2xl md:text-3xl font-bold ${roi > 0 ? 'text-primary' : 'text-destructive'}`}>
