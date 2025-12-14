@@ -33,27 +33,27 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-4">Navigation</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#services" className="text-background/70 hover:text-primary transition-colors">
+                <a href="#solutions-no-code-ia-toulouse" className="text-background/70 hover:text-primary transition-colors">
                   Services
                 </a>
               </li>
               <li>
-                <a href="#examples" className="text-background/70 hover:text-primary transition-colors">
+                <a href="#applications-web-sur-mesure-toulouse" className="text-background/70 hover:text-primary transition-colors">
                   Cas clients
                 </a>
               </li>
               <li>
-                <a href="#roi" className="text-background/70 hover:text-primary transition-colors">
+                <a href="#rentabilite-no-code-pme" className="text-background/70 hover:text-primary transition-colors">
                   Calculateur rentabilité
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-background/70 hover:text-primary transition-colors">
+                <a href="#no-code-ia-toulouse" className="text-background/70 hover:text-primary transition-colors">
                   À propos
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-background/70 hover:text-primary transition-colors">
+                <a href="#contact-no-code-toulouse" className="text-background/70 hover:text-primary transition-colors">
                   Contact
                 </a>
               </li>
