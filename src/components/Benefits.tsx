@@ -53,7 +53,7 @@ const Benefits = () => {
   const isMobileOrTablet = useIsMobileOrTablet();
 
   return (
-    <section className="section-padding">
+    <section className="py-12 md:py-16">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
@@ -63,7 +63,7 @@ const Benefits = () => {
 
         {/* Mobile/Tablet: Carousel */}
         {isMobileOrTablet ? (
-          <MobileCarousel className="mb-8">
+          <MobileCarousel className="mb-8" showArrows={true}>
             {benefits.map((benefit, index) => (
               <BenefitCard key={benefit.title} benefit={benefit} index={index} />
             ))}
@@ -79,7 +79,7 @@ const Benefits = () => {
 
         <div className="text-center mt-8 md:mt-12 animate-fade-up" style={{ animationDelay: '500ms' }}>
           <a href="#roi" className="btn-secondary-hero inline-block text-sm md:text-base px-6 py-3">
-            Calculez votre ROI personnalisé
+            Calculez votre rentabilité
           </a>
         </div>
       </div>

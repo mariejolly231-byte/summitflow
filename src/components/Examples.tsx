@@ -1,35 +1,77 @@
-import { Scale, Search, BarChart3, FileText, ArrowRight } from "lucide-react";
+import { Building2, Truck, Calendar, Target, FileText, FolderKanban, Users, Smartphone, Gamepad2, Waves, ArrowRight } from "lucide-react";
 import { MobileCarousel } from "@/components/ui/mobile-carousel";
 import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 
 const examples = [
   {
-    icon: Scale,
-    title: "Automatisation cabinet d'avocats",
-    description: "Gestion automatisée des dossiers clients, génération de documents juridiques, alertes échéances et mise en signature électronique.",
-    results: "Gain de 15h/semaine sur les tâches administratives",
-    tools: ["Make", "n8n", "DocuSign", "Notion"]
+    icon: Waves,
+    title: "Association Ocean Zero Plastique",
+    description: "Site web, web app et automatisation des inscriptions avec suivi de campagnes en temps réel. Gestion interne commandes et web app pour adhérents avec notifications automatiques.",
+    results: "+50% d'inscriptions traitées automatiquement, suivi en temps réel pour 200+ membres",
+    tools: ["Bubble", "n8n", "Notion", "Airtable"]
   },
   {
-    icon: Search,
-    title: "Veille appels d'offres marchés publics",
-    description: "Scraping automatique BOAMP et France Marchés, scoring et classement des opportunités, envoi de rapports quotidiens ou hebdomadaires.",
-    results: "Détection de 40% d'opportunités supplémentaires",
-    tools: ["n8n", "Airtable", "BOAMP API", "Email"]
+    icon: Building2,
+    title: "Industrie",
+    description: "Tableau de bord production pour suivre la performance en direct et optimiser les processus de fabrication.",
+    results: "Réduction de 15% des temps d'arrêt, visibilité en temps réel pour 3 lignes de production",
+    tools: ["Airtable", "Make", "Agents IA"]
   },
   {
-    icon: BarChart3,
-    title: "Application interne de pilotage",
-    description: "Dashboard centralisé pour le suivi d'activité, synchronisation comptabilité et factures, reporting automatisé.",
-    results: "Vision 360° en temps réel sur l'activité",
-    tools: ["Bubble", "Airtable", "QuickBooks", "Make"]
+    icon: Truck,
+    title: "Logistique",
+    description: "Gestion de flotte véhicules simplifiée et centralisée avec suivi des maintenances et trajets.",
+    results: "Gain de 20% sur les coûts opérationnels, suivi des 50+ véhicules en temps réel",
+    tools: ["Notion", "n8n", "Airtable"]
+  },
+  {
+    icon: Calendar,
+    title: "Événementiel",
+    description: "Organisation d'événements et billetterie automatisée avec gestion des participants et communications.",
+    results: "+30% de billets vendus en ligne, suivi automatisé des inscriptions",
+    tools: ["Bubble", "Stripe", "n8n", "Réseaux sociaux"]
+  },
+  {
+    icon: Target,
+    title: "Prospection sectorielle",
+    description: "Automatisation de votre prospection avec ciblage et suivi des leads qualifiés.",
+    results: "+40% de leads qualifiés traités automatiquement",
+    tools: ["n8n", "BOAMP API", "Airtable", "Agents IA"]
   },
   {
     icon: FileText,
-    title: "Automatisation documentaire",
-    description: "Génération automatique de contrats, propositions commerciales et rapports à partir de templates et données clients.",
-    results: "Réduction de 80% du temps de création documentaire",
-    tools: ["n8n", "Google Docs", "Notion", "Airtable"]
+    title: "Relances facturations et devis",
+    description: "Automatisation des relances clients pour vos factures et devis en attente.",
+    results: "Réduction de 25% des factures en retard, gain de temps pour 10+ commerciaux",
+    tools: ["Make", "Docusign", "Airtable", "n8n"]
+  },
+  {
+    icon: FolderKanban,
+    title: "Gestion de projet",
+    description: "Automatisation de la gestion des tâches des équipes et du planning avec notifications.",
+    results: "Suivi centralisé pour 5 équipes, réduction de 20% des réunions de coordination",
+    tools: ["Notion", "n8n", "Airtable"]
+  },
+  {
+    icon: Users,
+    title: "Optimisation CRM",
+    description: "Mini CRM sur Notion pour centraliser informations membres, partenaires et contacts.",
+    results: "Centralisation de +500 contacts, suivi simplifié et rapide",
+    tools: ["Notion", "Make", "Airtable"]
+  },
+  {
+    icon: Smartphone,
+    title: "Application Web – Association",
+    description: "Développement d'une web app sur mesure pour offrir de nouveaux services et structurer les processus internes.",
+    results: "3 services automatisés, 150+ utilisateurs actifs",
+    tools: ["Bubble", "n8n", "Stripe"]
+  },
+  {
+    icon: Gamepad2,
+    title: "Webapp Équipe de Gamers",
+    description: "Application web pour équipe de gamers (type Geoguessers) intégrée avec automatisations adaptées.",
+    results: "Suivi de 50+ parties et automatisation de notifications pour 200+ joueurs",
+    tools: ["Bubble", "n8n", "Agents IA"]
   }
 ];
 
@@ -53,9 +95,9 @@ const ExampleCard = ({ example, index }: { example: typeof examples[0]; index: n
     </div>
     
     <div className="bg-primary/5 rounded-xl p-3 md:p-4 mb-4 md:mb-6">
-      <div className="flex items-center gap-2 text-primary font-semibold text-sm md:text-base">
-        <ArrowRight className="w-4 h-4 flex-shrink-0" />
-        {example.results}
+      <div className="flex items-start gap-2 text-primary font-semibold text-sm md:text-base">
+        <ArrowRight className="w-4 h-4 flex-shrink-0 mt-0.5" />
+        <span>{example.results}</span>
       </div>
     </div>
     
@@ -88,7 +130,7 @@ const Examples = () => {
         </div>
 
         {isMobileOrTablet ? (
-          <MobileCarousel>
+          <MobileCarousel showArrows={true}>
             {examples.map((example, index) => (
               <ExampleCard key={example.title} example={example} index={index} />
             ))}

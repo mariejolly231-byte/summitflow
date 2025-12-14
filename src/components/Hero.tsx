@@ -22,25 +22,26 @@ const Hero = () => {
   }, []);
 
   // Reduced parallax effect on mobile
-  const parallaxMultiplier = isMobile ? 0.3 : 0.6;
-  const fadeThreshold = isMobile ? 50 : 100;
-  const fadeRange = isMobile ? 200 : 300;
+  const parallaxMultiplier = isMobile ? 0.25 : 0.5;
+  const fadeThreshold = isMobile ? 80 : 150;
+  const fadeRange = isMobile ? 150 : 250;
 
-  // Calculate opacity for text fade effect
+  // Calculate opacity for text fade effect - starts fully visible
   const textOpacity = Math.max(0, 1 - Math.max(0, scrollY - fadeThreshold) / fadeRange);
-  const textTranslateY = scrollY * (isMobile ? 0.15 : 0.3);
+  const textTranslateY = scrollY * (isMobile ? 0.1 : 0.2);
 
-  // Mountain rises up from bottom as user scrolls
-  const mountainTranslateY = Math.max(-scrollY * parallaxMultiplier, -300);
+  // Mountain starts below viewport and rises up on scroll
+  const mountainBasePosition = isMobile ? '-60vh' : '-70vh';
+  const mountainTranslateY = Math.max(-scrollY * parallaxMultiplier, -400);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30 pt-16 md:pt-0">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
 
-      {/* Content - behind the mountain, fades as user scrolls */}
+      {/* Content - visible on load, z-index above initial mountain position */}
       <div 
-        className="relative z-10 container mx-auto px-4 text-center"
+        className="relative z-30 container mx-auto px-4 text-center"
         style={{ 
           opacity: textOpacity,
           transform: `translateY(${textTranslateY}px)`,
@@ -72,17 +73,17 @@ const Hero = () => {
               className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold text-base transition-all duration-300 bg-card border border-border text-foreground hover:bg-muted hover:border-primary/50 hover:scale-105"
             >
               <Calculator className="w-4 h-4" />
-              Calculer votre ROI
+              Calculer votre rentabilité
             </a>
           </div>
         </div>
       </div>
       
-      {/* Parallax Mountain Image - starts at bottom, rises up on scroll */}
+      {/* Parallax Mountain Image - starts well below, rises to cover content on scroll */}
       <div 
         className="absolute left-1/2 -translate-x-1/2 w-[140%] sm:w-[130%] md:w-[120%] max-w-[1600px] z-20 pointer-events-none"
         style={{ 
-          bottom: isMobile ? '-25vh' : '-40vh',
+          bottom: mountainBasePosition,
           transform: `translateX(-50%) translateY(${mountainTranslateY}px)`,
           transition: 'transform 0.05s linear',
         }}

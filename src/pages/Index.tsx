@@ -10,6 +10,7 @@ import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const Index = () => {
   return (
@@ -18,14 +19,15 @@ const Index = () => {
       <Hero />
       <Services />
       <Benefits />
+      <About />
       <Examples />
       <Process />
-      <About />
       <Pricing />
       <ROICalculator />
       <Testimonials />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 };

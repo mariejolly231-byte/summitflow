@@ -13,7 +13,7 @@ export const MobileCarousel = ({
   children, 
   className, 
   showDots = true,
-  showArrows = false 
+  showArrows = true 
 }: MobileCarouselProps) => {
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = React.useState(0);
@@ -88,28 +88,34 @@ export const MobileCarousel = ({
         ))}
       </div>
 
-      {/* Arrows */}
+      {/* Arrows - always visible */}
       {showArrows && (
         <>
           <button
             onClick={scrollPrev}
             disabled={!canScrollLeft}
+            aria-label="Précédent"
             className={cn(
-              "absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/90 shadow-lg flex items-center justify-center transition-opacity",
-              !canScrollLeft && "opacity-0 pointer-events-none"
+              "absolute left-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-background shadow-lg border border-border flex items-center justify-center transition-all duration-200",
+              canScrollLeft 
+                ? "opacity-100 hover:bg-primary hover:text-primary-foreground hover:border-primary" 
+                : "opacity-40 cursor-not-allowed"
             )}
           >
-            <ChevronLeft className="w-5 h-5 text-foreground" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={scrollNext}
             disabled={!canScrollRight}
+            aria-label="Suivant"
             className={cn(
-              "absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/90 shadow-lg flex items-center justify-center transition-opacity",
-              !canScrollRight && "opacity-0 pointer-events-none"
+              "absolute right-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-background shadow-lg border border-border flex items-center justify-center transition-all duration-200",
+              canScrollRight 
+                ? "opacity-100 hover:bg-primary hover:text-primary-foreground hover:border-primary" 
+                : "opacity-40 cursor-not-allowed"
             )}
           >
-            <ChevronRight className="w-5 h-5 text-foreground" />
+            <ChevronRight className="w-5 h-5" />
           </button>
         </>
       )}
