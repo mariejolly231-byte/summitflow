@@ -40,7 +40,7 @@ const Hero = () => {
 
       {/* Content - behind the mountain, fades as user scrolls */}
       <div 
-        className="relative z-10 container mx-auto px-4 text-center"
+        className="relative z-30 container mx-auto px-4 text-center"
         style={{ 
           opacity: textOpacity,
           transform: `translateY(${textTranslateY}px)`,
