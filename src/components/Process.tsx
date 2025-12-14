@@ -20,7 +20,7 @@ const steps = [{
   icon: Rocket,
   number: "04",
   title: "Livraison & Formation",
-  description: "Je vous livre l'outil finalisé avec une formation pour le prendre en main en autonomie."
+  description: "Formation, documentation et support : tout est prévu pour que vos équipes maîtrisent durablement leurs outils."
 }];
 const ProcessCard = ({
   step,
