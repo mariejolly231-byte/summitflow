@@ -7,12 +7,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   
   const navLinks = [
-    { href: "#services", label: "Services" },
-    { href: "#tarifs", label: "Tarifs" },
-    { href: "#examples", label: "Cas clients" },
-    { href: "#roi", label: "Rentabilité" },
-    { href: "#about", label: "À propos" },
-    { href: "#contact", label: "Contact" }
+    { href: "#solutions-no-code-ia-toulouse", label: "Services" },
+    { href: "#tarifs-automatisation-toulouse", label: "Tarifs" },
+    { href: "#applications-web-sur-mesure-toulouse", label: "Cas clients" },
+    { href: "#rentabilite-no-code-pme", label: "Rentabilité" },
+    { href: "#no-code-ia-toulouse", label: "À propos" },
+    { href: "#contact-no-code-toulouse", label: "Contact" }
   ];
 
   return (

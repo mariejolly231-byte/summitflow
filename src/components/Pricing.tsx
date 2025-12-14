@@ -98,7 +98,7 @@ const Pricing = () => {
   const isMobileOrTablet = useIsMobileOrTablet();
 
   return (
-    <section id="tarifs" className="section-padding">
+    <section id="tarifs-automatisation-toulouse" className="section-padding">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">Les Tarifs</h2>

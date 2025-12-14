@@ -56,7 +56,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact-no-code-toulouse" className="section-padding">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
