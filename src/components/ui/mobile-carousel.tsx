@@ -81,7 +81,7 @@ export const MobileCarousel = ({
           <div 
             key={index} 
             className="flex-shrink-0 snap-center first:ml-4 last:mr-4"
-            style={{ width: "calc(85vw - 32px)", maxWidth: "320px" }}
+            style={{ width: "calc(80vw - 48px)", maxWidth: "300px", minWidth: "260px" }}
           >
             {child}
           </div>
