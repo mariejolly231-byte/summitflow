@@ -50,7 +50,7 @@ const ServiceCard = ({
   </div>;
 const Services = () => {
   const isMobileOrTablet = useIsMobileOrTablet();
-  return <section id="services" className="section-padding bg-muted/30">
+  return <section id="solutions-no-code-ia-toulouse" className="section-padding bg-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">Mes expertises No code & IA</h2>

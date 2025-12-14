@@ -1,7 +1,7 @@
 import { MapPin, Award, Linkedin } from "lucide-react";
 import photoAbout from "@/assets/photo-about.jpg";
 const About = () => {
-  return <section id="about" className="py-12 md:py-16 relative overflow-hidden">
+  return <section id="no-code-ia-toulouse" className="py-12 md:py-16 relative overflow-hidden">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">

@@ -37,7 +37,7 @@ const ROICalculator = () => {
 
   // Mobile/Tablet collapsed view
   if (isMobileOrTablet && !isExpanded) {
-    return <section id="roi" className="section-padding bg-gradient-to-br from-primary/5 via-background to-muted/30">
+    return <section id="rentabilite-no-code-pme" className="section-padding bg-gradient-to-br from-primary/5 via-background to-muted/30">
         <div className="container mx-auto">
           <div className="text-center mb-8 animate-fade-up">
             <h2 className="text-2xl sm:text-3xl text-foreground mb-4 font-bold">
@@ -58,7 +58,7 @@ const ROICalculator = () => {
         </div>
       </section>;
   }
-  return <section id="roi" className="section-padding bg-gradient-to-br from-primary/5 via-background to-muted/30">
+  return <section id="rentabilite-no-code-pme" className="section-padding bg-gradient-to-br from-primary/5 via-background to-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-12 animate-fade-up">
           <div className="flex items-center justify-center gap-2">

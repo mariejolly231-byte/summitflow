@@ -109,7 +109,7 @@ const Examples = () => {
   const isMobileOrTablet = useIsMobileOrTablet();
 
   return (
-    <section id="examples" className="section-padding bg-muted/30">
+    <section id="applications-web-sur-mesure-toulouse" className="section-padding bg-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
