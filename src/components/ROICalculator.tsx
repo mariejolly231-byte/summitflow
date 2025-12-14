@@ -26,6 +26,10 @@ const ROICalculator = () => {
 
   // ROI calculation
   const roi = (totalValueSaved - projectCost) / projectCost * 100;
+
+  // Payback period in months (time to recover project cost)
+  const monthlySavings = (weeklyHoursSaved * 52 * effectiveHourlyRate) / 12;
+  const paybackMonths = monthlySavings > 0 ? projectCost / monthlySavings : Infinity;
   const formatTime = (hours: number) => {
     if (hours < 1) return `${Math.round(hours * 60)} min`;
     return `${hours}h`;
@@ -200,15 +204,21 @@ const ROICalculator = () => {
                 </div>
               </div>
 
-              <div className="bg-card rounded-xl p-4 md:p-6 text-center">
-                <p className="text-xs md:text-sm text-muted-foreground mb-2">Rentabilité</p>
-                <p className={`text-4xl md:text-5xl font-bold ${roi > 0 ? 'text-primary' : 'text-destructive'}`}>
-                  {roi > 0 ? '+' : ''}{Math.round(roi)}%
-                </p>
-                {/* Hide detailed weekly info on mobile/tablet */}
-                <p className="text-xs md:text-sm text-muted-foreground mt-4 hidden lg:block">
-                  <span className="font-semibold text-foreground">{weeklyHoursSaved}h</span> soit <span className="font-semibold text-foreground">{Math.round(weeklyHoursSaved * effectiveHourlyRate)} EUR</span> / semaine
-                </p>
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
+                <div className="bg-card rounded-xl p-3 md:p-4 text-center">
+                  <p className="text-xs md:text-sm text-muted-foreground mb-2">Rentabilité</p>
+                  <p className={`text-2xl md:text-3xl font-bold ${roi > 0 ? 'text-primary' : 'text-destructive'}`}>
+                    {roi > 0 ? '+' : ''}{Math.round(roi)}%
+                  </p>
+                </div>
+
+                <div className="bg-card rounded-xl p-3 md:p-4 text-center">
+                  <p className="text-xs md:text-sm text-muted-foreground mb-2">Retour sur investissement</p>
+                  <p className="text-2xl md:text-3xl font-bold text-foreground">
+                    {paybackMonths < 1 ? '< 1' : Math.round(paybackMonths)} mois
+                  </p>
+                  <p className="text-xs text-muted-foreground">Période d'amortissement</p>
+                </div>
               </div>
 
               <a href="https://calendly.com/summitflowfr/30min" target="_blank" rel="noopener noreferrer" className="btn-hero w-full text-center block text-sm md:text-base py-3 md:py-4">
