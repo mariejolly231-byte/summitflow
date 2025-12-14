@@ -49,32 +49,34 @@ const Hero = () => {
         }}
       >
         <div className="max-w-4xl mx-auto animate-fade-up pt-8 md:pt-0">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 md:mb-6 font-extrabold tracking-tight">
-            <span className="text-foreground drop-shadow-lg">Progressez léger avec le </span>
-            <span className="text-primary drop-shadow-lg">No Code et l'IA</span>
-          </h1>
-          
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed px-2">
-            Transformez vos processus, créez vos outils et automatisez votre activité.
-          </p>
+          <div className="bg-background/80 backdrop-blur-sm rounded-3xl border border-border/40 px-4 sm:px-8 py-6 md:py-8 shadow-lg shadow-primary/10">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 md:mb-6 font-extrabold tracking-tight">
+              <span className="text-foreground drop-shadow-lg">Progressez léger avec le </span>
+              <span className="text-primary drop-shadow-lg">No Code et l'IA</span>
+            </h1>
+            
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 md:mb-8 leading-relaxed px-2">
+              Transformez vos processus, créez vos outils et automatisez votre activité.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
-            <a 
-              href="https://calendly.com/summitflowfr/30min" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold text-base bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300"
-            >
-              <Calendar className="w-4 h-4" />
-              Prendre RDV
-            </a>
-            <a 
-              href="#roi" 
-              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold text-base transition-all duration-300 bg-card border border-border text-foreground hover:bg-muted hover:border-primary/50 hover:scale-105"
-            >
-              <Calculator className="w-4 h-4" />
-              Calculer votre rentabilité
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
+              <a 
+                href="https://calendly.com/summitflowfr/30min" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold text-base bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300"
+              >
+                <Calendar className="w-4 h-4" />
+                Prendre RDV
+              </a>
+              <a 
+                href="#roi" 
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full font-semibold text-base transition-all duration-300 bg-card border border-border text-foreground hover:bg-muted hover:border-primary/50 hover:scale-105"
+              >
+                <Calculator className="w-4 h-4" />
+                Calculer votre rentabilité
+              </a>
+            </div>
           </div>
         </div>
       </div>
