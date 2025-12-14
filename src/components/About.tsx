@@ -22,12 +22,10 @@ const About = () => {
 
             {/* Bio card - positioned below photo on mobile, overlayed on desktop */}
             <div className="mt-4 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:p-6">
-              <div className="backdrop-blur-sm rounded-xl p-4 md:p-5 border border-border/50 shadow-lg bg-white/45">
+              <div className="backdrop-blur-sm rounded-xl p-4 md:p-5 border border-border/50 shadow-lg bg-white/[0.73]">
                 <h4 className="text-lg md:text-xl font-bold mb-2 text-foreground">Marie Jolly</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                  Aspirante guide de montagne et ingénieure industrielle de formation, j’ai trouvé dans la montagne et la technologie une approche fondée sur la méthode et l’efficacité. Grâce au No Code et à l’IA, j’aide entrepreneurs, artisans et TPE/PME à structurer leurs outils et automatiser leurs processus pour gagner du temps et se concentrer sur l’essentiel.
-                </p>
-                <a href="https://www.linkedin.com/in/mariejolly" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-all duration-300 font-medium hover:translate-x-1 text-sm md:text-base">
+                <p className="text-sm leading-relaxed mb-3 text-secondary-foreground font-semibold">Aspirante guide de montagne et ingénieure industrielle de 10 ans d'expérience, j’ai trouvé dans la montagne et la technologie une approche fondée sur la méthode et l’efficacité. </p>
+                <a href="https://www.linkedin.com/in/mariejolly" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-all duration-300 font-medium hover:translate-x-1 text-sm md:text-base text-primary">
                   <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
                   Voir mon profil LinkedIn
                 </a>
@@ -46,9 +44,7 @@ const About = () => {
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                 J'accompagne les TPE, PME, artisans, associations et indépendants du Sud Toulousain et des Pyrénées dans leur transformation numérique. Ma mission : rendre le No Code et l'IA accessibles à tous, sans jargon technique ni déploiements interminables.
               </p>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                Je conçois des outils simples, efficaces et durables : sites vitrines, applications web sur mesure, automatisations et workflows intelligents. Chaque projet est pensé pour vous faire gagner du temps et réduire votre charge mentale.
-              </p>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">Je conçois des outils simples, efficaces et durables : sites vitrines, applications web sur mesure, automatisations et workflows intelligents. L’objectif est clair : structurer vos outils, automatiser ce qui peut l’être et vous faire gagner du temps, afin d’alléger votre charge mentale et vous concentrer sur l’essentiel.</p>
             </div>
 
             <div className="flex flex-wrap gap-3 md:gap-4">
