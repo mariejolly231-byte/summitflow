@@ -5,7 +5,7 @@ const About = () => {
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            À propos
+            À propos de Summit Flow - No Code et IA / Toulouse&Pyrénées
           </h2>
         </div>
 
@@ -41,8 +41,7 @@ const About = () => {
         }}>
             <div className="space-y-3 md:space-y-4">
               <h3 className="text-xl md:text-2xl font-bold text-foreground">
-                Summit Flow
-              </h3>
+            </h3>
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                 J'accompagne les TPE, PME, artisans, associations et indépendants du Sud Toulousain et des Pyrénées dans leur transformation numérique. Ma mission : rendre le No Code et l'IA accessibles à tous, sans jargon technique ni déploiements interminables.
               </p>

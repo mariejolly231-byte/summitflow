@@ -48,9 +48,7 @@ const Benefits = () => {
   return <section className="py-12 md:py-16">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Pourquoi choisir Summit Flow ?
-          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">Pourquoi choisir Summit Flow?</h2>
         </div>
 
         {/* Mobile/Tablet: Carousel */}
