@@ -1,43 +1,40 @@
 import { MessageCircle, Search, Wrench, Rocket } from "lucide-react";
 import { MobileCarousel } from "@/components/ui/mobile-carousel";
 import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
-
-const steps = [
-  {
-    icon: MessageCircle,
-    number: "01",
-    title: "Échange découverte",
-    description: "On discute de vos besoins, vos contraintes et vos objectifs lors d'un appel de 30 minutes."
-  },
-  {
-    icon: Search,
-    number: "02",
-    title: "Audit & Proposition",
-    description: "J'analyse votre situation et vous propose une solution adaptée avec un devis détaillé."
-  },
-  {
-    icon: Wrench,
-    number: "03",
-    title: "Conception & Développement",
-    description: "Je construis votre solution en vous tenant informé à chaque étape du projet."
-  },
-  {
-    icon: Rocket,
-    number: "04",
-    title: "Livraison & Formation",
-    description: "Je vous livre l'outil finalisé avec une formation pour le prendre en main en autonomie."
-  }
-];
-
-const ProcessCard = ({ step, index, isLast }: { step: typeof steps[0]; index: number; isLast: boolean }) => (
-  <div 
-    className="relative animate-fade-up h-full"
-    style={{ animationDelay: `${index * 100}ms` }}
-  >
+const steps = [{
+  icon: MessageCircle,
+  number: "01",
+  title: "Échange découverte",
+  description: "On discute de vos besoins, vos contraintes et vos objectifs lors d'un appel de 30 minutes."
+}, {
+  icon: Search,
+  number: "02",
+  title: "Audit & Proposition",
+  description: "J'analyse votre situation et vous propose une solution adaptée avec un devis détaillé."
+}, {
+  icon: Wrench,
+  number: "03",
+  title: "Conception & Développement",
+  description: "Je construis votre solution en vous tenant informé à chaque étape du projet."
+}, {
+  icon: Rocket,
+  number: "04",
+  title: "Livraison & Formation",
+  description: "Je vous livre l'outil finalisé avec une formation pour le prendre en main en autonomie."
+}];
+const ProcessCard = ({
+  step,
+  index,
+  isLast
+}: {
+  step: typeof steps[0];
+  index: number;
+  isLast: boolean;
+}) => <div className="relative animate-fade-up h-full" style={{
+  animationDelay: `${index * 100}ms`
+}}>
     {/* Connector line - only on desktop */}
-    {!isLast && (
-      <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary/30 to-transparent -translate-x-4" />
-    )}
+    {!isLast && <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary/30 to-transparent -translate-x-4" />}
     
     <div className="card-service text-center group h-full flex flex-col">
       <div className="relative mb-4 md:mb-6">
@@ -57,52 +54,26 @@ const ProcessCard = ({ step, index, isLast }: { step: typeof steps[0]; index: nu
         {step.description}
       </p>
     </div>
-  </div>
-);
-
+  </div>;
 const Process = () => {
   const isMobileOrTablet = useIsMobileOrTablet();
-
-  return (
-    <section className="section-padding bg-muted/30">
+  return <section className="section-padding bg-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
             Comment ça marche
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-            Un processus simple et transparent pour vous accompagner de A à Z.
-          </p>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">Un processus simple et transparent pour vous accompagner.</p>
         </div>
 
         {/* Mobile/Tablet: Carousel */}
-        {isMobileOrTablet ? (
-          <MobileCarousel>
-            {steps.map((step, index) => (
-              <ProcessCard 
-                key={step.title} 
-                step={step} 
-                index={index}
-                isLast={index === steps.length - 1}
-              />
-            ))}
-          </MobileCarousel>
-        ) : (
-          /* Desktop: Grid */
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <ProcessCard 
-                key={step.title} 
-                step={step} 
-                index={index}
-                isLast={index === steps.length - 1}
-              />
-            ))}
-          </div>
-        )}
+        {isMobileOrTablet ? <MobileCarousel>
+            {steps.map((step, index) => <ProcessCard key={step.title} step={step} index={index} isLast={index === steps.length - 1} />)}
+          </MobileCarousel> : (/* Desktop: Grid */
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {steps.map((step, index) => <ProcessCard key={step.title} step={step} index={index} isLast={index === steps.length - 1} />)}
+          </div>)}
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Process;

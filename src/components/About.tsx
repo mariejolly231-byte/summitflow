@@ -22,7 +22,7 @@ const About = () => {
 
             {/* Bio card - positioned below photo on mobile, overlayed on desktop */}
             <div className="mt-4 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:p-6">
-              <div className="bg-card/95 backdrop-blur-sm rounded-xl p-4 md:p-5 border border-border/50 shadow-lg">
+              <div className="backdrop-blur-sm rounded-xl p-4 md:p-5 border border-border/50 shadow-lg bg-white/45">
                 <h4 className="text-lg md:text-xl font-bold mb-2 text-foreground">Marie Jolly</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                   Aspirante guide de montagne et ingénieure industrielle de formation, j’ai trouvé dans la montagne et la technologie une approche fondée sur la méthode et l’efficacité. Grâce au No Code et à l’IA, j’aide entrepreneurs, artisans et TPE/PME à structurer leurs outils et automatiser leurs processus pour gagner du temps et se concentrer sur l’essentiel.
