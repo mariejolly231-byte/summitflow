@@ -28,7 +28,7 @@ const ROICalculator = () => {
   const roi = (totalValueSaved - projectCost) / projectCost * 100;
 
   // Payback period in months (time to recover project cost)
-  const monthlySavings = (weeklyHoursSaved * 52 * effectiveHourlyRate) / 12;
+  const monthlySavings = weeklyHoursSaved * 52 * effectiveHourlyRate / 12;
   const paybackMonths = monthlySavings > 0 ? projectCost / monthlySavings : Infinity;
   const formatTime = (hours: number) => {
     if (hours < 1) return `${Math.round(hours * 60)} min`;
@@ -154,7 +154,7 @@ const ROICalculator = () => {
                   </div>
                 </div> : <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Salaire annuel brut
+                    Salaire annuel brut chargé 
                   </label>
                   <input type="range" min="25000" max="120000" step="1000" value={annualSalary} onChange={e => setAnnualSalary(Number(e.target.value))} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
                   <div className="flex justify-between text-xs sm:text-sm text-muted-foreground mt-1">
