@@ -40,7 +40,7 @@ const About = () => {
             <div className="space-y-3 md:space-y-4">
               <h3 className="text-xl md:text-2xl font-bold text-foreground">
             </h3>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-justify">Ingénieure industrielle avec 10 ans d’expérience, j’ai créé Summit Flow à partir d’un constat vécu sur le terrain : trop d’organisations avancent freinées par des outils mal adaptés, des processus lourds et un manque de temps pour innover. Après dix années passées dans l’industrie, j’ai pris un virage important cette année en me formant intensivement pendant plusieurs mois au no-code et à l’IA, avec l’obtention d’une certification RNCP niveau 6 (Bac+3/4). 
+              <p className="text-sm text-muted-foreground leading-relaxed text-justify md:text-lg">Ingénieure industrielle avec 10 ans d’expérience, j’ai créé Summit Flow à partir d’un constat vécu sur le terrain : trop d’organisations avancent freinées par des outils mal adaptés, des processus lourds et un manque de temps pour innover. Après dix années passées dans l’industrie, j’ai pris un virage important cette année en me formant intensivement pendant plusieurs mois au no-code et à l’IA, avec l’obtention d’une certification RNCP niveau 6 (Bac+3/4). 
 
 
 Un véritable tournant dans ma vie professionnelle, qui a donné un cadre et une légitimité à ce qui me passionnait déjà depuis plusieurs années : comprendre les systèmes, automatiser, et construire mes propres outils pour simplifier le quotidien.</p>
