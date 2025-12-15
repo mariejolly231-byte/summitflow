@@ -16,7 +16,7 @@ const trustPoints = [
   {
     icon: Heart,
     title: "Passion & engagement",
-    description: "Une vraie passion pour la montagne et l'accompagnement"
+    description: "Passionnée de montagne et profondément humaine, j'accompagne avec le cœur autant qu'avec les compétences."
   },
   {
     icon: MapPin,
