@@ -44,10 +44,12 @@ const About = () => {
 
 
 Un véritable tournant dans ma vie professionnelle, qui a donné un cadre et une légitimité à ce qui me passionnait déjà depuis plusieurs années : comprendre les systèmes, automatiser, et construire mes propres outils pour simplifier le quotidien.</p>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">Passionnée de montagne depuis toujours, aspirante guide et rarement sans mon fidèle compagnon samoyède, j’y ai appris la même chose que dans la tech : pour avancer loin, il faut un itinéraire clair, le bon équipement, et savoir quand simplifier plutôt que surcharger. C’est avec cette approche que j’accompagne aujourd’hui les TPE, PME, artisans, associations et indépendants du Sud Toulousain et des Pyrénées. 
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">Passionnée de montagne, aspirante guide et rarement sans mon fidèle compagnon samoyède, j’y ai appris la même chose que dans la tech : pour avancer loin, il faut un itinéraire clair, le bon équipement, et savoir quand simplifier plutôt que surcharger. 
 
+C'est cette approche que j'apporte aux TPE, PME, artisans et indépendants du Sud Toulousain et des Pyrénées. Pas de jargon, pas de projets qui s'éternisent. Des sites, des applications et des automatisations pensées pour le terrain, pour que vous puissiez vous concentrer sur ce qui compte vraiment. 
 
-Ma mission avec Summit Flow est de rendre le no-code et l’IA accessibles, compréhensibles et utiles, sans jargon ni projets interminables. Je conçois des sites vitrines, des applications web sur mesure et des automatisations pensées pour le terrain, avec un objectif simple : structurer vos outils, alléger votre charge mentale et vous permettre de vous concentrer sur l’essentiel.</p>
+ 
+            </p>
             </div>
 
             <div className="flex flex-wrap gap-3 md:gap-4">
