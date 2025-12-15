@@ -53,7 +53,7 @@ const Hero = () => {
           animationDelay: '100ms'
         }}>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Transformez vos processus, créez vos outils et automatisez votre activité.
+              Allégez votre quotidien, équipez-vous sur mesure : sites web, automatisations et webapp pour indépendants, TPE et PME.
             </p>
           </div>
 
