@@ -98,10 +98,10 @@ const Footer = () => {
             {currentYear} Summit Flow. Tous droits réservés.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-background/50 hover:text-background transition-colors">
+            <a href="/mentions-legales" className="text-background/50 hover:text-background transition-colors">
               Mentions légales
             </a>
-            <a href="#" className="text-background/50 hover:text-background transition-colors">
+            <a href="/politique-confidentialite" className="text-background/50 hover:text-background transition-colors">
               Politique de confidentialité
             </a>
           </div>
