@@ -1,11 +1,8 @@
 import { Mail, MapPin, Linkedin, Calendar } from "lucide-react";
 import logo from "@/assets/logo.png";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-foreground text-background py-16">
+  return <footer className="bg-foreground text-background py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Logo & Slogan */}
@@ -14,15 +11,10 @@ const Footer = () => {
             <p className="text-xl font-semibold text-primary-light mb-4">
               Progressez léger
             </p>
-            <p className="text-background/70 max-w-md mb-6">
-              Solutions No Code et IA pour automatiser, construire et optimiser votre activité.
+            <p className="text-background/70 max-w-md mb-6 text-xs">
+              ​Ingénieure industrielle avec 10 ans d’expérience, j’ai créé Summit Flow à partir d’un constat simple : beaucoup de structures sont freinées par des outils inadaptés, des processus lourds et un manque de temps pour innover. En parallèle de mon parcours d’aspirante guide de montagne, j’ai appris à conjuguer rigueur, méthode et sens de l’efficacité, aussi bien sur le terrain que dans la conception de solutions technologiques. Avec Summit Flow, mon objectif est de rendre l’automatisation accessible et concrète, en concevant des outils légers, rapides à déployer et réellement alignés avec les besoins du quotidien.
             </p>
-            <a
-              href="https://calendly.com/summitflowfr/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors"
-            >
+            <a href="https://calendly.com/summitflowfr/30min" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors">
               <Calendar className="w-4 h-4" />
               Prendre RDV
             </a>
@@ -69,21 +61,13 @@ const Footer = () => {
                 Sud Toulousain
               </li>
               <li>
-                <a 
-                  href="mailto:contact@summitflow.fr" 
-                  className="flex items-center gap-2 text-background/70 hover:text-primary transition-colors"
-                >
+                <a href="mailto:contact@summitflow.fr" className="flex items-center gap-2 text-background/70 hover:text-primary transition-colors">
                   <Mail className="w-4 h-4 text-primary" />
                   contact@summitflow.fr
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://www.linkedin.com/in/mariejolly"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-background/70 hover:text-primary transition-colors"
-                >
+                <a href="https://www.linkedin.com/in/mariejolly" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-primary transition-colors">
                   <Linkedin className="w-4 h-4 text-primary" />
                   LinkedIn
                 </a>
@@ -110,8 +94,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
