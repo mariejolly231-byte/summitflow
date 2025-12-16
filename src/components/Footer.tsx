@@ -1,5 +1,5 @@
 import { Mail, MapPin, Linkedin, Calendar } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-foreground text-background py-16">
