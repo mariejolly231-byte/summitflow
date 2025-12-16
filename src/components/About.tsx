@@ -23,8 +23,8 @@ const About = () => {
             {/* Bio card - positioned below photo on mobile, overlayed on desktop */}
             <div className="mt-4 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:p-6">
               <div className="backdrop-blur-sm rounded-xl p-4 md:p-5 border border-border/50 shadow-lg bg-white/[0.73]">
-                <h4 className="text-lg md:text-xl font-bold mb-2 text-secondary-foreground">Marie Jolly</h4>
-                <p className="text-sm leading-relaxed mb-3 font-semibold text-secondary-foreground">Aspirante guide de montagne et ingénieure industrielle forte de 10 ans d’expérience, j’ai appris à conjuguer rigueur, méthode et sens de l’efficacité, que ce soit dans l’ascension des sommets ou la conception de solutions technologiques.</p>
+                <h4 className="text-lg md:text-xl font-bold mb-2 text-gray-900">Marie Jolly</h4>
+                <p className="text-sm leading-relaxed mb-3 font-semibold text-gray-800">Aspirante guide de montagne et ingénieure industrielle forte de 10 ans d'expérience, j'ai appris à conjuguer rigueur, méthode et sens de l'efficacité, que ce soit dans l'ascension des sommets ou la conception de solutions technologiques.</p>
                 <a href="https://www.linkedin.com/in/mariejolly" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-all duration-300 font-medium hover:translate-x-1 text-sm md:text-base text-primary">
                   <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
                   Voir mon profil LinkedIn
@@ -40,11 +40,11 @@ const About = () => {
             <div className="space-y-3 md:space-y-4">
               <h3 className="text-xl md:text-2xl font-bold text-foreground">
             </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed text-justify md:text-lg">Ingénieure industrielle avec 10 ans d’expérience, j’ai créé Summit Flow à partir d’un constat vécu sur le terrain : trop d’organisations avancent freinées par des outils mal adaptés, des processus lourds et un manque de temps pour innover. Après dix années passées dans l’industrie, j’ai pris un virage important cette année en me formant intensivement pendant plusieurs mois au no-code et à l’IA, avec l’obtention d’une certification RNCP niveau 6 (Bac+3/4). 
+              <p className="text-sm text-muted-foreground leading-relaxed text-justify md:text-lg">Ingénieure industrielle avec 10 ans d'expérience, j'ai créé Summit Flow à partir d'un constat vécu sur le terrain : trop d'organisations avancent freinées par des outils mal adaptés, des processus lourds et un manque de temps pour innover. Après dix années passées dans l'industrie, j'ai pris un virage important cette année en me formant intensivement pendant plusieurs mois au no-code et à l'IA, avec l'obtention d'une certification RNCP niveau 6 (Bac+3/4). 
 
 
 Un véritable tournant dans ma vie professionnelle, qui a donné un cadre et une légitimité à ce qui me passionnait déjà depuis plusieurs années : comprendre les systèmes, automatiser, et construire mes propres outils pour simplifier le quotidien.</p>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-justify">Passionnée de montagne, aspirante guide et rarement sans mon fidèle compagnon samoyède, j’y ai appris la même chose que dans la tech : pour avancer loin, il faut un itinéraire clair, le bon équipement, et savoir quand simplifier plutôt que surcharger. 
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-justify">Passionnée de montagne, aspirante guide et rarement sans mon fidèle compagnon samoyède, j'y ai appris la même chose que dans la tech : pour avancer loin, il faut un itinéraire clair, le bon équipement, et savoir quand simplifier plutôt que surcharger. 
 
 C'est cette approche que j'apporte aux TPE, PME, artisans et indépendants du Sud Toulousain et des Pyrénées. Pas de jargon, pas de projets qui s'éternisent. Des sites, des applications et des automatisations pensées pour le terrain, pour que vous puissiez vous concentrer sur ce qui compte vraiment. 
 
