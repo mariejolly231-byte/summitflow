@@ -23,8 +23,8 @@ const About = () => {
             {/* Bio card - positioned below photo on mobile, overlayed on desktop */}
             <div className="mt-4 lg:mt-0 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:p-6">
               <div className="backdrop-blur-sm rounded-xl p-4 md:p-5 border border-border/50 shadow-lg bg-white/[0.73]">
-                <h4 className="text-lg md:text-xl font-bold mb-2 text-secondary">Marie Jolly</h4>
-                <p className="text-sm leading-relaxed mb-3 font-semibold text-secondary">Aspirante guide de montagne et ingénieure industrielle forte de 10 ans d’expérience, j’ai appris à conjuguer rigueur, méthode et sens de l’efficacité, que ce soit dans l’ascension des sommets ou la conception de solutions technologiques.</p>
+                <h4 className="text-lg md:text-xl font-bold mb-2 text-secondary-foreground">Marie Jolly</h4>
+                <p className="text-sm leading-relaxed mb-3 font-semibold text-secondary-foreground">Aspirante guide de montagne et ingénieure industrielle forte de 10 ans d’expérience, j’ai appris à conjuguer rigueur, méthode et sens de l’efficacité, que ce soit dans l’ascension des sommets ou la conception de solutions technologiques.</p>
                 <a href="https://www.linkedin.com/in/mariejolly" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-all duration-300 font-medium hover:translate-x-1 text-sm md:text-base text-primary">
                   <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
                   Voir mon profil LinkedIn
