@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X, Calendar } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
