@@ -64,9 +64,10 @@ const MentionsLegales = () => {
                 <p className="text-muted-foreground mb-1">Site web : <a href="https://www.lws.fr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://www.lws.fr</a></p>
                 <p className="text-muted-foreground mb-4">Adresse : LWS, 10 rue de Penthièvre, 75008 Paris, France</p>
                 
-                <p className="text-muted-foreground mb-1"><strong className="text-foreground">Hébergement et publication :</strong></p>
-                <p className="text-muted-foreground mb-1">Lovable</p>
-                <p className="text-muted-foreground">Site web : <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://lovable.dev</a></p>
+                <p className="text-muted-foreground mb-1"><strong className="text-foreground">Hébergement :</strong></p>
+                <p className="text-muted-foreground mb-1">Vercel Inc.</p>
+                <p className="text-muted-foreground mb-1">Adresse : 340 S Lemon Ave #4133, Walnut, CA 91789, USA</p>
+                <p className="text-muted-foreground">Site web : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://vercel.com</a></p>
               </div>
             </section>
 
