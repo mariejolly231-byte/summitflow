@@ -1,4 +1,5 @@
 import { Mail, MapPin, Linkedin, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.webp";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -82,12 +83,12 @@ const Footer = () => {
             {currentYear} Summit Flow. Tous droits réservés.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="/mentions-legales" className="text-background/50 hover:text-background transition-colors">
+            <Link to="/mentions-legales" className="text-background/50 hover:text-background transition-colors">
               Mentions légales
-            </a>
-            <a href="/politique-confidentialite" className="text-background/50 hover:text-background transition-colors">
+            </Link>
+            <Link to="/politique-confidentialite" className="text-background/50 hover:text-background transition-colors">
               Politique de confidentialité
-            </a>
+            </Link>
           </div>
           <p className="text-sm text-background/50">
             Certifiée RNCP Niveau 6
