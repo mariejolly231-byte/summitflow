@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Calendar, Mail, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -13,6 +15,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [consentGiven, setConsentGiven] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -178,9 +181,36 @@ const Contact = () => {
                   />
                 </div>
 
+                <div className="space-y-3">
+                  <div className="flex items-start gap-2">
+                    <Checkbox
+                      id="consent"
+                      checked={consentGiven}
+                      onCheckedChange={(checked) => setConsentGiven(checked === true)}
+                      className="mt-0.5"
+                    />
+                    <label htmlFor="consent" className="text-xs text-muted-foreground cursor-pointer leading-relaxed">
+                      J'accepte que mes données soient collectées et traitées par Summit Flow conformément à sa{" "}
+                      <Link to="/politique-confidentialite" className="text-primary hover:underline">
+                        politique de confidentialité
+                      </Link>.
+                    </label>
+                  </div>
+                  
+                  <div className="text-[10px] text-muted-foreground/70 leading-relaxed">
+                    <p className="font-medium mb-1">Protection de vos données personnelles</p>
+                    <p>
+                      Les informations saisies dans ce formulaire sont enregistrées par Summit Flow afin de répondre à votre demande. Elles sont utilisées uniquement dans ce cadre, ne sont pas transmises à des tiers, et sont conservées pendant une durée maximale de 3 ans à des fins de suivi. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de suppression, de portabilité et d'opposition au traitement de vos données.{" "}
+                      <Link to="/politique-confidentialite" className="text-primary hover:underline">
+                        Consulter notre politique de confidentialité
+                      </Link>.
+                    </p>
+                  </div>
+                </div>
+
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !consentGiven}
                   className="btn-hero w-full flex items-center justify-center gap-2 disabled:opacity-50 mt-auto"
                 >
                   {isSubmitting ? (
