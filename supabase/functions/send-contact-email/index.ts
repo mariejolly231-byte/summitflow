@@ -29,7 +29,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification email to Summit Flow
     const notificationResponse = await resend.emails.send({
-      from: "Summit Flow <contact@summitflow.fr>",
+      from: "Summit Flow <noreply@summitflow.fr>",
+      reply_to: [email],
       to: ["contact@summitflow.fr"],
       subject: `Nouveau message de ${name}`,
       html: `
@@ -47,7 +48,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to the sender
     const confirmationResponse = await resend.emails.send({
-      from: "Summit Flow <contact@summitflow.fr>",
+      from: "Summit Flow <noreply@summitflow.fr>",
       to: [email],
       subject: "Votre message a bien été reçu - Summit Flow",
       html: `
