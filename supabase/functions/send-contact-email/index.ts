@@ -35,7 +35,7 @@ const handler = async (req: Request): Promise<Response> => {
     const notificationResult = await resend.emails.send({
       from: "Summit Flow <contact@summitflow.fr>",
       reply_to: email,
-      to: ["contact@summitflow.fr"],
+      to: ["mariejolly231@gmail.com"],
       subject: `Formulaire de contact : nouveau message de ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
