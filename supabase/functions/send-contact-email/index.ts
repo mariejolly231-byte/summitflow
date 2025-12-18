@@ -33,10 +33,10 @@ const handler = async (req: Request): Promise<Response> => {
     
     // Email vers Summit Flow
     const notificationResult = await resend.emails.send({
-      from: "Summit Flow <mariejolly231@gmail.com>",
+      from: "Summit Flow <contact@summitflow.fr>",
       reply_to: email,
       to: ["contact@summitflow.fr"],
-      subject: `Nouveau message de contact de ${name}`,
+      subject: `Formulaire de contact : nouveau message de ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333;">Nouveau message de contact</h2>
@@ -62,7 +62,7 @@ const handler = async (req: Request): Promise<Response> => {
     
     // Email de confirmation au visiteur
     const confirmationResult = await resend.emails.send({
-      from: "Summit Flow <mariejolly231@gmail.com>",
+      from: "Summit Flow <contact@summitflow.fr>",
       to: [email],
       subject: "Votre message a bien été reçu - Summit Flow",
       html: `
