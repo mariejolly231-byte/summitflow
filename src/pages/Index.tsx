@@ -16,23 +16,25 @@ import { SEOHead } from "@/components/SEOHead";
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
+    <>
       <SEOHead page="home" />
-      <Navbar />
-      <Hero />
-      <Services />
-      <About />
-      <Benefits />
-      <Examples />
-      <Process />
-      <Pricing />
-      <ROICalculator />
-      <Testimonials />
-      <FAQ />
-      <Contact />
-      <Footer />
-      <ScrollToTop />
-    </main>
+      <main className="min-h-screen">
+        <Navbar />
+        <Hero />
+        <Services />
+        <About />
+        <Benefits />
+        <Examples />
+        <Process />
+        <Pricing />
+        <ROICalculator />
+        <Testimonials />
+        <FAQ />
+        <Contact />
+        <Footer />
+        <ScrollToTop />
+      </main>
+    </>
   );
 };
 
