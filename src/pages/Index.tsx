@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -15,6 +17,14 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { SEOHead } from "@/components/SEOHead";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (window.location.hash === '#rentabilite-no-code-pme') {
+      navigate('/rentabilite-no-code-pme', { replace: true });
+    }
+  }, [navigate]);
+
   return (
     <>
       <SEOHead page="home" />
