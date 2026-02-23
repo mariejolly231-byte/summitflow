@@ -46,13 +46,13 @@ const Stars = () => (
 );
 
 const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
-  <div className="group/card relative bg-gradient-to-br from-card via-primary/5 to-secondary/10 rounded-xl p-5 border border-primary/20 w-[320px] shrink-0 flex flex-col h-[220px] shadow-sm hover:shadow-lg hover:shadow-primary/15 hover:border-primary/40 hover:scale-[1.03] transition-all duration-300 cursor-default">
+  <div className="group/card relative bg-gradient-to-br from-card via-primary/5 to-secondary/10 rounded-xl p-4 md:p-5 border border-primary/20 w-[280px] md:w-[320px] shrink-0 flex flex-col h-[200px] md:h-[220px] shadow-sm hover:shadow-lg hover:shadow-primary/15 hover:border-primary/40 md:hover:scale-[1.03] transition-all duration-300 cursor-default">
     <div className="flex items-center justify-between mb-3">
       <Stars />
       <GoogleIcon />
     </div>
 
-    <blockquote className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1 overflow-hidden line-clamp-4 italic">
+    <blockquote className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-3 md:mb-4 flex-1 overflow-hidden line-clamp-4 italic">
       "{review.text}"
     </blockquote>
 
@@ -61,9 +61,9 @@ const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
       <p className="text-xs text-muted-foreground truncate">{review.role}</p>
     </div>
 
-    {/* Expanded tooltip on hover */}
-    <div className="absolute inset-x-0 top-0 z-20 opacity-0 group-hover/card:opacity-100 pointer-events-none group-hover/card:pointer-events-auto transition-opacity duration-200">
-      <div className="bg-card border border-border rounded-xl p-5 shadow-2xl w-[320px]">
+    {/* Expanded tooltip on hover - desktop only */}
+    <div className="hidden md:block absolute inset-x-0 top-0 z-20 opacity-0 group-hover/card:opacity-100 pointer-events-none group-hover/card:pointer-events-auto transition-opacity duration-200">
+      <div className="bg-card border border-border rounded-xl p-5 shadow-2xl w-[320px] min-h-[220px]">
         <div className="flex items-center justify-between mb-3">
           <Stars />
           <GoogleIcon />
@@ -100,10 +100,10 @@ const GoogleReviews = () => {
 
       <div className="relative group">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex gap-6 animate-[scroll_50s_linear_infinite] group-hover:[animation-play-state:paused] w-max">
+        <div className="flex gap-4 md:gap-6 animate-[scroll_50s_linear_infinite] group-hover:[animation-play-state:paused] w-max">
           {duplicated.map((review, i) => (
             <ReviewCard key={`${review.name}-${i}`} review={review} />
           ))}
