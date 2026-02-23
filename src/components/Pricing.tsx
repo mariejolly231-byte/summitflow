@@ -62,7 +62,6 @@ const offers = [
       "Feuille de route IA personnalisée",
       "Conformité AI Act & RGPD"
     ],
-    badge: "Sur mesure",
     isContact: true
   }
 ];
@@ -72,11 +71,6 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
     className="card-service relative flex flex-col h-full animate-fade-up" 
     style={{ animationDelay: `${index * 100}ms` }}
   >
-    {offer.badge && (
-      <div className="absolute -top-3 right-4 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
-        {offer.badge}
-      </div>
-    )}
 
     {/* Icon row - fixed height */}
     <div className="h-14 md:h-16 flex items-center gap-3 mb-4">
