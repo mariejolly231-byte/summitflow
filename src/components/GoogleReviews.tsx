@@ -46,7 +46,7 @@ const Stars = () => (
 );
 
 const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
-  <div className="bg-card rounded-xl p-5 border border-border/50 w-[320px] shrink-0 flex flex-col h-[220px] shadow-sm hover:shadow-md hover:border-primary/40 hover:scale-[1.03] transition-all duration-300 cursor-default">
+  <div className="bg-gradient-to-br from-card to-primary/5 rounded-xl p-5 border border-primary/10 w-[320px] shrink-0 flex flex-col h-[220px] shadow-sm hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30 hover:scale-[1.03] transition-all duration-300 cursor-default">
     <div className="flex items-center justify-between mb-3">
       <Stars />
       <GoogleIcon />
@@ -56,9 +56,9 @@ const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
       "{review.text}"
     </blockquote>
 
-    <div className="border-t border-border/50 pt-3 mt-auto">
+    <div className="border-t border-primary/10 pt-3 mt-auto">
       <p className="font-semibold text-foreground text-sm">{review.name}</p>
-      <p className="text-xs text-muted-foreground truncate">{review.role}</p>
+      <p className="text-xs text-primary/70 truncate">{review.role}</p>
     </div>
   </div>
 );
@@ -71,7 +71,7 @@ const GoogleReviews = () => {
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-2 font-bold">
-            Ils nous font confiance
+            Ils me font confiance
           </h2>
           <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
             Déjà accompagnés dans leur transformation digitale.
@@ -82,7 +82,11 @@ const GoogleReviews = () => {
       </div>
 
       <div className="relative group">
-        <div className="flex gap-6 animate-[scroll_30s_linear_infinite] group-hover:[animation-play-state:paused] w-max">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+
+        <div className="flex gap-6 animate-[scroll_50s_linear_infinite] group-hover:[animation-play-state:paused] w-max">
           {duplicated.map((review, i) => (
             <ReviewCard key={`${review.name}-${i}`} review={review} />
           ))}
