@@ -62,17 +62,17 @@ const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
     </div>
 
     {/* Expanded tooltip on hover */}
-    <div className="absolute inset-x-0 top-0 z-20 opacity-0 group-hover/card:opacity-100 pointer-events-none group-hover/card:pointer-events-auto transition-opacity duration-300">
-      <div className="bg-gradient-to-br from-card via-primary/5 to-secondary/10 border border-primary/25 rounded-xl p-5 shadow-xl shadow-primary/15 w-[320px]">
+    <div className="absolute inset-x-0 top-0 z-20 opacity-0 group-hover/card:opacity-100 pointer-events-none group-hover/card:pointer-events-auto transition-opacity duration-200">
+      <div className="bg-card border border-border rounded-xl p-5 shadow-2xl w-[320px]">
         <div className="flex items-center justify-between mb-3">
           <Stars />
           <GoogleIcon />
         </div>
-        <blockquote className="text-sm text-muted-foreground leading-relaxed mb-4 italic">
+        <blockquote className="text-sm text-foreground leading-relaxed mb-4">
           "{review.text}"
         </blockquote>
-        <div className="border-t border-primary/10 pt-3">
-          <p className="font-semibold text-primary text-sm">{review.name}</p>
+        <div className="border-t border-border pt-3">
+          <p className="font-semibold text-foreground text-sm">{review.name}</p>
           <p className="text-xs text-muted-foreground">{review.role}</p>
         </div>
       </div>
