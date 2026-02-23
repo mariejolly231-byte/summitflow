@@ -84,7 +84,7 @@ const GoogleReviews = () => {
   const duplicated = [...reviews, ...reviews];
 
   return (
-    <section className="section-padding bg-muted/30 overflow-hidden">
+    <section className="section-padding bg-muted/30 overflow-x-clip pb-32 relative z-10">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-2 font-bold">
