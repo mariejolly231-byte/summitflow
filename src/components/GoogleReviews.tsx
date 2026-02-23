@@ -58,7 +58,7 @@ const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
 
     <div className="border-t border-primary/10 pt-3 mt-auto">
       <p className="font-semibold text-foreground text-sm">{review.name}</p>
-      <p className="text-xs text-primary/70 truncate">{review.role}</p>
+      <p className="text-xs text-muted-foreground truncate">{review.role}</p>
     </div>
 
     {/* Expanded tooltip on hover */}
@@ -73,7 +73,7 @@ const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
         </blockquote>
         <div className="border-t border-primary/10 pt-3">
           <p className="font-semibold text-foreground text-sm">{review.name}</p>
-          <p className="text-xs text-primary/70">{review.role}</p>
+          <p className="text-xs text-muted-foreground">{review.role}</p>
         </div>
       </div>
     </div>
