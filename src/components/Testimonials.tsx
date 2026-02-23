@@ -1,18 +1,17 @@
 import { Award, Briefcase, Heart, MapPin, Quote } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { MobileCarousel } from "@/components/ui/mobile-carousel";
 import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 
 const trustPoints = [
   {
     icon: Award,
-    title: "Certification RNCP",
-    description: "Product Builder No Code & IA niveau 6",
-  },
-  {
-    icon: Award,
-    title: "Certification Airtable",
-    description: "Airtable Builder Certification",
-    isNew: true,
+    title: "Certifications",
+    isCertCard: true,
+    certifications: [
+      { name: "RNCP Product Builder No Code & IA", detail: "niv. 6 (équivalent bac+3/4)", isNew: false },
+      { name: "Airtable Builder Certification", detail: null, isNew: true },
+    ],
   },
   {
     icon: Briefcase,
@@ -33,13 +32,8 @@ const trustPoints = [
 
 const TrustCard = ({ point, index }: { point: typeof trustPoints[0]; index: number }) => (
   <div 
-    className="bg-card rounded-xl p-5 md:p-6 text-center border border-border/50 hover:border-primary/30 transition-colors h-full flex flex-col items-center relative"
+    className="bg-card rounded-xl p-5 md:p-6 text-center border border-border/50 hover:border-primary/30 transition-colors h-full flex flex-col items-center"
   >
-    {point.isNew && (
-      <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">
-        NEW
-      </span>
-    )}
     <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3 md:mb-4">
       <point.icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
     </div>
@@ -48,9 +42,26 @@ const TrustCard = ({ point, index }: { point: typeof trustPoints[0]; index: numb
       {point.title}
     </h3>
     
-    <p className="text-xs md:text-sm text-muted-foreground">
-      {point.description}
-    </p>
+    {point.isCertCard && point.certifications ? (
+      <ul className="space-y-2 text-left w-full">
+        {point.certifications.map((cert) => (
+          <li key={cert.name} className="text-xs md:text-sm text-muted-foreground flex items-start gap-1.5">
+            <Award className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+            <span>
+              {cert.name}
+              {cert.detail && <span className="block text-[10px] md:text-xs text-muted-foreground/70">{cert.detail}</span>}
+              {cert.isNew && (
+                <Badge className="ml-1.5 text-[9px] px-1.5 py-0 align-middle">NEW</Badge>
+              )}
+            </span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p className="text-xs md:text-sm text-muted-foreground">
+        {point.description}
+      </p>
+    )}
   </div>
 );
 
@@ -75,7 +86,7 @@ const Testimonials = () => {
           </MobileCarousel>
         ) : (
           /* Desktop: Grid */
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {trustPoints.map((point, index) => (
               <TrustCard key={point.title} point={point} index={index} />
             ))}
