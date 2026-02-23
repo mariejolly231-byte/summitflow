@@ -1,4 +1,4 @@
-import { Bot, AppWindow, Settings, Calendar, Check } from "lucide-react";
+import { Bot, AppWindow, Settings, Calendar, Check, Presentation } from "lucide-react";
 import { MobileCarousel } from "@/components/ui/mobile-carousel";
 import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 const services = [{
@@ -19,6 +19,12 @@ const services = [{
   description: "Analysez et améliorez vos processus pour gagner en efficacité au quotidien.",
   features: ["Audit", "Refonte processus", "Standardisation", "Organisation système interne"],
   accent: "from-accent/20 to-secondary/30"
+}, {
+  icon: Presentation,
+  title: "Ateliers & Conférences IA en Entreprise",
+  description: "Accompagnement sur mesure pour intégrer l'IA dans votre organisation. Vos équipes repartent avec une feuille de route concrète, les outils pertinents identifiés et les bonnes pratiques conformes à l'AI Act et au RGPD.",
+  features: ["Atelier en présentiel", "Conférence en entreprise", "Formation en ligne", "Workshop en groupe"],
+  accent: "from-primary/20 to-secondary/30"
 }];
 const ServiceCard = ({
   service,
@@ -61,7 +67,7 @@ const Services = () => {
         {isMobileOrTablet ? <MobileCarousel className="mb-8 md:mb-12">
             {services.map((service, index) => <ServiceCard key={service.title} service={service} index={index} />)}
           </MobileCarousel> : (/* Desktop: Grid */
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {services.map((service, index) => <ServiceCard key={service.title} service={service} index={index} />)}
           </div>)}
 

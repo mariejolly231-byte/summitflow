@@ -1,4 +1,4 @@
-import { Globe, Layers, Zap, Check, Calendar } from "lucide-react";
+import { Globe, Layers, Zap, Check, Calendar, Presentation, MessageSquare } from "lucide-react";
 import { MobileCarousel } from "@/components/ui/mobile-carousel";
 import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 
@@ -47,6 +47,23 @@ const offers = [
       "Documentation personnalisée",
       "Évolutions et ajustements"
     ]
+  },
+  {
+    icon: Presentation,
+    title: "Ateliers & Conférences IA",
+    tools: "Présentiel / En ligne",
+    price: "Sur demande",
+    description: "Chaque intervention est construite sur mesure selon vos besoins et votre organisation.",
+    features: [
+      "Atelier en présentiel",
+      "Conférence en entreprise",
+      "Formation en ligne",
+      "Workshop en groupe",
+      "Feuille de route IA personnalisée",
+      "Conformité AI Act & RGPD"
+    ],
+    badge: "Sur mesure",
+    isContact: true
   }
 ];
 
@@ -55,6 +72,12 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
     className="card-service relative flex flex-col h-full animate-fade-up" 
     style={{ animationDelay: `${index * 100}ms` }}
   >
+    {offer.badge && (
+      <div className="absolute -top-3 right-4 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
+        {offer.badge}
+      </div>
+    )}
+
     <div className="flex items-center gap-3 mb-4">
       <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
         <offer.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
@@ -82,15 +105,25 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
       ))}
     </ul>
 
-    <a 
-      href="https://calendly.com/summitflowfr/30min" 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="w-full text-center py-2.5 md:py-3 px-4 md:px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-muted text-foreground hover:bg-primary hover:text-primary-foreground border border-border text-sm md:text-base"
-    >
-      <Calendar className="w-4 h-4" />
-      Prendre RDV
-    </a>
+    {offer.isContact ? (
+      <a 
+        href="#contact-no-code-toulouse" 
+        className="w-full text-center py-2.5 md:py-3 px-4 md:px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 text-sm md:text-base"
+      >
+        <MessageSquare className="w-4 h-4" />
+        Demander un devis
+      </a>
+    ) : (
+      <a 
+        href="https://calendly.com/summitflowfr/30min" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="w-full text-center py-2.5 md:py-3 px-4 md:px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-muted text-foreground hover:bg-primary hover:text-primary-foreground border border-border text-sm md:text-base"
+      >
+        <Calendar className="w-4 h-4" />
+        Prendre RDV
+      </a>
+    )}
   </div>
 );
 
@@ -114,7 +147,7 @@ const Pricing = () => {
             ))}
           </MobileCarousel>
         ) : (
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
             {offers.map((offer, index) => (
               <PricingCard key={offer.title} offer={offer} index={index} />
             ))}
