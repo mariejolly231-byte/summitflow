@@ -49,6 +49,11 @@ export const SEOHead = ({ page = 'home' }: SEOHeadProps) => {
       <meta name="distribution" content="global" />
       <meta name="rating" content="general" />
       
+      {/* Structured Data - WebSite */}
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData.website)}
+      </script>
+      
       {/* Structured Data - Organization */}
       <script type="application/ld+json">
         {JSON.stringify(structuredData.organization)}

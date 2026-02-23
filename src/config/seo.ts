@@ -2,9 +2,9 @@
 
 export const seoConfig = {
   home: {
-    title: "No Code & IA Toulouse | Expert Automatisation & Web Apps | Summit Flow",
-    description: "Expert No Code et IA à Toulouse. 10 ans d'expérience industrielle. Automatisation, web apps sur mesure (Bubble, Make, n8n) pour TPE/PME. Certifiée RNCP. Intervention Sud Toulousain et Pyrénées.",
-    keywords: "no code toulouse, ia toulouse, automatisation toulouse, bubble toulouse, make toulouse, web app toulouse, développement no code, expert no code pyrénées, consultant ia toulouse, ingénieur industriel no code",
+    title: "Summit Flow | Expert No Code & IA à Toulouse | Automatisation & Web Apps",
+    description: "Summit Flow, votre expert No Code et IA à Toulouse. 10 ans d'expérience industrielle. Automatisation, web apps sur mesure (Bubble, Make, n8n) pour TPE/PME. Certifiée RNCP. Sud Toulousain et Pyrénées.",
+    keywords: "summit flow, summit flow no code, no code toulouse, ia toulouse, automatisation toulouse, bubble toulouse, make toulouse, web app toulouse, développement no code, expert no code pyrénées, consultant ia toulouse",
     canonical: "https://www.summitflow.fr",
     ogImage: "/og-image.jpg" // À créer
   },
@@ -35,8 +35,16 @@ export const seoConfig = {
 };
 
 export const structuredData = {
-  organization: {
+  website: {
     "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Summit Flow",
+    "alternateName": "Summit Flow No Code IA",
+    "url": "https://www.summitflow.fr",
+    "description": "Summit Flow - Expert No Code et IA à Toulouse pour TPE et PME"
+  },
+
+  organization: {
     "@type": "ProfessionalService",
     "name": "Summit Flow",
     "alternateName": "Summit Flow - No Code & IA Toulouse",
