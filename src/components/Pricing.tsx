@@ -88,9 +88,9 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
       <span className="text-xl md:text-2xl font-bold text-primary">{offer.price}</span>
     </div>
 
-    {/* Description - fixed height */}
-    <div className="h-12 md:h-14 mb-4 md:mb-6">
-      <p className="text-sm md:text-base text-muted-foreground line-clamp-2">
+    {/* Description */}
+    <div className="mb-4 md:mb-6">
+      <p className="text-sm md:text-base text-muted-foreground">
         {offer.description}
       </p>
     </div>
