@@ -1,4 +1,4 @@
-import { Globe, Layers, Zap, Check, Calendar, Presentation, MessageSquare } from "lucide-react";
+import { Globe, Layers, Zap, Check, Calendar, Presentation } from "lucide-react";
 import { MobileCarousel } from "@/components/ui/mobile-carousel";
 import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 
@@ -22,7 +22,7 @@ const offers = [
     icon: Layers,
     title: "Application Web/SaaS",
     tools: "Bubble / Lovable",
-    price: "2 500€ - 5 000€",
+    price: "1 500€ - 5 000€",
     description: "Application web sur mesure pour gérer adhérents, projets, commandes, planning.",
     features: [
       "100% personnalisée",
@@ -83,7 +83,7 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
         <offer.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
       </div>
       <div className="min-w-0">
-        <h3 className="text-lg md:text-xl font-semibold text-foreground truncate">{offer.title}</h3>
+        <h3 className="text-base md:text-lg font-semibold text-foreground leading-tight">{offer.title}</h3>
         <p className="text-xs md:text-sm text-muted-foreground">{offer.tools}</p>
       </div>
     </div>
@@ -105,25 +105,15 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
       ))}
     </ul>
 
-    {offer.isContact ? (
-      <a 
-        href="#contact-no-code-toulouse" 
-        className="w-full text-center py-2.5 md:py-3 px-4 md:px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 text-sm md:text-base"
-      >
-        <MessageSquare className="w-4 h-4" />
-        Demander un devis
-      </a>
-    ) : (
-      <a 
-        href="https://calendly.com/summitflowfr/30min" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="w-full text-center py-2.5 md:py-3 px-4 md:px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-muted text-foreground hover:bg-primary hover:text-primary-foreground border border-border text-sm md:text-base"
-      >
-        <Calendar className="w-4 h-4" />
-        Prendre RDV
-      </a>
-    )}
+    <a 
+      href="https://calendly.com/summitflowfr/30min" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="w-full text-center py-2.5 md:py-3 px-4 md:px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-muted text-foreground hover:bg-primary hover:text-primary-foreground border border-border text-sm md:text-base"
+    >
+      <Calendar className="w-4 h-4" />
+      Prendre RDV
+    </a>
   </div>
 );
 
