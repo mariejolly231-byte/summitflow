@@ -6,7 +6,13 @@ const trustPoints = [
   {
     icon: Award,
     title: "Certification RNCP",
-    description: "Product Builder No Code & IA niveau 6"
+    description: "Product Builder No Code & IA niveau 6",
+  },
+  {
+    icon: Award,
+    title: "Certification Airtable",
+    description: "Airtable Builder Certification",
+    isNew: true,
   },
   {
     icon: Briefcase,
@@ -27,8 +33,13 @@ const trustPoints = [
 
 const TrustCard = ({ point, index }: { point: typeof trustPoints[0]; index: number }) => (
   <div 
-    className="bg-card rounded-xl p-5 md:p-6 text-center border border-border/50 hover:border-primary/30 transition-colors h-full flex flex-col items-center"
+    className="bg-card rounded-xl p-5 md:p-6 text-center border border-border/50 hover:border-primary/30 transition-colors h-full flex flex-col items-center relative"
   >
+    {point.isNew && (
+      <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">
+        NEW
+      </span>
+    )}
     <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3 md:mb-4">
       <point.icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
     </div>
@@ -64,7 +75,7 @@ const Testimonials = () => {
           </MobileCarousel>
         ) : (
           /* Desktop: Grid */
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
             {trustPoints.map((point, index) => (
               <TrustCard key={point.title} point={point} index={index} />
             ))}
