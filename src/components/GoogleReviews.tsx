@@ -46,7 +46,7 @@ const Stars = () => (
 );
 
 const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
-  <div className="group/card relative bg-gradient-to-br from-card to-primary/5 rounded-xl p-5 border border-primary/10 w-[320px] shrink-0 flex flex-col h-[220px] shadow-sm hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30 hover:scale-[1.03] transition-all duration-300 cursor-default">
+  <div className="group/card relative bg-gradient-to-br from-card via-primary/5 to-secondary/10 rounded-xl p-5 border border-primary/20 w-[320px] shrink-0 flex flex-col h-[220px] shadow-sm hover:shadow-lg hover:shadow-primary/15 hover:border-primary/40 hover:scale-[1.03] transition-all duration-300 cursor-default">
     <div className="flex items-center justify-between mb-3">
       <Stars />
       <GoogleIcon />
@@ -56,14 +56,14 @@ const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
       "{review.text}"
     </blockquote>
 
-    <div className="border-t border-primary/10 pt-3 mt-auto">
-      <p className="font-semibold text-foreground text-sm">{review.name}</p>
+    <div className="border-t border-primary/20 pt-3 mt-auto">
+      <p className="font-semibold text-primary text-sm">{review.name}</p>
       <p className="text-xs text-muted-foreground truncate">{review.role}</p>
     </div>
 
     {/* Expanded tooltip on hover */}
     <div className="absolute inset-x-0 top-0 z-20 opacity-0 group-hover/card:opacity-100 pointer-events-none group-hover/card:pointer-events-auto transition-opacity duration-300">
-      <div className="bg-card border border-primary/20 rounded-xl p-5 shadow-xl shadow-primary/10 w-[320px]">
+      <div className="bg-gradient-to-br from-card via-primary/5 to-secondary/10 border border-primary/25 rounded-xl p-5 shadow-xl shadow-primary/15 w-[320px]">
         <div className="flex items-center justify-between mb-3">
           <Stars />
           <GoogleIcon />
@@ -72,7 +72,7 @@ const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
           "{review.text}"
         </blockquote>
         <div className="border-t border-primary/10 pt-3">
-          <p className="font-semibold text-foreground text-sm">{review.name}</p>
+          <p className="font-semibold text-primary text-sm">{review.name}</p>
           <p className="text-xs text-muted-foreground">{review.role}</p>
         </div>
       </div>
