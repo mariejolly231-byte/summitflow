@@ -78,7 +78,8 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
       </div>
     )}
 
-    <div className="flex items-center gap-3 mb-4">
+    {/* Icon row - fixed height */}
+    <div className="h-14 md:h-16 flex items-center gap-3 mb-4">
       <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
         <offer.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
       </div>
@@ -88,13 +89,17 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
       </div>
     </div>
 
-    <div className="mb-4">
+    {/* Price row - fixed height */}
+    <div className="h-8 md:h-10 mb-4 flex items-center">
       <span className="text-xl md:text-2xl font-bold text-primary">{offer.price}</span>
     </div>
 
-    <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6">
-      {offer.description}
-    </p>
+    {/* Description - fixed height */}
+    <div className="h-12 md:h-14 mb-4 md:mb-6">
+      <p className="text-sm md:text-base text-muted-foreground line-clamp-2">
+        {offer.description}
+      </p>
+    </div>
 
     <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 flex-grow">
       {offer.features.map((feature) => (
@@ -109,7 +114,7 @@ const PricingCard = ({ offer, index }: { offer: typeof offers[0]; index: number 
       href="https://calendly.com/summitflowfr/30min" 
       target="_blank" 
       rel="noopener noreferrer" 
-      className="w-full text-center py-2.5 md:py-3 px-4 md:px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-muted text-foreground hover:bg-primary hover:text-primary-foreground border border-border text-sm md:text-base"
+      className="w-full text-center py-2.5 md:py-3 px-4 md:px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-muted text-foreground hover:bg-primary hover:text-primary-foreground border border-border text-sm md:text-base mt-auto"
     >
       <Calendar className="w-4 h-4" />
       Prendre RDV
