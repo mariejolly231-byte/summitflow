@@ -2,27 +2,27 @@ import { Star } from "lucide-react";
 
 const reviews = [
   {
-    name: "Sonia Rivera Garcia",
+    name: "Sonia",
     role: "Kinésithérapeute en secteur de montagne",
     text: "Je suis très satisfaite. On a fait un rdv où elle a posé beaucoup de questions pour cibler mes besoins et les solutions à mettre en place. Elle est très à l'écoute et fait un bon suivi. Je recommande !",
   },
   {
-    name: "Guillaume Bertrand",
+    name: "Guillaume",
     role: "Gérant de société, secteur énergie",
     text: "Excellente entreprise d'accompagnement. L'équipe est très réactive, à l'écoute et surtout très compétente dans son domaine. Les solutions proposées sont concrètes, adaptées aux besoins réels de notre entreprise et faciles à mettre en place. Un vrai partenaire de confiance pour intégrer l'IA de manière efficace et stratégique. Je recommande vivement.",
   },
   {
-    name: "Alice Mi",
+    name: "Alice",
     role: "Collaboratrice dans l'industrie aéronautique",
     text: "Une nécessité de se faire accompagner par une personne compétente comme Marie pour maîtriser l'IA. Ravie des services de Summit Flow, vous pouvez y aller les yeux fermés !",
   },
   {
-    name: "Alexis Ahlsell de Toulza",
+    name: "Alexis",
     role: "Avocat en droit des affaires",
     text: "Professionnelle et à l'écoute pour mener au mieux les projets confiés. Recommandée à 100%.",
   },
   {
-    name: "Alban Gallois",
+    name: "Alban",
     role: "Concepteur de solutions pour cabinets médicaux",
     text: "Excellente expérience avec Summit Flow. Nous avons automatisé tout mon parcours client, le gain de temps est incroyable. Merci.",
   },
@@ -46,25 +46,24 @@ const Stars = () => (
 );
 
 const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
-  <div className="bg-card rounded-xl p-5 border border-border/50 w-[320px] shrink-0 flex flex-col h-[220px]">
+  <div className="bg-card rounded-xl p-5 border border-border/50 w-[320px] shrink-0 flex flex-col h-[220px] shadow-sm hover:shadow-md hover:border-primary/40 hover:scale-[1.03] transition-all duration-300 cursor-default">
     <div className="flex items-center justify-between mb-3">
       <Stars />
       <GoogleIcon />
     </div>
 
-    <blockquote className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1 overflow-hidden line-clamp-4">
+    <blockquote className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1 overflow-hidden line-clamp-4 italic">
       "{review.text}"
     </blockquote>
 
     <div className="border-t border-border/50 pt-3 mt-auto">
-      <p className="font-semibold text-foreground text-sm truncate">{review.name}</p>
+      <p className="font-semibold text-foreground text-sm">{review.name}</p>
       <p className="text-xs text-muted-foreground truncate">{review.role}</p>
     </div>
   </div>
 );
 
 const GoogleReviews = () => {
-  // Duplicate reviews for seamless infinite scroll
   const duplicated = [...reviews, ...reviews];
 
   return (
@@ -74,14 +73,16 @@ const GoogleReviews = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-2 font-bold">
             Ils nous font confiance
           </h2>
-          <p className="text-sm text-muted-foreground">
-            Avis Google vérifiés
+          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
+            Déjà accompagnés dans leur transformation digitale.
+            <br className="hidden sm:block" />{" "}
+            Découvrez ce qu'ils en disent.
           </p>
         </div>
       </div>
 
-      <div className="relative">
-        <div className="flex gap-6 animate-[scroll_30s_linear_infinite] w-max">
+      <div className="relative group">
+        <div className="flex gap-6 animate-[scroll_30s_linear_infinite] group-hover:[animation-play-state:paused] w-max">
           {duplicated.map((review, i) => (
             <ReviewCard key={`${review.name}-${i}`} review={review} />
           ))}
