@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { useState } from "react";
 
 const reviews = [
   {
@@ -45,41 +46,47 @@ const Stars = () => (
   </div>
 );
 
-const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
-  <div className="group/card relative bg-gradient-to-br from-card via-primary/5 to-secondary/10 rounded-xl p-4 md:p-5 border border-primary/20 w-[280px] md:w-[320px] shrink-0 flex flex-col h-[200px] md:h-[220px] shadow-sm hover:shadow-lg hover:shadow-primary/15 hover:border-primary/40 md:hover:scale-[1.03] transition-all duration-300 cursor-default">
-    <div className="flex items-center justify-between mb-3">
-      <Stars />
-      <GoogleIcon />
-    </div>
+const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => {
+  const [expanded, setExpanded] = useState(false);
 
-    <blockquote className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-3 md:mb-4 flex-1 overflow-hidden line-clamp-4 italic">
-      "{review.text}"
-    </blockquote>
+  return (
+    <div
+      className={`group/card relative bg-gradient-to-br from-card via-primary/5 to-secondary/10 rounded-xl p-4 md:p-5 border border-primary/20 w-[280px] md:w-[320px] shrink-0 flex flex-col ${expanded ? 'h-auto' : 'h-[200px] md:h-[220px]'} shadow-sm hover:shadow-lg hover:shadow-primary/15 hover:border-primary/40 md:hover:scale-[1.03] transition-all duration-300 cursor-default`}
+      onClick={() => setExpanded(!expanded)}
+    >
+      <div className="flex items-center justify-between mb-3">
+        <Stars />
+        <GoogleIcon />
+      </div>
 
-    <div className="border-t border-primary/20 pt-3 mt-auto">
-      <p className="font-semibold text-primary text-sm">{review.name}</p>
-      <p className="text-xs text-muted-foreground truncate">{review.role}</p>
-    </div>
+      <blockquote className={`text-xs md:text-sm text-muted-foreground leading-relaxed mb-3 md:mb-4 flex-1 overflow-hidden ${expanded ? '' : 'line-clamp-4'} italic`}>
+        "{review.text}"
+      </blockquote>
 
-    {/* Expanded tooltip on hover - desktop only */}
-    <div className="hidden md:block absolute inset-x-0 top-0 z-20 opacity-0 group-hover/card:opacity-100 pointer-events-none group-hover/card:pointer-events-auto transition-opacity duration-200">
-      <div className="bg-card border border-border rounded-xl p-5 shadow-2xl w-[320px] min-h-[220px]">
-        <div className="flex items-center justify-between mb-3">
-          <Stars />
-          <GoogleIcon />
-        </div>
-        <blockquote className="text-sm text-foreground leading-relaxed mb-4">
-          "{review.text}"
-        </blockquote>
-        <div className="border-t border-border pt-3">
-          <p className="font-semibold text-foreground text-sm">{review.name}</p>
-          <p className="text-xs text-muted-foreground">{review.role}</p>
+      <div className="border-t border-primary/20 pt-3 mt-auto">
+        <p className="font-semibold text-primary text-sm">{review.name}</p>
+        <p className="text-xs text-muted-foreground truncate">{review.role}</p>
+      </div>
+
+      {/* Expanded tooltip on hover - desktop only */}
+      <div className="hidden md:block absolute inset-x-0 top-0 z-20 opacity-0 group-hover/card:opacity-100 pointer-events-none group-hover/card:pointer-events-auto transition-opacity duration-200">
+        <div className="bg-card border border-border rounded-xl p-5 shadow-2xl w-[320px] min-h-[220px]">
+          <div className="flex items-center justify-between mb-3">
+            <Stars />
+            <GoogleIcon />
+          </div>
+          <blockquote className="text-sm text-foreground leading-relaxed mb-4">
+            "{review.text}"
+          </blockquote>
+          <div className="border-t border-border pt-3">
+            <p className="font-semibold text-foreground text-sm">{review.name}</p>
+            <p className="text-xs text-muted-foreground">{review.role}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
-
+  );
+};
 const GoogleReviews = () => {
   const duplicated = [...reviews, ...reviews];
 
