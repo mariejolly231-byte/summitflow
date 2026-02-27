@@ -41,6 +41,7 @@ export const structuredData = {
     "name": "Summit Flow",
     "alternateName": "Summit Flow No Code IA",
     "url": "https://www.summitflow.fr",
+    "inLanguage": "fr-FR",
     "description": "Summit Flow - Expert No Code et IA à Toulouse pour TPE et PME"
   },
 
@@ -48,6 +49,7 @@ export const structuredData = {
     "@type": "ProfessionalService",
     "name": "Summit Flow",
     "alternateName": "Summit Flow - No Code & IA Toulouse",
+    "inLanguage": "fr-FR",
     "description": "Expert No Code et IA à Toulouse, spécialisé en automatisation et développement web sans code pour TPE et PME",
     "url": "https://www.summitflow.fr",
     "logo": "https://www.summitflow.fr/logo.webp",
@@ -224,6 +226,7 @@ export const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Summit Flow",
+    "inLanguage": "fr-FR",
     "description": "Expert No Code et IA à Toulouse pour TPE et PME",
     "url": "https://www.summitflow.fr",
     "telephone": "+33687358849",

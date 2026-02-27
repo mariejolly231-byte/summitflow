@@ -13,6 +13,10 @@ export const SEOHead = ({ page = 'home' }: SEOHeadProps) => {
   
   return (
     <Helmet>
+      {/* Langue */}
+      <html lang="fr" />
+      <meta httpEquiv="content-language" content="fr-FR" />
+      
       {/* Balises META principales */}
       <title>{pageConfig.title}</title>
       <meta name="description" content={pageConfig.description} />
