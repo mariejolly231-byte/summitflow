@@ -12,7 +12,7 @@ const faqs = [
       "Le No Code permet de créer des sites web, applications et automatisations sans coder. Grâce à des outils visuels comme Bubble, Lovable ou Make, je conçois des solutions professionnelles et performantes, plus rapidement qu'avec du développement traditionnel. Parfait pour les TPE, artisans et PME qui veulent digitaliser leur activité sans investir dans une équipe technique.",
   },
   {
-    question: "Quel type de solution SummitOps peut-il créer pour mon entreprise ?",
+    question: "Quel type de solution Summit Flow peut-il créer pour mon entreprise ?",
     answer:
       "Je crée des web apps sur-mesure (CRM, outils de gestion interne, plateformes de réservation), des sites vitrines optimisés SEO, et j'automatise vos tâches répétitives (relances clients, gestion des inscriptions, reporting automatique). Chaque solution est adaptée à votre secteur d'activité et vos besoins réels.",
   },
