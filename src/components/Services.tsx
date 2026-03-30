@@ -4,7 +4,7 @@ import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 const services = [{
   icon: Bot,
   title: "Automatisation & IA",
-  description: "Libérez-vous des tâches répétitives grâce à des workflows intelligents et des agents IA.",
+  description: "Libérez-vous des tâches répétitives en connectant vos outils habituels grâce à des workflows intelligents et des agents IA.",
   features: ["Workflows multi-outils", "Extraction / scraping", "Traitement dataset", "Automatisation cabinet d'avocats", "Veille appels d'offres marchés publics"],
   accent: "from-primary/20 to-accent/20"
 }, {
