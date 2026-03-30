@@ -4,21 +4,6 @@ import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 
 const offers = [
   {
-    icon: Globe,
-    title: "Site Vitrine",
-    tools: "Framer / Lovable",
-    price: "500€ - 1 500€",
-    description: "Site web professionnel, sur mesure, adapté à tous les écrans.",
-    features: [
-      "Design moderne et responsive",
-      "SEO local optimisé",
-      "Identité visuelle respectée",
-      "Suivi et formation inclus",
-      "Support dédié post-livraison",
-      "Ressources et guides en ligne"
-    ]
-  },
-  {
     icon: Layers,
     title: "Application Web/SaaS",
     tools: "Bubble / Lovable",
@@ -63,6 +48,21 @@ const offers = [
       "Conformité AI Act & RGPD"
     ],
     isContact: true
+  },
+  {
+    icon: Globe,
+    title: "Site Vitrine",
+    tools: "Framer / Lovable",
+    price: "500€ - 1 500€",
+    description: "Site web professionnel, sur mesure, adapté à tous les écrans.",
+    features: [
+      "Design moderne et responsive",
+      "SEO local optimisé",
+      "Identité visuelle respectée",
+      "Suivi et formation inclus",
+      "Support dédié post-livraison",
+      "Ressources et guides en ligne"
+    ]
   }
 ];
 
