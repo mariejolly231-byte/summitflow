@@ -4,7 +4,7 @@ import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 const services = [{
   icon: Bot,
   title: "Automatisation & IA",
-  description: "Libérez-vous des tâches répétitives grâce à des workflows intelligents et des agents IA.",
+  description: "Libérez-vous des tâches répétitives en connectant vos outils habituels grâce à des workflows intelligents et des agents IA.",
   features: ["Workflows multi-outils", "Extraction / scraping", "Traitement dataset", "Automatisation cabinet d'avocats", "Veille appels d'offres marchés publics"],
   accent: "from-primary/20 to-accent/20"
 }, {
@@ -23,7 +23,7 @@ const services = [{
   icon: Presentation,
   title: "Ateliers & Conférences IA en Entreprise",
   description: "Accompagnement sur mesure pour intégrer l'IA dans votre organisation. Vos équipes repartent avec une feuille de route concrète, les outils pertinents identifiés et les bonnes pratiques conformes à l'AI Act et au RGPD.",
-  features: ["Atelier en présentiel", "Conférence en entreprise", "Formation en ligne", "Workshop en groupe"],
+  features: ["Atelier en présentiel", "Conférence en entreprise", "Webinaire", "Workshop en groupe"],
   accent: "from-primary/20 to-secondary/30"
 }];
 const ServiceCard = ({
