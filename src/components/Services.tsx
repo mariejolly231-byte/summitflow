@@ -14,17 +14,17 @@ const services = [{
   features: ["Outils internes personnalisés", "Dashboard pilotage", "Portail client", "Apps métiers sur mesure"],
   accent: "from-secondary/30 to-primary/20"
 }, {
-  icon: Settings,
-  title: "Optimisation & Productivité",
-  description: "Analysez et améliorez vos processus pour gagner en efficacité au quotidien.",
-  features: ["Audit", "Refonte processus", "Standardisation", "Organisation système interne"],
-  accent: "from-accent/20 to-secondary/30"
-}, {
   icon: Presentation,
   title: "Ateliers & Conférences IA en Entreprise",
   description: "Accompagnement sur mesure pour intégrer le No-Code et l'IA dans votre organisation. Vos équipes repartent avec une feuille de route concrète, les outils pertinents identifiés et les bonnes pratiques conformes à l'AI Act et au RGPD.",
   features: ["Atelier en présentiel", "Conférence en entreprise", "Webinaire", "Masterclass", "Workshop en groupe"],
   accent: "from-primary/20 to-secondary/30"
+}, {
+  icon: Settings,
+  title: "Optimisation & Productivité",
+  description: "Analysez et améliorez vos processus pour gagner en efficacité au quotidien.",
+  features: ["Audit", "Refonte processus", "Standardisation", "Organisation système interne"],
+  accent: "from-accent/20 to-secondary/30"
 }];
 const ServiceCard = ({
   service,
