@@ -38,14 +38,14 @@ const offers = [
     title: "Ateliers & Conférences IA",
     tools: "Présentiel / En ligne",
     price: "Sur demande",
-    description: "Chaque intervention est construite sur mesure selon vos besoins et votre organisation.",
+    description: "Accompagnement sur mesure pour intégrer le No-Code et l'IA dans votre organisation.",
     features: [
       "Atelier en présentiel",
       "Conférence en entreprise",
-      "Formation en ligne",
+      "Webinaire",
+      "Masterclass",
       "Workshop en groupe",
-      "Feuille de route IA personnalisée",
-      "Conformité AI Act & RGPD"
+      "Feuille de route IA personnalisée"
     ],
     isContact: true
   },
