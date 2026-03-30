@@ -23,7 +23,7 @@ const services = [{
   icon: Presentation,
   title: "Ateliers & Conférences IA en Entreprise",
   description: "Accompagnement sur mesure pour intégrer l'IA dans votre organisation. Vos équipes repartent avec une feuille de route concrète, les outils pertinents identifiés et les bonnes pratiques conformes à l'AI Act et au RGPD.",
-  features: ["Atelier en présentiel", "Conférence en entreprise", "Formation en ligne", "Workshop en groupe"],
+  features: ["Atelier en présentiel", "Conférence en entreprise", "Webinaire", "Workshop en groupe"],
   accent: "from-primary/20 to-secondary/30"
 }];
 const ServiceCard = ({
