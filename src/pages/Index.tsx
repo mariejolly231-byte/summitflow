@@ -17,6 +17,7 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import CookieBanner from "@/components/CookieBanner";
 import { SEOHead } from "@/components/SEOHead";
 
 const Index = () => {
@@ -43,6 +44,7 @@ const Index = () => {
         <Contact />
         <Footer />
         <ScrollToTop />
+        <CookieBanner />
       </main>
     </>
   );
