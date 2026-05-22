@@ -91,19 +91,7 @@ const GoogleReviews = () => {
   const duplicated = [...reviews, ...reviews];
 
   return (
-    <section className="section-padding bg-muted/30 overflow-x-clip pb-32 relative z-10">
-      <div className="container mx-auto">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-2 font-bold">
-            Ils me font confiance
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
-            Déjà accompagnés dans leur transformation digitale.
-            <br className="hidden sm:block" />{" "}
-            Découvrez ce qu'ils en disent.
-          </p>
-        </div>
-      </div>
+    <section className="pt-6 md:pt-8 pb-20 md:pb-28 overflow-x-clip relative z-10">
 
       <div className="relative group">
         {/* Fade edges */}
