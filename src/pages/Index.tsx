@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ReassuranceBar from "@/components/ReassuranceBar";
 import Problems from "@/components/Problems";
 import ValueProposition from "@/components/ValueProposition";
 import Services from "@/components/Services";
