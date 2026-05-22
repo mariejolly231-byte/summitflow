@@ -1,37 +1,22 @@
 import cciToulouse from "@/assets/partners/cci-toulouse.png";
 import numericoach from "@/assets/partners/numericoach.png";
 import senza from "@/assets/partners/senza.svg";
-import ecoleCube from "@/assets/partners/ecole-cube.svg";
+import ecoleCube from "@/assets/partners/ecole-cube.png";
 import gersDistribution from "@/assets/partners/gers-distribution.png";
 
 type Logo = { src: string; alt: string; dark?: boolean };
 
-const groups: { title: string; items: Logo[] }[] = [
-  {
-    title: "Entreprises accompagnées",
-    items: [
-      { src: gersDistribution, alt: "Gers Production Distribution" },
-    ],
-  },
-  {
-    title: "Partenaires formation",
-    items: [
-      { src: ecoleCube, alt: "École Cube" },
-      { src: senza, alt: "Senza Formations" },
-      { src: numericoach, alt: "Numericoach", dark: true },
-    ],
-  },
-  {
-    title: "Réseau territorial",
-    items: [
-      { src: cciToulouse, alt: "CCI Toulouse Haute-Garonne", dark: true },
-    ],
-  },
+const logos: Logo[] = [
+  { src: gersDistribution, alt: "Gers Production Distribution" },
+  { src: ecoleCube, alt: "École Cube" },
+  { src: senza, alt: "Senza Formations" },
+  { src: numericoach, alt: "Numericoach", dark: true },
+  { src: cciToulouse, alt: "CCI Toulouse Haute-Garonne", dark: true },
 ];
 
 const LogoChip = ({ logo }: { logo: Logo }) => (
   <div
-    className={`h-20 w-44 px-5 flex items-center justify-center rounded-xl border transition-colors ${
+    className={`h-20 w-44 px-5 flex items-center justify-center rounded-xl border shrink-0 transition-colors ${
       logo.dark
         ? "bg-foreground border-foreground/20 hover:border-primary/40"
         : "bg-background border-border/60 hover:border-primary/40"
@@ -47,37 +32,37 @@ const LogoChip = ({ logo }: { logo: Logo }) => (
 );
 
 const TrustLogos = () => {
+  const duplicated = [...logos, ...logos, ...logos, ...logos];
   return (
-    <section className="section-padding">
+    <section className="pt-16 md:pt-20 pb-6 md:pb-8">
       <div className="container mx-auto">
-        <div className="text-center mb-10 md:mb-14 animate-fade-up max-w-3xl mx-auto">
+        <div className="text-center mb-8 md:mb-10 animate-fade-up max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Ils m'ont fait confiance ou font partie de mon écosystème
+            Ils m'ont déjà fait confiance
           </h2>
           <p className="text-base text-muted-foreground px-4">
-            Un réseau de partenaires industriels, formation et territoriaux pour vous accompagner durablement.
+            Des structures accompagnées, partenaires ou prescriptrices.
           </p>
         </div>
+      </div>
 
-        <div className="space-y-8 md:space-y-10 max-w-5xl mx-auto">
-          {groups.map((g, gi) => (
-            <div
-              key={g.title}
-              className="animate-fade-up"
-              style={{ animationDelay: `${gi * 100}ms` }}
-            >
-              <p className="text-xs uppercase tracking-wider text-muted-foreground/80 font-semibold text-center mb-4">
-                {g.title}
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                {g.items.map((label) => (
-                  <LogoChip key={label.alt} logo={label} />
-                ))}
-              </div>
-            </div>
+      <div className="relative overflow-hidden group">
+        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <div className="flex gap-4 md:gap-6 animate-[trust-scroll_45s_linear_infinite] group-hover:[animation-play-state:paused] w-max">
+          {duplicated.map((logo, i) => (
+            <LogoChip key={`${logo.alt}-${i}`} logo={logo} />
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes trust-scroll {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </section>
   );
 };
