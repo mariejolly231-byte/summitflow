@@ -2,9 +2,9 @@
 
 export const seoConfig = {
   home: {
-    title: "Summit Flow | Expert No Code & IA à Toulouse | Automatisation & Web Apps",
-    description: "Summit Flow, votre expert No Code et IA à Toulouse. 10 ans d'expérience industrielle. Automatisation, web apps sur mesure (Bubble, Make, n8n) pour TPE/PME. Certifiée RNCP. Sud Toulousain et Pyrénées.",
-    keywords: "summit flow, summit flow no code, no code toulouse, ia toulouse, automatisation toulouse, bubble toulouse, make toulouse, web app toulouse, développement no code, expert no code pyrénées, consultant ia toulouse",
+    title: "Summit Flow | No-code, IA & automatisation pour PME industrielles - Toulouse",
+    description: "Summit Flow accompagne les PME industrielles et techniques : audit IA et process terrain, simplification, automatisation et formation no-code & IA. Toulouse, Occitanie et distance.",
+    keywords: "summit flow, no code pme industrielles, automatisation process industriels, audit ia terrain, formation no code ia occitanie, formation no code toulouse, conseil no code pme, simplification process, ia industrie pme",
     canonical: "https://www.summitflow.fr",
     ogImage: "/og-image.jpg" // À créer
   },

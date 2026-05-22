@@ -40,16 +40,18 @@ const About = () => {
             <div className="space-y-3 md:space-y-4">
               <h3 className="text-xl md:text-2xl font-bold text-foreground">
             </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed text-justify md:text-base">Ingénieure industrielle avec 10 ans d'expérience, j'ai créé Summit Flow à partir d'un constat vécu sur le terrain : trop d'organisations avancent freinées par des outils mal adaptés, des processus lourds et un manque de temps pour innover. Après dix années passées dans l'industrie, j'ai pris un virage important cette année en me formant intensivement pendant plusieurs mois au no-code et à l'IA, avec l'obtention d'une certification RNCP niveau 6 (Bac+3/4). 
-
-
-Un véritable tournant dans ma vie professionnelle, qui a donné un cadre et une légitimité à ce qui me passionnait déjà depuis plusieurs années : comprendre les systèmes, automatiser, et construire mes propres outils pour simplifier le quotidien.</p>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-justify">Passionnée de montagne, aspirante guide et rarement sans mon fidèle compagnon samoyède, j'y ai appris la même chose que dans la tech : pour avancer loin, il faut un itinéraire clair, le bon équipement, et savoir quand simplifier plutôt que surcharger. 
-
-C'est cette approche que j'apporte aux TPE, PME, artisans et indépendants du Sud Toulousain et des Pyrénées. Pas de jargon, pas de projets qui s'éternisent. Des sites, des applications et des automatisations pensées pour le terrain, pour que vous puissiez vous concentrer sur ce qui compte vraiment. 
-
- 
-            </p>
+              <p className="text-sm text-muted-foreground leading-relaxed text-justify md:text-base">
+                Ingénieure industrielle avec 10 ans d'expérience en production, qualité et conduite de projets, j'ai vu de l'intérieur ce qui freine vraiment les PME industrielles et techniques : des outils mal adaptés, des process implicites et un quotidien sous tension.
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-justify font-medium text-foreground/90">
+                Je comprends les contraintes réelles de délais, de marges, de coordination et d'adoption terrain.
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-justify">
+                Après une reconversion intensive vers le no-code et l'IA (certification RNCP niveau 6, Bac+3/4), j'ai créé Summit Flow pour mettre cette double culture industrie + tech au service de dirigeants qui veulent enfin simplifier leur organisation au lieu de la complexifier.
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-justify">
+                Basée en Occitanie, au sud de Toulouse, j'interviens sur site dans la région et à distance partout en France.
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-3 md:gap-4">
