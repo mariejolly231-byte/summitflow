@@ -1,13 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Problems from "@/components/Problems";
-import ValueProposition from "@/components/ValueProposition";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
 import About from "@/components/About";
 import TrustLogos from "@/components/TrustLogos";
 import TrainingCertifications from "@/components/TrainingCertifications";
-import Resources from "@/components/Resources";
 import GoogleReviews from "@/components/GoogleReviews";
 import Pricing from "@/components/Pricing";
 import ROICalculator from "@/components/ROICalculator";
@@ -25,15 +23,13 @@ const Index = () => {
       <main className="min-h-screen">
         <Navbar />
         <Hero />
-        <Problems />
-        <ValueProposition />
         <Services />
+        <Problems />
         <Process />
         <About />
         <TrustLogos />
         <GoogleReviews />
         <TrainingCertifications />
-        <Resources />
         <Pricing />
         <ROICalculator />
         <FAQ />
