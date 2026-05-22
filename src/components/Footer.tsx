@@ -80,6 +80,13 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Certifications */}
+        <div className="flex flex-wrap justify-center items-center gap-8 mb-8">
+          <img src={qualiopi} alt="Certification Qualiopi" className="h-12 w-auto" loading="lazy" />
+          <img src={monCompteFormation} alt="Mon Compte Formation" className="h-12 w-auto" loading="lazy" />
+          <span className="text-sm text-background/50">Certifiée RNCP Niveau 6</span>
+        </div>
+
         {/* Bottom */}
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-background/50">
@@ -93,10 +100,8 @@ const Footer = () => {
               Politique de confidentialité
             </Link>
           </div>
-          <p className="text-sm text-background/50">
-            Certifiée RNCP Niveau 6
-          </p>
         </div>
+
       </div>
     </footer>;
 };
