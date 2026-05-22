@@ -20,7 +20,7 @@ const Index = () => {
   return (
     <>
       <SEOHead page="home" />
-      <main className="min-h-screen">
+      <main className="min-h-screen grain-body">
         <Navbar />
         <Hero />
         <Services />
