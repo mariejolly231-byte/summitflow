@@ -11,7 +11,6 @@ import Resources from "@/components/Resources";
 import GoogleReviews from "@/components/GoogleReviews";
 import Pricing from "@/components/Pricing";
 import ROICalculator from "@/components/ROICalculator";
-import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
