@@ -24,7 +24,7 @@ const services = [{
 }, {
   icon: GraduationCap,
   title: "Formation & acculturation",
-  description: "Je forme vos équipes au no-code et à l'IA avec une approche terrain, pour qu'elles deviennent autonomes et gardent la main sur leurs outils.",
+  description: "Je forme vos équipes au no-code et à l'IA avec une approche terrain, pour qu'elles gagnent en efficacité, en maîtrise de leur valeur ajoutée et en conformité dans un cadre professionnel.",
   features: [
     "Pour qui : dirigeants et équipes opérationnelles",
     "Problèmes résolus : dépendance prestataires, outils non adoptés",
