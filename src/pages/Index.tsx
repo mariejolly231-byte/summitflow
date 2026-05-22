@@ -34,9 +34,9 @@ const Index = () => {
         <Process />
         <About />
         <TrustLogos />
+        <GoogleReviews />
         <TrainingCertifications />
         <Resources />
-        <GoogleReviews />
         <Pricing />
         <ROICalculator />
         <Testimonials />
