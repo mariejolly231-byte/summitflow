@@ -36,7 +36,6 @@ const Index = () => {
         <Resources />
         <Pricing />
         <ROICalculator />
-        <Testimonials />
         <FAQ />
         <Contact />
         <Footer />
