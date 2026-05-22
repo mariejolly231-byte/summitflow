@@ -4,6 +4,22 @@ import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 
 const offers = [
   {
+    icon: Presentation,
+    title: "Accompagnement sur mesure",
+    tools: "Ateliers & Conférences IA",
+    price: "Sur demande",
+    description: "Accompagnement personnalisé pour intégrer le No-Code et l'IA dans votre quotidien professionnel.",
+    features: [
+      "Audit des usages et besoins métier",
+      "Intégration No-Code adaptée à votre contexte",
+      "Prise en main concrète de l'IA au quotidien",
+      "Ateliers en présentiel ou en ligne",
+      "Conférences et masterclass en entreprise",
+      "Feuille de route IA personnalisée"
+    ],
+    isContact: true
+  },
+  {
     icon: Layers,
     title: "Application Web/SaaS",
     tools: "Bubble / Lovable",
@@ -32,22 +48,6 @@ const offers = [
       "Documentation personnalisée",
       "Évolutions et ajustements"
     ]
-  },
-  {
-    icon: Presentation,
-    title: "Ateliers & Conférences IA",
-    tools: "Présentiel / En ligne",
-    price: "Sur demande",
-    description: "Accompagnement sur mesure pour intégrer le No-Code et l'IA dans votre organisation.",
-    features: [
-      "Atelier en présentiel",
-      "Conférence en entreprise",
-      "Webinaire",
-      "Masterclass",
-      "Workshop en groupe",
-      "Feuille de route IA personnalisée"
-    ],
-    isContact: true
   },
   {
     icon: Globe,
