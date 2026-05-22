@@ -1,6 +1,9 @@
 import { Mail, MapPin, Linkedin, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.webp";
+import qualiopi from "@/assets/qualiopi.png";
+import monCompteFormation from "@/assets/mon-compte-formation.png";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-foreground text-background py-16">
