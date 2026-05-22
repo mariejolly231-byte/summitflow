@@ -46,14 +46,14 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto pt-0 md:pt-0 -mt-8 md:-mt-16">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 md:mb-6 font-extrabold tracking-tight animate-fade-up">
             <span className="text-foreground drop-shadow-lg">Moins de désordre organisé. </span>
-            <span className="text-primary drop-shadow-lg">Plus de flux simples pour que l'industrie respire.</span>
+            <span className="text-primary drop-shadow-lg">Progressez léger.</span>
           </h1>
           
           <div className="inline-block bg-background/80 backdrop-blur-sm rounded-2xl border border-border/40 px-4 sm:px-6 py-3 md:py-4 shadow-lg shadow-primary/10 mb-6 md:mb-8 animate-fade-up" style={{
           animationDelay: '100ms'
         }}>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              J'aide les PME industrielles et techniques à clarifier leurs process, fiabiliser leurs données et déployer le no-code, l'automatisation et l'IA sans rajouter une usine à gaz.
+              J'accompagne les PME techniques à clarifier leurs process, fiabiliser leurs données et déployer le no-code, l'automatisation et l'IA pour qu'elles retrouvent de la valeur ajoutée.
             </p>
           </div>
 
