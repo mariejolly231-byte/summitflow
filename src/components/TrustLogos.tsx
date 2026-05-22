@@ -1,21 +1,48 @@
-const groups = [
+import cciToulouse from "@/assets/partners/cci-toulouse.png";
+import numericoach from "@/assets/partners/numericoach.png";
+import senza from "@/assets/partners/senza.svg";
+import ecoleCube from "@/assets/partners/ecole-cube.svg";
+import gersDistribution from "@/assets/partners/gers-distribution.png";
+
+type Logo = { src: string; alt: string; dark?: boolean };
+
+const groups: { title: string; items: Logo[] }[] = [
   {
     title: "Entreprises accompagnées",
-    items: ["Gers Distribution", "PME industrielles", "Bureaux d'études", "Cabinets techniques"],
+    items: [
+      { src: gersDistribution, alt: "Gers Production Distribution" },
+    ],
   },
   {
     title: "Partenaires formation",
-    items: ["École Cube", "Senza Formations", "Numericoach"],
+    items: [
+      { src: ecoleCube, alt: "École Cube" },
+      { src: senza, alt: "Senza Formations" },
+      { src: numericoach, alt: "Numericoach", dark: true },
+    ],
   },
   {
     title: "Réseau territorial",
-    items: ["La Tréso Numérique", "BGE Sud-Ouest", "CCI Toulouse", "Mission Locale"],
+    items: [
+      { src: cciToulouse, alt: "CCI Toulouse Haute-Garonne", dark: true },
+    ],
   },
 ];
 
-const LogoChip = ({ label }: { label: string }) => (
-  <div className="px-5 py-3 rounded-xl border border-border/60 bg-background/70 backdrop-blur-sm text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
-    {label}
+const LogoChip = ({ logo }: { logo: Logo }) => (
+  <div
+    className={`h-20 w-44 px-5 flex items-center justify-center rounded-xl border transition-colors ${
+      logo.dark
+        ? "bg-foreground border-foreground/20 hover:border-primary/40"
+        : "bg-background border-border/60 hover:border-primary/40"
+    }`}
+  >
+    <img
+      src={logo.src}
+      alt={logo.alt}
+      loading="lazy"
+      className="max-h-12 max-w-full object-contain"
+    />
   </div>
 );
 
@@ -42,18 +69,14 @@ const TrustLogos = () => {
               <p className="text-xs uppercase tracking-wider text-muted-foreground/80 font-semibold text-center mb-4">
                 {g.title}
               </p>
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="flex flex-wrap justify-center gap-4">
                 {g.items.map((label) => (
-                  <LogoChip key={label} label={label} />
+                  <LogoChip key={label.alt} logo={label} />
                 ))}
               </div>
             </div>
           ))}
         </div>
-
-        <p className="text-xs text-muted-foreground/70 text-center mt-8 max-w-2xl mx-auto px-4">
-          Logos à venir. Les références sont citées avec l'accord des partenaires concernés.
-        </p>
       </div>
     </section>
   );

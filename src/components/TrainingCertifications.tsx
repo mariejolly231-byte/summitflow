@@ -1,4 +1,5 @@
-import { BadgeCheck, GraduationCap } from "lucide-react";
+import qualiopi from "@/assets/partners/qualiopi.jpg";
+import monCompteFormation from "@/assets/partners/mon-compte-formation.png";
 
 const TrainingCertifications = () => {
   return (
@@ -15,9 +16,9 @@ const TrainingCertifications = () => {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
-            <div className="card-service flex items-center gap-4 animate-fade-up">
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <BadgeCheck className="w-7 h-7 text-primary" />
+            <div className="card-service flex items-center gap-5 animate-fade-up">
+              <div className="w-28 h-20 rounded-lg bg-background border border-border/60 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                <img src={qualiopi} alt="Certification Qualiopi - processus certifié" className="max-h-full max-w-full object-contain p-1" />
               </div>
               <div>
                 <p className="font-semibold text-foreground">Démarche Qualiopi</p>
@@ -25,9 +26,9 @@ const TrainingCertifications = () => {
               </div>
             </div>
 
-            <div className="card-service flex items-center gap-4 animate-fade-up" style={{ animationDelay: "100ms" }}>
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <GraduationCap className="w-7 h-7 text-primary" />
+            <div className="card-service flex items-center gap-5 animate-fade-up" style={{ animationDelay: "100ms" }}>
+              <div className="w-28 h-20 rounded-lg bg-foreground flex items-center justify-center flex-shrink-0 overflow-hidden">
+                <img src={monCompteFormation} alt="Mon Compte Formation - CPF" className="max-h-12 max-w-full object-contain px-2" />
               </div>
               <div>
                 <p className="font-semibold text-foreground">Mon Compte Formation</p>
