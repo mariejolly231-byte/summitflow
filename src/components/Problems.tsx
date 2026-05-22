@@ -33,7 +33,7 @@ const Problems = () => {
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-14 animate-fade-up max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Quand le bordel organisé devient la norme
+            Quand le désordre organisé devient la norme
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground px-4">
             Dans les PME industrielles et techniques, ce ne sont pas les outils qui manquent, c'est la cohérence entre eux.

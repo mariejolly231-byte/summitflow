@@ -63,7 +63,7 @@ const Contact = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-up max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Parlons de votre bordel organisé
+            Parlons de votre désordre organisé
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground">
             Si vous voulez clarifier vos priorités, alléger le sac et remettre les outils à leur juste place, échangeons.
