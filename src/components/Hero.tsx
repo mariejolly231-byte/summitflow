@@ -45,7 +45,7 @@ const Hero = () => {
     }}>
         <div className="max-w-4xl mx-auto pt-0 md:pt-0 -mt-8 md:-mt-16">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 md:mb-6 font-extrabold tracking-tight animate-fade-up">
-            <span className="text-foreground drop-shadow-lg">Moins de bordel organisé. </span>
+            <span className="text-foreground drop-shadow-lg">Moins de désordre organisé. </span>
             <span className="text-primary drop-shadow-lg">Plus de flux simples pour que l'industrie respire.</span>
           </h1>
           
