@@ -45,6 +45,19 @@
     --gradient-mint: linear-gradient(135deg, hsl(174 58% 45%) 0%, hsl(174 62% 55%) 100%);
     --gradient-mountain: linear-gradient(180deg, hsl(215 16% 47% / 0.1) 0%, hsl(220 14% 96%) 100%);
 
+    /* Refined elevation system (layered, soft) */
+    --shadow-xs: 0 1px 2px -1px hsl(215 25% 15% / 0.04);
+    --shadow-sm: 0 1px 2px hsl(215 25% 15% / 0.04), 0 2px 6px -2px hsl(215 25% 15% / 0.05);
+    --shadow-md: 0 2px 4px hsl(215 25% 15% / 0.04), 0 8px 24px -8px hsl(215 25% 15% / 0.08);
+    --shadow-lg: 0 4px 8px hsl(215 25% 15% / 0.04), 0 16px 40px -12px hsl(215 25% 15% / 0.10);
+    --shadow-xl: 0 8px 16px hsl(215 25% 15% / 0.05), 0 24px 64px -16px hsl(215 25% 15% / 0.14);
+    --shadow-mint: 0 8px 24px -8px hsl(174 58% 45% / 0.28), 0 2px 4px hsl(174 58% 45% / 0.12);
+    --shadow-mint-hover: 0 12px 32px -8px hsl(174 58% 45% / 0.40), 0 4px 8px hsl(174 58% 45% / 0.16);
+
+    /* Refined easing (Material / Vercel-like) */
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -94,6 +107,15 @@
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217 33% 20%;
     --sidebar-ring: 174 58% 50%;
+
+    /* Dark elevations (deeper, no harsh blacks) */
+    --shadow-xs: 0 1px 2px -1px hsl(0 0% 0% / 0.4);
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.3), 0 2px 6px -2px hsl(0 0% 0% / 0.4);
+    --shadow-md: 0 2px 4px hsl(0 0% 0% / 0.3), 0 8px 24px -8px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 4px 8px hsl(0 0% 0% / 0.35), 0 16px 40px -12px hsl(0 0% 0% / 0.55);
+    --shadow-xl: 0 8px 16px hsl(0 0% 0% / 0.4), 0 24px 64px -16px hsl(0 0% 0% / 0.6);
+    --shadow-mint: 0 8px 24px -8px hsl(174 58% 50% / 0.35), 0 2px 4px hsl(174 58% 50% / 0.18);
+    --shadow-mint-hover: 0 12px 32px -8px hsl(174 58% 50% / 0.50), 0 4px 8px hsl(174 58% 50% / 0.22);
   }
 }
 
@@ -105,25 +127,77 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    font-feature-settings: "ss01", "cv11", "kern";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     @apply font-bold;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+
+  h1 { letter-spacing: -0.035em; line-height: 1.05; }
+  h2 { letter-spacing: -0.028em; line-height: 1.1; }
+  h3 { letter-spacing: -0.022em; line-height: 1.2; }
+
+  p { text-wrap: pretty; }
+
+  /* Refined selection */
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--foreground));
+  }
+
+  /* Refined focus ring */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary) / 0.6);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
 @layer components {
   .btn-hero {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 rounded-full text-lg font-semibold;
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-full text-lg font-semibold relative overflow-hidden;
+    box-shadow: var(--shadow-mint);
+    transition: transform 0.4s var(--ease-out-soft), box-shadow 0.4s var(--ease-out-soft), background-color 0.3s ease;
+    letter-spacing: -0.01em;
+  }
+  .btn-hero:hover {
+    @apply bg-primary/95;
+    box-shadow: var(--shadow-mint-hover);
+    transform: translateY(-1px);
+  }
+  .btn-hero:active {
+    transform: translateY(0);
+    transition-duration: 0.1s;
   }
 
   .btn-secondary-hero {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-md hover:shadow-lg transition-all duration-300 px-8 py-4 rounded-full text-lg font-semibold;
+    @apply bg-secondary text-secondary-foreground px-8 py-4 rounded-full text-lg font-semibold border border-border/60;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.4s var(--ease-out-soft), box-shadow 0.4s var(--ease-out-soft), background-color 0.3s ease, border-color 0.3s ease;
+    letter-spacing: -0.01em;
+  }
+  .btn-secondary-hero:hover {
+    @apply bg-secondary/80 border-primary/30;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
   }
 
   .card-service {
-    @apply bg-card rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-border/50;
+    @apply bg-card rounded-2xl p-8 border border-border/60 relative;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.5s var(--ease-out-soft), box-shadow 0.5s var(--ease-out-soft), border-color 0.4s ease;
+  }
+  .card-service:hover {
+    @apply border-primary/40;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
   }
 
   .gradient-text {
@@ -133,25 +207,36 @@
   .section-padding {
     @apply py-20 px-4 md:px-8 lg:px-16;
   }
+
+  /* Refined hairline divider with primary tint */
+  .divider-tinted {
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.25) 50%,
+      transparent 100%);
+  }
 }
 
 @layer utilities {
   .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
+    animation: fadeUp 0.7s var(--ease-out-soft) forwards;
+    opacity: 0;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.7s var(--ease-out-soft) forwards;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.8s ease-out forwards;
+    animation: slideUp 0.9s var(--ease-out-soft) forwards;
+    opacity: 0;
   }
 
   @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(24px);
     }
     to {
       opacity: 1;
@@ -167,7 +252,7 @@
   @keyframes slideUp {
     from {
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(40px);
     }
     to {
       opacity: 1;
@@ -178,6 +263,36 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Subtle atmospheric grain — adds tactility without noise */
+  .texture-grain {
+    position: relative;
+  }
+  .texture-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.025;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+  .dark .texture-grain::after {
+    opacity: 0.04;
+    mix-blend-mode: screen;
+  }
+
+  /* Body-wide subtle grain for atmospheric depth */
+  .grain-body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .dark .grain-body::before { opacity: 0.05; }
 }
 
 /* Smooth scrolling */
