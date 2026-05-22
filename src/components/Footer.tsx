@@ -93,10 +93,22 @@ const Footer = () => {
               Politique de confidentialité
             </Link>
           </div>
-          <p className="text-sm text-background/50">
-            Certifiée RNCP Niveau 6
-          </p>
+          <div className="flex items-center gap-4">
+            <img
+              src={qualiopiLogo}
+              alt="Certification Qualiopi"
+              className="h-10 w-auto opacity-90"
+              loading="lazy"
+            />
+            <img
+              src={monCompteFormationLogo}
+              alt="Mon Compte Formation"
+              className="h-10 w-auto opacity-90"
+              loading="lazy"
+            />
+          </div>
         </div>
+
       </div>
     </footer>;
 };
