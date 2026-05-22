@@ -34,8 +34,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#applications-web-sur-mesure-toulouse" className="text-background/70 hover:text-primary transition-colors">
-                  Cas clients
+                <a href="#clients-partenaires-toulouse" className="text-background/70 hover:text-primary transition-colors">
+                  Clients et Partenaires
                 </a>
               </li>
               <li>

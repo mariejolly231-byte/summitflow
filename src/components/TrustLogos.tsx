@@ -38,7 +38,7 @@ const LogoChip = ({ logo }: { logo: Logo }) => (
 const TrustLogos = () => {
   const duplicated = [...logos, ...logos, ...logos, ...logos];
   return (
-    <section className="pt-16 md:pt-20 pb-6 md:pb-8">
+    <section id="clients-partenaires-toulouse" className="pt-16 md:pt-20 pb-6 md:pb-8">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-10 animate-fade-up max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
