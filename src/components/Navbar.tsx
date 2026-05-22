@@ -11,6 +11,7 @@ const Navbar = () => {
     { href: "#tarifs-automatisation-toulouse", label: "Tarifs" },
     { href: "#clients-partenaires-toulouse", label: "Clients et Partenaires" },
     { href: "#rentabilite-no-code-pme", label: "Rentabilité" },
+    { href: "/ressources", label: "Ressources" },
     { href: "#no-code-ia-toulouse", label: "À propos" },
     { href: "#contact-no-code-toulouse", label: "Contact" }
   ];
