@@ -61,12 +61,12 @@ const Contact = () => {
   return (
     <section id="contact-no-code-toulouse" className="section-padding">
       <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-up">
+        <div className="text-center mb-16 animate-fade-up max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Parlons de votre projet
+            Parlons de votre bordel organisé
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Choisissez le mode de contact qui vous convient
+          <p className="text-lg md:text-xl text-muted-foreground">
+            Si vous voulez clarifier vos priorités, alléger le sac et remettre les outils à leur juste place, échangeons.
           </p>
         </div>
 

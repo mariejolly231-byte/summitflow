@@ -1,30 +1,36 @@
-import { Bot, AppWindow, Settings, Calendar, Check, Presentation } from "lucide-react";
+import { Search, Zap, GraduationCap, Calendar, Check } from "lucide-react";
 import { MobileCarousel } from "@/components/ui/mobile-carousel";
 import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 const services = [{
-  icon: Bot,
-  title: "Automatisation & IA",
-  description: "Libérez-vous des tâches répétitives en connectant vos outils habituels grâce à des workflows intelligents et des agents IA.",
-  features: ["Workflows multi-outils", "Extraction / scraping", "Traitement dataset", "Automatisation cabinet d'avocats", "Veille appels d'offres marchés publics"],
-  accent: "from-primary/20 to-accent/20"
+  icon: Search,
+  title: "Audit IA & process terrain",
+  description: "Un diagnostic concret de vos outils, flux et points de friction, pour prioriser ce qui doit vraiment être simplifié ou automatisé.",
+  features: [
+    "Pour qui : PME industrielles ou techniques en quête de clarté",
+    "Problèmes résolus : silos, ressaisies, process implicites",
+    "Ce que vous obtenez : cartographie, priorités, plan d'action",
+  ],
+  accent: "from-primary/20 to-accent/20",
 }, {
-  icon: AppWindow,
-  title: "Applications No Code",
-  description: "Créez des outils sur mesure pour gérer votre activité sans écrire une ligne de code.",
-  features: ["Outils internes personnalisés", "Dashboard pilotage", "Portail client", "Apps métiers sur mesure"],
-  accent: "from-secondary/30 to-primary/20"
+  icon: Zap,
+  title: "Simplification & automatisation ciblée",
+  description: "Je reconnecte vos outils, fiabilise vos flux de données et supprime les tâches sans valeur, sans empiler une couche logicielle de plus.",
+  features: [
+    "Pour qui : équipes qui croulent sous les fichiers et ressaisies",
+    "Problèmes résolus : doubles saisies, erreurs, perte de temps",
+    "Ce que vous obtenez : flux automatisés, données fiables, gain de temps mesurable",
+  ],
+  accent: "from-secondary/30 to-primary/20",
 }, {
-  icon: Presentation,
-  title: "Ateliers & Conférences IA en Entreprise",
-  description: "Accompagnement sur mesure pour intégrer le No-Code et l'IA dans votre organisation. Vos équipes repartent avec une feuille de route concrète, les outils pertinents identifiés et les bonnes pratiques conformes à l'AI Act et au RGPD.",
-  features: ["Atelier en présentiel", "Conférence en entreprise", "Webinaire", "Masterclass", "Workshop en groupe"],
-  accent: "from-primary/20 to-secondary/30"
-}, {
-  icon: Settings,
-  title: "Optimisation & Productivité",
-  description: "Analysez et améliorez vos processus pour gagner en efficacité au quotidien.",
-  features: ["Audit", "Refonte processus", "Standardisation", "Organisation système interne"],
-  accent: "from-accent/20 to-secondary/30"
+  icon: GraduationCap,
+  title: "Formation & acculturation",
+  description: "Je forme vos équipes au no-code et à l'IA avec une approche terrain, pour qu'elles deviennent autonomes et gardent la main sur leurs outils.",
+  features: [
+    "Pour qui : dirigeants et équipes opérationnelles",
+    "Problèmes résolus : dépendance prestataires, outils non adoptés",
+    "Ce que vous obtenez : autonomie, bonnes pratiques, cadre AI Act et RGPD",
+  ],
+  accent: "from-primary/20 to-secondary/30",
 }];
 const ServiceCard = ({
   service,
@@ -67,7 +73,7 @@ const Services = () => {
         {isMobileOrTablet ? <MobileCarousel className="mb-8 md:mb-12">
             {services.map((service, index) => <ServiceCard key={service.title} service={service} index={index} />)}
           </MobileCarousel> : (/* Desktop: Grid */
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div className="grid md:grid-cols-3 gap-8 mb-12">
             {services.map((service, index) => <ServiceCard key={service.title} service={service} index={index} />)}
           </div>)}
 

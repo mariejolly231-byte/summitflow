@@ -1,26 +1,26 @@
-import { MessageCircle, Search, Wrench, Rocket } from "lucide-react";
+import { Eye, GitBranch, Wrench, GraduationCap } from "lucide-react";
 import { MobileCarousel } from "@/components/ui/mobile-carousel";
 import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 const steps = [{
-  icon: MessageCircle,
+  icon: Eye,
   number: "01",
-  title: "Échange découverte",
-  description: "On discute de vos besoins, vos contraintes et vos objectifs lors d'un appel de 30 minutes."
+  title: "Observer le terrain",
+  description: "Je vais à la rencontre de vos équipes pour comprendre comment l'information circule vraiment, au-delà des process officiels.",
 }, {
-  icon: Search,
+  icon: GitBranch,
   number: "02",
-  title: "Audit & Proposition",
-  description: "J'analyse en profondeur vos besoins et vos outils existants pour concevoir une solution sur mesure avec un devis détaillé. Une première maquette ou workflow permet de valider l'alignement avant le développement et d'identifier les automatisations les plus pertinentes pour votre entreprise."
+  title: "Clarifier les flux",
+  description: "On cartographie ensemble vos données, vos outils et vos points de friction pour identifier ce qui mérite d'être simplifié en priorité.",
 }, {
   icon: Wrench,
   number: "03",
-  title: "Conception & Développement",
-  description: "Je construis votre solution en vous tenant informé à chaque étape du projet. Une fois en place, on ajuste, on améliore et on optimise pour garantir fluidité, efficacité et adoption. Votre solution évolue avec vos besoins."
+  title: "Simplifier et automatiser",
+  description: "Je déploie des solutions no-code, des automatisations et des briques IA ciblées, pas une usine à gaz. On ajuste au fil du terrain.",
 }, {
-  icon: Rocket,
+  icon: GraduationCap,
   number: "04",
-  title: "Livraison & Formation",
-  description: "Formation, documentation et support : tout est prévu pour que vos équipes maîtrisent durablement leurs outils."
+  title: "Former pour rendre autonome",
+  description: "Formation, documentation et support : vos équipes gardent la main sur leurs outils et continuent à les faire évoluer sans dépendance.",
 }];
 const ProcessCard = ({
   step,
@@ -61,9 +61,11 @@ const Process = () => {
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Comment ça marche
+            Comment j'allège le sac
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">Un processus simple et transparent pour vous accompagner.</p>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+            Une méthode simple, observée sur le terrain et pensée pour des résultats concrets.
+          </p>
         </div>
 
         {/* Mobile/Tablet: Carousel */}
