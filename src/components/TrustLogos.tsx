@@ -3,6 +3,8 @@ import numericoach from "@/assets/partners/numericoach.png";
 import senza from "@/assets/partners/senza.svg";
 import ecoleCube from "@/assets/partners/ecole-cube.png";
 import gersDistribution from "@/assets/partners/gers-distribution.png";
+import bgeSudOuest from "@/assets/partners/bge-sud-ouest.png";
+import tresoNumerique from "@/assets/partners/treso-numerique.svg";
 
 type Logo = { src: string; alt: string; dark?: boolean };
 
@@ -12,6 +14,8 @@ const logos: Logo[] = [
   { src: senza, alt: "Senza Formations" },
   { src: numericoach, alt: "Numericoach", dark: true },
   { src: cciToulouse, alt: "CCI Toulouse Haute-Garonne", dark: true },
+  { src: bgeSudOuest, alt: "BGE Sud-Ouest" },
+  { src: tresoNumerique, alt: "Tréso Numérique" },
 ];
 
 const LogoChip = ({ logo }: { logo: Logo }) => (
