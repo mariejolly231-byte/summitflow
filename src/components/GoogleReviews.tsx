@@ -3,6 +3,11 @@ import { useState } from "react";
 
 const reviews = [
   {
+    name: "Beatrice Laugraud",
+    role: "Formatrice / Coach",
+    text: "Une vraie formation, exigeante et très bien accompagnée par les coachs et tuteurs. Un merci tout spécial à ma coach Marie, tu as été au top",
+  },
+  {
     name: "Sonia",
     role: "Kinésithérapeute en secteur de montagne",
     text: "Je suis très satisfaite. On a fait un rdv où elle a posé beaucoup de questions pour cibler mes besoins et les solutions à mettre en place. Elle est très à l'écoute et fait un bon suivi. Je recommande !",
