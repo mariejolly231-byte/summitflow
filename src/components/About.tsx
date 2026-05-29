@@ -52,6 +52,9 @@ const About = () => {
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-justify">
                 Basée en Occitanie, au sud de Toulouse, j'interviens sur site dans la région et à distance partout en France.
               </p>
+              <p className="text-sm md:text-base text-foreground/90 leading-relaxed text-justify font-medium border-l-2 border-primary/60 pl-4">
+                Comme en montagne, je ne crois pas aux solutions "clé en main" : je pose la carte avec vous, j'allège le sac des outils inutiles et je vous guide pour éviter les fausses bonnes routes. L'objectif, c'est que vos équipes repartent autonomes sur un terrain qu'elles connaissent mieux que personne.
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-3 md:gap-4">

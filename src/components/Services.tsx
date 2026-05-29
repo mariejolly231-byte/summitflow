@@ -4,7 +4,7 @@ import { useIsMobileOrTablet } from "@/hooks/useMediaQuery";
 const services = [{
   icon: Search,
   title: "Audit IA & process terrain",
-  description: "Un diagnostic concret de vos outils, flux et points de friction, pour prioriser ce qui doit vraiment être simplifié ou automatisé.",
+  description: "Un diagnostic concret de vos outils, flux et points de friction. On pose la carte ensemble pour prioriser ce qui doit vraiment être simplifié ou automatisé, avant de tracer la route.",
   features: [
     "Pour qui : PME industrielles ou techniques en quête de clarté",
     "Problèmes résolus : silos, ressaisies, process implicites",
@@ -13,8 +13,8 @@ const services = [{
   accent: "from-primary/20 to-accent/20",
 }, {
   icon: Zap,
-  title: "Simplification & automatisation ciblée",
-  description: "Je reconnecte vos outils, fiabilise vos flux de données et supprime les tâches sans valeur, sans empiler une couche logicielle de plus.",
+  title: "Mise en place de solutions & automatisations",
+  description: "Je reconnecte vos outils existants, fiabilise vos flux de données et supprime les doubles saisies, sans empiler une usine à gaz de plus sur le dos de vos équipes.",
   features: [
     "Pour qui : équipes qui croulent sous les fichiers et ressaisies",
     "Problèmes résolus : doubles saisies, erreurs, perte de temps",
@@ -23,8 +23,8 @@ const services = [{
   accent: "from-secondary/30 to-primary/20",
 }, {
   icon: GraduationCap,
-  title: "Formation & acculturation",
-  description: "Je forme vos équipes au no-code et à l'IA avec une approche terrain, pour qu'elles deviennent autonomes et gardent la main sur leurs outils.",
+  title: "Formation no-code & IA",
+  description: "Je forme vos équipes au no-code et à l'IA avec une approche terrain. Démarche Qualiopi, mobilisation CPF possible selon les sessions, pour que vos équipes repartent autonomes.",
   features: [
     "Pour qui : dirigeants et équipes opérationnelles",
     "Problèmes résolus : dépendance prestataires, outils non adoptés",
@@ -65,8 +65,8 @@ const Services = () => {
   return <section id="solutions-no-code-ia-toulouse" className="section-padding bg-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16 animate-fade-up">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">Mes expertises No code & IA</h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">Des solutions adaptées aux besoins des TPE, PME et indépendants.</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4 font-bold">Trois types d'interventions, pensées pour les dirigeants de PME et leurs équipes terrain</h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">De la cartographie du terrain à l'autonomie des équipes : un accompagnement no-code & IA sans jargon, ancré dans le réel.</p>
         </div>
 
         {/* Mobile/Tablet: Carousel */}

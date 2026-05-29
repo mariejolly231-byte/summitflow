@@ -11,7 +11,7 @@ const TrainingCertifications = () => {
               Formation reconnue et finançable
             </h2>
             <p className="text-base text-muted-foreground px-4 max-w-2xl mx-auto">
-              Des actions de formation pouvant s'inscrire dans un cadre certifié, avec une approche concrète et orientée terrain.
+              Des actions de formation ancrées dans le quotidien de vos équipes, dont certaines peuvent s'inscrire dans un cadre Qualiopi, avec une mobilisation CPF possible selon les sessions.
             </p>
           </div>
 
