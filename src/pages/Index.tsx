@@ -7,7 +7,6 @@ import About from "@/components/About";
 import TrustLogos from "@/components/TrustLogos";
 import TrainingCertifications from "@/components/TrainingCertifications";
 import GoogleReviews from "@/components/GoogleReviews";
-import Pricing from "@/components/Pricing";
 import ROICalculator from "@/components/ROICalculator";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
@@ -30,7 +29,6 @@ const Index = () => {
         <TrustLogos />
         <GoogleReviews />
         <TrainingCertifications />
-        <Pricing />
         <ROICalculator />
         <FAQ />
         <Contact />
