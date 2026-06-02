@@ -31,7 +31,7 @@ const Hero = () => {
   const textTranslateY = scrollY * (isMobile ? 0.1 : 0.2);
 
   // Mountain starts below viewport and rises up on scroll
-  const mountainBasePosition = isMobile ? '0' : '-85vh';
+  const mountainBasePosition = isMobile ? '0' : '-70vh';
   const mountainTranslateY = Math.max(-scrollY * parallaxMultiplier, -400);
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30 pt-16 md:pt-0">
       {/* Background gradient */}
@@ -43,10 +43,10 @@ const Hero = () => {
       transform: `translateY(${textTranslateY}px)`,
       transition: 'opacity 0.1s ease-out'
     }}>
-        <div className="max-w-4xl mx-auto pt-0 md:pt-0 -mt-12 md:-mt-24">
+        <div className="max-w-4xl mx-auto pt-0 md:pt-0 -mt-8 md:-mt-16">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 md:mb-6 font-extrabold tracking-tight animate-fade-up">
-            <span className="text-foreground" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.7), 0 4px 24px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3)' }}>Perdus dans l'IA et les nouveaux outils </span>
-            <span className="text-primary" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.7), 0 4px 24px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3)' }}>comme dans un brouillard de montagne ?</span>
+            <span className="text-foreground drop-shadow-lg">Perdus dans l'IA et les nouveaux outils </span>
+            <span className="text-primary drop-shadow-lg">comme dans un brouillard de montagne ?</span>
           </h1>
           
           <div className="inline-block bg-background/80 backdrop-blur-sm rounded-2xl border border-border/40 px-4 sm:px-6 py-3 md:py-4 shadow-lg shadow-primary/10 mb-6 md:mb-8 animate-fade-up" style={{
