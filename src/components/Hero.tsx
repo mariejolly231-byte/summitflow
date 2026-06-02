@@ -33,7 +33,7 @@ const Hero = () => {
   // Mountain starts below viewport and rises up on scroll
   const mountainBasePosition = isMobile ? '0' : '-70vh';
   const mountainTranslateY = Math.max(-scrollY * parallaxMultiplier, -400);
-  return <section className="relative min-h-screen flex items-start justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30 pt-32 md:pt-40">
+  return <section className="relative min-h-screen flex items-start justify-center overflow-hidden bg-gradient-to-b from-background to-muted/30 pt-16 md:pt-24">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
 
