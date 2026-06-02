@@ -43,7 +43,7 @@ const Hero = () => {
       transform: `translateY(${textTranslateY}px)`,
       transition: 'opacity 0.1s ease-out'
     }}>
-        <div className="max-w-4xl mx-auto pt-0 md:pt-0 -mt-8 md:-mt-16">
+      <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 md:mb-6 font-extrabold tracking-tight animate-fade-up">
             <span className="text-foreground drop-shadow-lg">Perdus dans l'IA et les nouveaux outils </span>
             <span className="text-primary drop-shadow-lg">comme dans un brouillard de montagne ?</span>
