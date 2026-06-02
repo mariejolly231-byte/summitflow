@@ -38,12 +38,14 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
 
       {/* Content - visible on load, z-index above initial mountain position */}
-      <div className="relative z-30 container mx-auto px-4 text-center" style={{
+      <div className="relative z-40 container mx-auto px-4 text-center" style={{
       opacity: textOpacity,
       transform: `translateY(${textTranslateY}px)`,
       transition: 'opacity 0.1s ease-out'
     }}>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto relative">
+          {/* Readability overlay behind text — blurs whatever sits below (mountain) */}
+          <div aria-hidden className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-8 sm:-inset-y-10 -z-10 rounded-[2rem] bg-background/60 backdrop-blur-md [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_100%)]" />
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 md:mb-6 font-extrabold tracking-tight animate-fade-up">
             <span className="text-foreground drop-shadow-lg">Perdus dans l'IA et les nouveaux outils </span>
             <span className="text-primary drop-shadow-lg">comme dans un brouillard de montagne ?</span>
