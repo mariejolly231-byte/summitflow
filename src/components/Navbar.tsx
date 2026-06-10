@@ -7,23 +7,23 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   
   const navLinks = [
-    { href: "#solutions-no-code-ia-toulouse", label: "Services" },
-    { href: "#tarifs-automatisation-toulouse", label: "Tarifs" },
-    { href: "#clients-partenaires-toulouse", label: "Clients et Partenaires" },
-    { href: "#rentabilite-no-code-pme", label: "Rentabilité" },
+    { href: "/#solutions-no-code-ia-toulouse", label: "Services" },
+    { href: "/#tarifs-automatisation-toulouse", label: "Tarifs" },
+    { href: "/#clients-partenaires-toulouse", label: "Clients et Partenaires" },
+    { href: "/#rentabilite-no-code-pme", label: "Rentabilité" },
     { href: "/ressources", label: "Ressources" },
-    { href: "#no-code-ia-toulouse", label: "À propos" },
-    { href: "#contact-no-code-toulouse", label: "Contact" }
+    { href: "/#no-code-ia-toulouse", label: "À propos" },
+    { href: "/#contact-no-code-toulouse", label: "Contact" }
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="flex items-center gap-3">
+          <a href="/" className="flex items-center gap-3">
             <img 
               src={logo} 
-              alt="Summit Flow" 
+              alt="Logo Summit Flow — expert no-code et IA à Toulouse" 
               className="h-20 md:h-28 lg:h-36 w-auto object-contain" 
             />
           </a>
