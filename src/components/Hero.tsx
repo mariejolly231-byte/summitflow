@@ -80,7 +80,7 @@ const Hero = () => {
       transform: `translateX(-50%) translateY(${isMobile ? 0 : mountainTranslateY}px)`,
       transition: isMobile ? 'none' : 'transform 0.05s linear'
     }}>
-        <img src={heroMountains} alt="toulouse/no-code-ia/pyrénées/automatisation" width={1920} height={1279} className="w-full h-auto object-contain" fetchPriority="high" />
+        <img src={heroMountains} alt="Panorama des Pyrénées près de Toulouse — Summit Flow, solutions no-code, IA et automatisation" width={1920} height={1279} className="w-full h-auto object-contain" fetchPriority="high" />
         {/* Gradient overlay for smooth blend with content above */}
         <div className="absolute inset-x-0 top-0 h-24 md:h-32 bg-gradient-to-b from-background via-background/50 to-transparent" />
       </div>
