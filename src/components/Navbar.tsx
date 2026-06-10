@@ -8,7 +8,6 @@ const Navbar = () => {
   
   const navLinks = [
     { href: "/#solutions-no-code-ia-toulouse", label: "Services" },
-    { href: "/#tarifs-automatisation-toulouse", label: "Tarifs" },
     { href: "/#clients-partenaires-toulouse", label: "Clients et Partenaires" },
     { href: "/#rentabilite-no-code-pme", label: "Rentabilité" },
     { href: "/ressources", label: "Ressources" },
