@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SEOHead } from "@/components/SEOHead";
 
 const competences = [
   "Accompagnement stratégique des projets numériques",
@@ -15,6 +16,7 @@ const competences = [
 const Ressources = () => {
   return (
     <main className="min-h-screen">
+      <SEOHead page="ressources" />
       <Navbar />
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-4 max-w-4xl">

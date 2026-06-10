@@ -31,6 +31,24 @@ export const seoConfig = {
     title: "Contact No Code Toulouse | Devis Gratuit Automatisation & Web App",
     description: "Contactez votre expert No Code à Toulouse. Devis gratuit, RDV sous 48h. Intervention Sud Toulousain et Pyrénées. Automatisation, web apps, IA.",
     canonical: "https://www.summitflow.fr/#contact-no-code-toulouse"
+  },
+
+  ressources: {
+    title: "Ressources No Code & IA gratuites | Summit Flow Toulouse",
+    description: "Je partage une sélection de ressources gratuites no-code, IA et automatisation pour TPE et PME : contenus École Cube et partenaires du Sud toulousain.",
+    canonical: "https://www.summitflow.fr/ressources"
+  },
+
+  mentionsLegales: {
+    title: "Mentions légales | Summit Flow - No Code & IA Toulouse",
+    description: "Mentions légales du site Summit Flow, expert No Code & IA à Toulouse : éditeur du site, hébergement et propriété intellectuelle.",
+    canonical: "https://www.summitflow.fr/mentions-legales"
+  },
+
+  politiqueConfidentialite: {
+    title: "Politique de confidentialité | Summit Flow Toulouse",
+    description: "Politique de confidentialité de Summit Flow : gestion des données personnelles, cookies, mesure d'audience et conformité RGPD.",
+    canonical: "https://www.summitflow.fr/politique-confidentialite"
   }
 };
 
