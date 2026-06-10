@@ -2,10 +2,12 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SEOHead } from "@/components/SEOHead";
 
 const PolitiqueConfidentialite = () => {
   return (
     <main className="min-h-screen">
+      <SEOHead page="politiqueConfidentialite" />
       <Navbar />
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
