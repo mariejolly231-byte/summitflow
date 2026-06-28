@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment fonctionne une IA — Summit Flow</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #1D2530;
+  --teal: #30B5A8;
+  --red: #EF4343;
+  --light: #F8FAFC;
+  --navy-light: #263040;
+  --teal-dim: rgba(48,181,168,0.15);
+  --teal-border: rgba(48,181,168,0.3);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ──────────────── PRESENTATION SHELL ──────────────── */
+#presentation {
+  width: 100vw; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: #0a0d12;
+}
+
+.slide-wrapper {
+  width: 100%; height: 100%;
+  max-width: calc(100vh * 16/9);
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute; inset: 0;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+.slide.active { display: flex; }
+
+/* ──────────────── PROGRESS BAR ──────────────── */
+#progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px;
+  background: var(--teal);
+  transition: width 0.4s ease;
+  z-index: 100;
+}
+
+/* ──────────────── LOGO ──────────────── */
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--teal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: absolute;
+  top: 1.2rem; left: 1.5rem;
+  z-index: 10;
+}
+
+/* ──────────────── SLIDE NUMBER ──────────────── */
+.slide-num {
+  position: absolute;
+  bottom: 2.2rem; right: 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.1em;
+  z-index: 10;
+}
+.slide-num.dark { color: rgba(29,37,48,0.35); }
+
+/* ──────────────── NAV BUTTONS ──────────────── */
+.nav-btn {
+  position: absolute;
+  bottom: 1.8rem;
+  background: none; border: none;
+  color: rgba(255,255,255,0.25);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  z-index: 10;
+  font-family: 'DM Sans', sans-serif;
+}
+.nav-btn:hover { color: var(--teal); background: rgba(48,181,168,0.1); }
+.nav-btn.prev { left: 1.2rem; }
+.nav-btn.next { left: 2.8rem; }
+.nav-btn.dark { color: rgba(29,37,48,0.3); }
+.nav-btn.dark:hover { color: var(--teal); }
+
+/* ──────────────── FULLSCREEN BTN ──────────────── */
+#fs-btn {
+  position: fixed;
+  top: 0.6rem; right: 0.8rem;
+  background: none; border: 1px solid rgba(48,181,168,0.2);
+  color: rgba(48,181,168,0.5);
+  font-size: 0.65rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+  z-index: 200;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.05em;
+}
+#fs-btn:hover { color: var(--teal); border-color: var(--teal); }
+
+/* ──────────────── SLIDE 1 — TITRE ──────────────── */
+.slide-title-main {
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  padding: 4rem 5rem;
+  position: relative;
+}
+
+.slide-title-main::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 40%; height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(48,181,168,0.06) 100%);
+  pointer-events: none;
+}
+
+.slide-title-main .accent-line {
+  width: 3.5rem; height: 3px;
+  background: var(--teal);
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+
+.slide-title-main h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  max-width: 70%;
+  margin-bottom: 1rem;
+}
+
+.slide-title-main .subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: var(--teal);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+
+.slide-title-main .meta {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+}
+
+.meta-item {
+  background: rgba(48,181,168,0.1);
+  border: 1px solid rgba(48,181,168,0.25);
+  border-radius: 6px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.meta-item span { color: var(--teal); font-weight: 500; }
+
+/* Grid lines decoration */
+.grid-deco {
+  position: absolute; top: 0; right: 0;
+  width: 45%; height: 100%;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(48,181,168,1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48,181,168,1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* ──────────────── SLIDE 2 — AGENDA ──────────────── */
+.slide-agenda {
+  background: var(--light);
+  padding: 4rem 5rem 3rem;
+  position: relative;
+}
+
+.slide-agenda .logo { color: var(--teal); }
+
+.slide-agenda h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.agenda-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+
+.agenda-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.agenda-item:hover { background: rgba(48,181,168,0.07); }
+
+.agenda-time {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--teal);
+  min-width: 4.5rem;
+  letter-spacing: 0.05em;
+}
+
+.agenda-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--navy);
+  font-weight: 400;
+}
+
+.agenda-label strong {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.agenda-sep {
+  height: 1px;
+  background: rgba(29,37,48,0.1);
+  margin: 0.3rem 0;
+}
+
+/* ──────────────── SLIDE 3 — TOUR DE TABLE ──────────────── */
+.slide-tour {
+  background: var(--navy);
+  padding: 3rem 4rem;
+  flex-direction: column;
+  position: relative;
+}
+
+.slide-tour h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.timer-badge {
+  display: inline-block;
+  background: rgba(48,181,168,0.15);
+  border: 1px solid rgba(48,181,168,0.3);
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.tour-question {
+  background: rgba(48,181,168,0.08);
+  border-left: 3px solid var(--teal);
+  padding: 0.8rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 1.2rem;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tour-input-row {
+  display: flex; gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.tour-input {
+  flex: 1;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.tour-input:focus { border-color: var(--teal); background: rgba(48,181,168,0.08); }
+.tour-input::placeholder { color: rgba(255,255,255,0.3); }
+
+.tour-add-btn {
+  background: var(--teal);
+  color: var(--navy);
+  border: none;
+  border-radius: 8px;
+  padding: 0 1.2rem;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.tour-add-btn:hover { background: #26a99d; }
+.tour-add-btn:active { transform: scale(0.97); }
+
+.tour-cards {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.tour-card {
+  background: var(--teal);
+  color: var(--navy);
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  max-width: 220px;
+  animation: cardIn 0.3s ease;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(48,181,168,0.3);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.tour-accroche {
+  position: absolute; bottom: 2.5rem; left: 4rem; right: 4rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ──────────────── BLOC TITLE SLIDES ──────────────── */
+.slide-bloc-title {
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 3rem;
+  position: relative;
+}
+
+.bloc-number {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 800;
+  color: rgba(48,181,168,0.07);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+.slide-bloc-title h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #fff;
+  position: relative; z-index: 1;
+  margin-bottom: 0.8rem;
+}
+
+.bloc-tag {
+  display: inline-block;
+  background: rgba(48,181,168,0.15);
+  border: 1px solid rgba(48,181,168,0.3);
+  color: var(--teal);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  font-family: 'DM Sans', sans-serif;
+  position: relative; z-index: 1;
+  margin-bottom: 0.6rem;
+}
+
+.bloc-sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  position: relative; z-index: 1;
+  max-width: 35rem;
+}
+
+/* ──────────────── TABLEAU NOTIONS ──────────────── */
+.slide-notions {
+  background: var(--navy);
+  padding: 2.5rem 3rem;
+  flex-direction: column;
+}
+
+.slide-notions h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.notions-table {
+  width: 100%;
+  border-collapse: collapse;
+  flex: 1;
+}
+
+.notions-table th {
+  background: rgba(48,181,168,0.15);
+  color: var(--teal);
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(48,181,168,0.2);
+}
+
+.notions-table td {
+  padding: 0.75rem 1rem;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  vertical-align: top;
+}
+
+.notions-table tr.notion-row {
+  display: none;
+  animation: rowIn 0.3s ease;
+}
+.notions-table tr.notion-row.visible { display: table-row; }
+.notions-table tr.notion-row.active td {
+  background: rgba(48,181,168,0.1);
+  border-color: rgba(48,181,168,0.15);
+}
+.notions-table tr.notion-row.active td:first-child {
+  border-left: 3px solid var(--teal);
+}
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.notion-name {
+  color: var(--teal) !important;
+  font-weight: 600;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.82rem !important;
+}
+
+.reveal-btn {
+  align-self: flex-start;
+  margin-top: 1rem;
+  background: rgba(48,181,168,0.1);
+  border: 1px solid rgba(48,181,168,0.3);
+  color: var(--teal);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: all 0.2s;
+}
+.reveal-btn:hover { background: rgba(48,181,168,0.2); }
+.reveal-btn:disabled { opacity: 0.35; cursor: default; }
+
+/* ──────────────── TP SLIDES ──────────────── */
+.slide-tp {
+  background: var(--navy);
+  padding: 2.5rem 3.5rem;
+  flex-direction: column;
+  position: relative;
+}
+
+.slide-tp h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tp-meta {
+  display: flex; gap: 0.7rem; align-items: center;
+  margin-bottom: 1.2rem; flex-wrap: wrap;
+}
+
+.tool-badge {
+  background: var(--teal);
+  color: var(--navy);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+.tp-objective {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid rgba(48,181,168,0.5);
+  padding: 0.7rem 1rem;
+  border-radius: 0 6px 6px 0;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.82rem;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+
+.tp-consignes {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  flex: 1;
+}
+
+.tp-step {
+  display: flex; align-items: flex-start; gap: 0.9rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.tp-step:hover { background: rgba(255,255,255,0.07); border-color: rgba(48,181,168,0.2); }
+
+.tp-step.done {
+  background: rgba(48,181,168,0.08);
+  border-color: rgba(48,181,168,0.25);
+}
+.tp-step.done .step-text { text-decoration: line-through; opacity: 0.5; }
+.tp-step.done .step-num { background: var(--teal); color: var(--navy); }
+
+.step-num {
+  min-width: 1.6rem; height: 1.6rem;
+  background: rgba(48,181,168,0.15);
+  color: var(--teal);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.step-text {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  transition: all 0.2s;
+}
+
+/* ──────────────── TIMER ──────────────── */
+.timer-widget {
+  position: absolute;
+  top: 1rem; right: 1.5rem;
+  text-align: center;
+}
+
+.timer-display {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--teal);
+  transition: color 0.3s;
+  letter-spacing: 0.05em;
+}
+
+.timer-display.urgent { color: var(--red); animation: pulse 1s ease-in-out infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.timer-start-btn {
+  display: block;
+  margin: 0.3rem auto 0;
+  background: none;
+  border: 1px solid rgba(48,181,168,0.3);
+  color: var(--teal);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+.timer-start-btn:hover { background: rgba(48,181,168,0.1); }
+.timer-start-btn.running { color: var(--red); border-color: rgba(239,67,67,0.3); }
+
+/* ──────────────── DEBRIEFING ──────────────── */
+.slide-debrief {
+  background: var(--navy);
+  padding: 2.5rem 3.5rem;
+  flex-direction: column;
+}
+
+.slide-debrief h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.debrief-content {
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+
+.debrief-intro {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.85rem;
+  background: rgba(48,181,168,0.07);
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  border-left: 3px solid var(--teal);
+}
+
+.guide-questions {
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+
+.guide-q {
+  display: flex; gap: 0.8rem; align-items: flex-start;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.guide-q::before {
+  content: '·';
+  color: var(--teal);
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ──────────────── PAUSE ──────────────── */
+.slide-pause {
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.slide-pause h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.pause-sub {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.pause-timer-display {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  color: var(--teal);
+  transition: color 0.3s;
+  letter-spacing: 0.05em;
+}
+.pause-timer-display.urgent { color: var(--red); animation: pulse 1s ease-in-out infinite; }
+
+.pause-timer-start {
+  margin-top: 1rem;
+  background: rgba(48,181,168,0.1);
+  border: 1px solid rgba(48,181,168,0.3);
+  color: var(--teal);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.06em;
+}
+.pause-timer-start:hover { background: rgba(48,181,168,0.2); }
+.pause-timer-start.running { color: var(--red); border-color: rgba(239,67,67,0.3); }
+
+/* ──────────────── RÈGLES ÉTHIQUE ──────────────── */
+.slide-regle {
+  background: var(--navy);
+  padding: 2.5rem 3.5rem;
+  flex-direction: column;
+  position: relative;
+}
+
+.slide-regle h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+  max-width: 80%;
+  line-height: 1.25;
+}
+
+.regle-badge {
+  display: inline-block;
+  background: rgba(239,67,67,0.15);
+  border: 1px solid rgba(239,67,67,0.35);
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.cas-list {
+  display: flex; flex-direction: column; gap: 0.7rem;
+  flex: 1; margin-bottom: 1rem;
+}
+
+.cas-item {
+  display: flex; gap: 0.9rem; align-items: flex-start;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.cas-icon {
+  color: rgba(239,67,67,0.7);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.cas-text {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.83rem;
+  line-height: 1.45;
+}
+
+.reflexe-pro {
+  background: rgba(48,181,168,0.1);
+  border: 1px solid rgba(48,181,168,0.25);
+  border-radius: 10px;
+  padding: 0.9rem 1.2rem;
+  display: flex; gap: 0.8rem; align-items: flex-start;
+}
+
+.reflexe-icon {
+  color: var(--teal);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.reflexe-text {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.83rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.reflexe-text strong {
+  color: var(--teal);
+  font-style: normal;
+  font-weight: 600;
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+/* ──────────────── CAS ÉTHIQUES ──────────────── */
+.slide-cas {
+  background: var(--navy);
+  padding: 2.5rem 3.5rem;
+  flex-direction: column;
+}
+
+.slide-cas h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.situation-box {
+  background: rgba(255,255,255,0.05);
+  border-left: 3px solid rgba(239,67,67,0.6);
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem 1.2rem;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.risk-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0.5rem;
+  flex: 1;
+}
+
+.risk-table th {
+  background: rgba(239,67,67,0.12);
+  color: var(--red);
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.risk-cell {
+  background: rgba(239,67,67,0.15);
+  border: 1px solid rgba(239,67,67,0.25);
+  border-radius: 8px;
+  padding: 0.8rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  height: 100px;
+  vertical-align: middle;
+}
+
+.risk-cell .cell-prompt {
+  color: rgba(239,67,67,0.8);
+  font-size: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+
+.risk-cell .cell-answer {
+  display: none;
+  color: rgba(29,37,48,0.9);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  font-family: 'DM Sans', sans-serif;
+  text-align: left;
+}
+
+.risk-cell.revealed {
+  background: rgba(48,181,168,0.15);
+  border-color: rgba(48,181,168,0.35);
+  cursor: default;
+}
+
+.risk-cell.revealed .cell-prompt { display: none; }
+.risk-cell.revealed .cell-answer { display: block; color: rgba(255,255,255,0.85); }
+
+.risk-cell:not(.revealed):hover {
+  background: rgba(239,67,67,0.22);
+  border-color: rgba(239,67,67,0.4);
+  transform: scale(1.01);
+}
+
+.risk-hint {
+  text-align: center;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.72rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* ──────────────── SYNTHÈSE ──────────────── */
+.slide-synthese {
+  background: var(--navy);
+  padding: 2.5rem 3.5rem;
+  flex-direction: column;
+  position: relative;
+}
+
+.slide-synthese h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.reflex-cards {
+  display: flex; flex-direction: column; gap: 1rem;
+  flex: 1; justify-content: center;
+}
+
+.reflex-card {
+  background: linear-gradient(135deg, rgba(48,181,168,0.12) 0%, rgba(48,181,168,0.06) 100%);
+  border: 1px solid rgba(48,181,168,0.25);
+  border-radius: 12px;
+  padding: 1.1rem 1.4rem;
+  display: flex; gap: 1rem; align-items: center;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reflex-card.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reflex-num {
+  min-width: 2.2rem; height: 2.2rem;
+  background: var(--teal);
+  color: var(--navy);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.reflex-text {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.synthese-btn {
+  align-self: flex-start;
+  margin-top: 1.2rem;
+  background: rgba(48,181,168,0.1);
+  border: 1px solid rgba(48,181,168,0.3);
+  color: var(--teal);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: all 0.2s;
+}
+.synthese-btn:hover { background: rgba(48,181,168,0.2); }
+.synthese-btn:disabled { opacity: 0.3; cursor: default; }
+
+/* ──────────────── CLÔTURE ──────────────── */
+.slide-cloture {
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cloture-particles {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border: 1px solid rgba(48,181,168,0.15);
+  border-radius: 50%;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.5; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+.cloture-lines {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.geo-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(48,181,168,0.08), transparent);
+  height: 1px;
+  width: 60%;
+  animation: lineSlide linear infinite;
+}
+
+@keyframes lineSlide {
+  0% { transform: translateX(-100%) translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%) translateY(0); opacity: 0; }
+}
+
+.cloture-content { position: relative; z-index: 1; }
+
+.cloture-tag {
+  display: inline-block;
+  background: rgba(48,181,168,0.1);
+  border: 1px solid rgba(48,181,168,0.25);
+  color: var(--teal);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.slide-cloture h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+.cloture-sub {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.88rem;
+  max-width: 32rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.cloture-question {
+  background: rgba(48,181,168,0.08);
+  border: 1px solid rgba(48,181,168,0.2);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+  font-style: italic;
+  max-width: 35rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.cloture-sig {
+  color: rgba(255,255,255,0.3);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  font-family: 'Syne', sans-serif;
+}
+
+.cloture-sig span { color: var(--teal); }
+
+/* ──────────────── TP TITLE SLIDE ──────────────── */
+.slide-tp-title {
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  padding: 3rem 5rem;
+  position: relative;
+}
+
+.slide-tp-title::after {
+  content: '';
+  position: absolute; right: 0; top: 0;
+  width: 35%; height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(48,181,168,0.04) 100%);
+}
+
+.slide-tp-title h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+.tp-title-meta {
+  display: flex; gap: 0.8rem; align-items: center;
+  flex-wrap: wrap; margin-bottom: 1rem;
+}
+
+.tp-title-sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  max-width: 36rem;
+  margin-top: 0.5rem;
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<button id="fs-btn" onclick="toggleFS()">⛶ Plein écran</button>
+
+<div id="presentation">
+<div class="slide-wrapper">
+
+<!-- ══════════════════════════════════════════
+     SLIDE 1 — TITRE
+     ══════════════════════════════════════════ -->
+<div class="slide slide-title-main active" id="s1">
+  <div class="grid-deco"></div>
+  <div class="logo">Summit Flow</div>
+  <div class="accent-line"></div>
+  <h1>Comment fonctionne une IA — et comment l'utiliser sans se planter</h1>
+  <p class="subtitle">Fonctionnement · Éthique · RGPD · IA Act</p>
+  <div class="meta">
+    <div class="meta-item">Par <span>Marie Jolly · Summit Flow</span></div>
+    <div class="meta-item">Durée <span>3h30</span></div>
+    <div class="meta-item">Public <span>BTS Audiovisuel</span></div>
+    <div class="meta-item">Format <span>Petit groupe · 3 à 8 élèves</span></div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">01 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 2 — AGENDA
+     ══════════════════════════════════════════ -->
+<div class="slide slide-agenda" id="s2">
+  <div class="logo">Summit Flow</div>
+  <h2>Au programme aujourd'hui</h2>
+  <ul class="agenda-list">
+    <li class="agenda-item">
+      <span class="agenda-time">00:00</span>
+      <span class="agenda-label"><strong>Tour de table</strong> — 15 min</span>
+    </li>
+    <div class="agenda-sep"></div>
+    <li class="agenda-item">
+      <span class="agenda-time">00:15</span>
+      <span class="agenda-label"><strong>Cours :</strong> Comment ça marche — 35 min</span>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-time">00:50</span>
+      <span class="agenda-label"><strong>TP 1 :</strong> Ouvre le capot — 40 min</span>
+    </li>
+    <div class="agenda-sep"></div>
+    <li class="agenda-item">
+      <span class="agenda-time">01:30</span>
+      <span class="agenda-label">☕ Pause — 10 min</span>
+    </li>
+    <div class="agenda-sep"></div>
+    <li class="agenda-item">
+      <span class="agenda-time">01:40</span>
+      <span class="agenda-label"><strong>Cours :</strong> Éthique, RGPD, IA Act — 25 min</span>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-time">02:05</span>
+      <span class="agenda-label"><strong>TP 2 :</strong> Étude de cas éthique — 30 min</span>
+    </li>
+    <div class="agenda-sep"></div>
+    <li class="agenda-item">
+      <span class="agenda-time">02:35</span>
+      <span class="agenda-label">☕ Pause — 10 min</span>
+    </li>
+    <div class="agenda-sep"></div>
+    <li class="agenda-item">
+      <span class="agenda-time">02:45</span>
+      <span class="agenda-label"><strong>Synthèse</strong> + pont vers le Prompt Engineering — 15 min</span>
+    </li>
+  </ul>
+  <button class="nav-btn prev dark" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next dark" onclick="nextSlide()">›</button>
+  <div class="slide-num dark">02 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 3 — TOUR DE TABLE
+     ══════════════════════════════════════════ -->
+<div class="slide slide-tour" id="s3">
+  <div class="logo">Summit Flow</div>
+  <h2>On repart d'où vous en êtes</h2>
+  <span class="timer-badge">⏱ 15 min</span>
+  <div class="tour-question">
+    Quel outil vous avez testé avec Eric ?<br>
+    Une chose qui vous a surpris ?
+  </div>
+  <div class="tour-input-row">
+    <input class="tour-input" id="tourInput" type="text" placeholder="Votre réponse…" maxlength="120">
+    <button class="tour-add-btn" onclick="addTourCard()">+ Ajouter</button>
+  </div>
+  <div class="tour-cards" id="tourCards"></div>
+  <div class="tour-accroche">
+    "Aujourd'hui on ouvre le capot. Vous avez conduit la voiture — là on regarde le moteur."
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">03 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 4 — TITRE BLOC 1
+     ══════════════════════════════════════════ -->
+<div class="slide slide-bloc-title" id="s4">
+  <div class="logo">Summit Flow</div>
+  <div class="bloc-number">BLOC 1</div>
+  <div class="bloc-tag">⏱ 35 min</div>
+  <h2>Comment ça marche</h2>
+  <p class="bloc-sub">5 notions. Toujours avec un exemple de votre futur métier.</p>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">04 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 5 — TABLEAU NOTIONS
+     ══════════════════════════════════════════ -->
+<div class="slide slide-notions" id="s5">
+  <div class="logo">Summit Flow</div>
+  <h2>Le moteur de l'IA — 5 notions clés</h2>
+  <table class="notions-table" id="notionsTable">
+    <thead>
+      <tr>
+        <th style="width:20%">Notion</th>
+        <th style="width:38%">Explication</th>
+        <th style="width:42%">Exemple audiovisuel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="notion-row" id="nr1">
+        <td class="notion-name">Données d'entraînement</td>
+        <td>L'IA a ingéré des milliards de textes et d'images</td>
+        <td>Elle "connaît" les scripts de films et les styles de réalisateurs</td>
+      </tr>
+      <tr class="notion-row" id="nr2">
+        <td class="notion-name">LLM &amp; tokens</td>
+        <td>Elle prédit le mot suivant, un token à la fois</td>
+        <td>Compléter un sous-titre automatiquement</td>
+      </tr>
+      <tr class="notion-row" id="nr3">
+        <td class="notion-name">Hallucination</td>
+        <td>Elle invente avec une confiance totale</td>
+        <td>Cite un film ou un réalisateur qui n'existe pas</td>
+      </tr>
+      <tr class="notion-row" id="nr4">
+        <td class="notion-name">Biais algorithmique</td>
+        <td>Elle reproduit les biais de ses données d'entraînement</td>
+        <td>Surreprésente certains styles visuels ou profils de réalisateurs</td>
+      </tr>
+      <tr class="notion-row" id="nr5">
+        <td class="notion-name">Température</td>
+        <td>Règle le curseur entre créativité et fiabilité</td>
+        <td>Résumé factuel vs pitch créatif pour le même film</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="reveal-btn" id="revealBtn" onclick="revealNotion()">Révéler la suivante ›</button>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">05 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 6 — TITRE TP 1
+     ══════════════════════════════════════════ -->
+<div class="slide slide-tp-title" id="s6">
+  <div class="logo">Summit Flow</div>
+  <div class="tp-title-meta">
+    <span class="timer-badge">⏱ 40 min</span>
+    <span class="tool-badge">Claude.ai</span>
+  </div>
+  <h2>TP 1 — Ouvre le capot</h2>
+  <p class="tp-title-sub">Observer le comportement de l'IA — pas juste la consommer</p>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">06 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 7 — TP 1 MISSION 1
+     ══════════════════════════════════════════ -->
+<div class="slide slide-tp" id="s7">
+  <div class="logo">Summit Flow</div>
+  <div class="timer-widget">
+    <div class="timer-display" id="t7">15:00</div>
+    <button class="timer-start-btn" id="tb7" onclick="toggleTimer('t7','tb7',15)">▶ Démarrer</button>
+  </div>
+  <h2>Mission 1 — Chasse à l'hallucination</h2>
+  <div class="tp-meta">
+    <span class="timer-badge">⏱ 15 min</span>
+    <span class="tool-badge">Claude.ai</span>
+  </div>
+  <div class="tp-consignes">
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">1</div>
+      <div class="step-text">Demande à l'IA de parler d'un film très récent ou très obscur que tu connais bien</div>
+    </div>
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">2</div>
+      <div class="step-text">Repère ce qu'elle invente — prends le temps de vérifier ses affirmations</div>
+    </div>
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">3</div>
+      <div class="step-text">Note 1 exemple précis de hallucination à partager en débriefing</div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">07 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 8 — TP 1 MISSION 2
+     ══════════════════════════════════════════ -->
+<div class="slide slide-tp" id="s8">
+  <div class="logo">Summit Flow</div>
+  <div class="timer-widget">
+    <div class="timer-display" id="t8">10:00</div>
+    <button class="timer-start-btn" id="tb8" onclick="toggleTimer('t8','tb8',10)">▶ Démarrer</button>
+  </div>
+  <h2>Mission 2 — Détecte le biais</h2>
+  <div class="tp-meta">
+    <span class="timer-badge">⏱ 10 min</span>
+    <span class="tool-badge">Claude.ai</span>
+  </div>
+  <div class="tp-consignes">
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">1</div>
+      <div class="step-text">Demande : <em>"Décris un réalisateur de cinéma emblématique"</em></div>
+    </div>
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">2</div>
+      <div class="step-text">Demande : <em>"Décris une réalisatrice de cinéma emblématique"</em></div>
+    </div>
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">3</div>
+      <div class="step-text">Compare les deux réponses — qu'est-ce que ça révèle sur les données d'entraînement ?</div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">08 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 9 — TP 1 MISSION 3
+     ══════════════════════════════════════════ -->
+<div class="slide slide-tp" id="s9">
+  <div class="logo">Summit Flow</div>
+  <div class="timer-widget">
+    <div class="timer-display" id="t9">15:00</div>
+    <button class="timer-start-btn" id="tb9" onclick="toggleTimer('t9','tb9',15)">▶ Démarrer</button>
+  </div>
+  <h2>Mission 3 — Joue avec la température</h2>
+  <div class="tp-meta">
+    <span class="timer-badge">⏱ 15 min</span>
+    <span class="tool-badge">Claude.ai</span>
+  </div>
+  <div class="tp-consignes">
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">1</div>
+      <div class="step-text">Choisis un film que tu connais bien</div>
+    </div>
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">2</div>
+      <div class="step-text">Demande : <em>"Résume ce film en 3 lignes factuelles"</em></div>
+    </div>
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">3</div>
+      <div class="step-text">Demande : <em>"Écris un pitch créatif et accrocheur pour ce film"</em></div>
+    </div>
+    <div class="tp-step" onclick="toggleStep(this)">
+      <div class="step-num">4</div>
+      <div class="step-text">Compare les deux styles — pourquoi c'est différent ?</div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">09 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 10 — DEBRIEFING TP 1
+     ══════════════════════════════════════════ -->
+<div class="slide slide-debrief" id="s10">
+  <div class="logo">Summit Flow</div>
+  <h2>Debriefing collectif</h2>
+  <div class="debrief-content">
+    <div class="debrief-intro">
+      Chaque élève partage <strong>1 découverte</strong> — hallucination, biais ou surprise de style.
+      <span style="display:block;margin-top:0.3rem;color:rgba(255,255,255,0.4);font-size:0.78rem;">⏱ 10 min</span>
+    </div>
+    <div class="guide-questions">
+      <div class="guide-q">Quelle hallucination vous a le plus surpris — et pourquoi l'IA était si confiante ?</div>
+      <div class="guide-q">Le biais vous a choqué ou pas ? Qu'est-ce que ça dit des données sur lesquelles l'IA a été entraînée ?</div>
+      <div class="guide-q">Température : quel style vous a le plus servi — factuel ou créatif ? Dans quel contexte pro ?</div>
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">10 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 11 — PAUSE 1
+     ══════════════════════════════════════════ -->
+<div class="slide slide-pause" id="s11">
+  <div class="logo">Summit Flow</div>
+  <div class="pause-content" style="position:relative;z-index:1;">
+    <h2>Pause ☕</h2>
+    <p class="pause-sub">Retour dans 10 minutes</p>
+    <div class="pause-timer-display" id="pt11">10:00</div>
+    <button class="pause-timer-start" id="ptb11" onclick="toggleTimer('pt11','ptb11',10)">▶ Démarrer</button>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">11 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 12 — TITRE BLOC 2
+     ══════════════════════════════════════════ -->
+<div class="slide slide-bloc-title" id="s12">
+  <div class="logo">Summit Flow</div>
+  <div class="bloc-number">BLOC 2</div>
+  <div class="bloc-tag">⏱ 25 min</div>
+  <h2>Éthique, RGPD, IA Act</h2>
+  <p class="bloc-sub">3 règles professionnelles. 1 cas audiovisuel chacune.</p>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">12 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 13 — RÈGLE 1
+     ══════════════════════════════════════════ -->
+<div class="slide slide-regle" id="s13">
+  <div class="logo">Summit Flow</div>
+  <h2>Règle 1 — Ne pas balancer des données perso dans un LLM</h2>
+  <span class="regle-badge">RGPD</span>
+  <div class="cas-list">
+    <div class="cas-item">
+      <div class="cas-icon">▶</div>
+      <div class="cas-text">Le <strong>sous-titrage automatique d'une interview</strong> = les paroles sont des données personnelles — elles ne doivent pas être traitées par un LLM public sans vérification</div>
+    </div>
+    <div class="cas-item">
+      <div class="cas-icon">▶</div>
+      <div class="cas-text">Coller un <strong>brief client confidentiel dans ChatGPT</strong> = fuite potentielle des données — les serveurs OpenAI sont basés hors UE</div>
+    </div>
+  </div>
+  <div class="reflexe-pro">
+    <div class="reflexe-icon">✓</div>
+    <div class="reflexe-text">
+      <strong>Réflexe pro</strong>
+      "Je ne colle jamais un nom, un visage ou un brief client dans un outil IA public sans vérifier sa politique de données."
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">13 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 14 — RÈGLE 2
+     ══════════════════════════════════════════ -->
+<div class="slide slide-regle" id="s14">
+  <div class="logo">Summit Flow</div>
+  <h2>Règle 2 — Les images IA ne sont pas libres de droits</h2>
+  <span class="regle-badge">Propriété Intellectuelle</span>
+  <div class="cas-list">
+    <div class="cas-item">
+      <div class="cas-icon">▶</div>
+      <div class="cas-text"><strong>Générer un visuel pour une campagne client</strong> sans vérifier les conditions de l'outil = risque juridique réel pour vous et pour le client</div>
+    </div>
+    <div class="cas-item">
+      <div class="cas-icon">▶</div>
+      <div class="cas-text">En France : <strong>flou juridique en cours</strong> sur la paternité des œuvres générées par IA — prudence obligatoire en contexte professionnel</div>
+    </div>
+  </div>
+  <div class="reflexe-pro">
+    <div class="reflexe-icon">✓</div>
+    <div class="reflexe-text">
+      <strong>Réflexe pro</strong>
+      "Je mentionne toujours à mon client qu'un visuel est généré par IA et je vérifie les CGU de l'outil utilisé."
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">14 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 15 — RÈGLE 3
+     ══════════════════════════════════════════ -->
+<div class="slide slide-regle" id="s15">
+  <div class="logo">Summit Flow</div>
+  <h2>Règle 3 — Deepfakes : obligation de transparence</h2>
+  <span class="regle-badge">IA Act 2025</span>
+  <div class="cas-list">
+    <div class="cas-item">
+      <div class="cas-icon">▶</div>
+      <div class="cas-text">Un <strong>avatar synthétique dans une pub</strong> sans mention explicite = illégal depuis l'entrée en vigueur de l'IA Act en 2025</div>
+    </div>
+    <div class="cas-item">
+      <div class="cas-icon">▶</div>
+      <div class="cas-text">Un <strong>deepfake dans une vidéo de fiction</strong> = mention obligatoire du caractère synthétique du contenu, même dans un contexte artistique</div>
+    </div>
+  </div>
+  <div class="reflexe-pro">
+    <div class="reflexe-icon">✓</div>
+    <div class="reflexe-text">
+      <strong>Réflexe pro</strong>
+      "Tout contenu généré par IA destiné au public doit être identifié comme tel — c'est la loi depuis 2025."
+    </div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">15 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 16 — TITRE TP 2
+     ══════════════════════════════════════════ -->
+<div class="slide slide-tp-title" id="s16">
+  <div class="logo">Summit Flow</div>
+  <div class="tp-title-meta">
+    <span class="timer-badge">⏱ 30 min</span>
+    <span class="regle-badge">Éthique</span>
+  </div>
+  <h2>TP 2 — Étude de cas éthique</h2>
+  <p class="tp-title-sub">Appliquer les 3 règles sur des situations réelles du secteur audiovisuel</p>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">16 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 17 — CAS 1
+     ══════════════════════════════════════════ -->
+<div class="slide slide-cas" id="s17">
+  <div class="logo">Summit Flow</div>
+  <h2>Cas 1 — La voix clonée</h2>
+  <div class="situation-box">
+    Un influenceur clone sa voix avec une IA pour publier des contenus pendant ses vacances sans le dire à son audience.
+  </div>
+  <table class="risk-table">
+    <thead>
+      <tr>
+        <th>Risque RGPD</th>
+        <th>Risque Propriété Intellectuelle</th>
+        <th>Risque IA Act</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">La voix est une donnée biométrique personnelle. Cloner sans consentement explicite = violation RGPD.</div>
+          </div>
+        </td>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">La voix clonée peut contrefaire une identité. Droits sur la voix non réglés en droit français.</div>
+          </div>
+        </td>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">Contenu synthétique vocal diffusé publiquement = obligation de mention "généré par IA".</div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="risk-hint">Cliquer sur chaque cellule pour révéler l'analyse</p>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">17 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 18 — CAS 2
+     ══════════════════════════════════════════ -->
+<div class="slide slide-cas" id="s18">
+  <div class="logo">Summit Flow</div>
+  <h2>Cas 2 — Les visuels IA cachés</h2>
+  <div class="situation-box">
+    Une agence génère des visuels IA pour une campagne client sans l'informer.
+  </div>
+  <table class="risk-table">
+    <thead>
+      <tr>
+        <th>Risque RGPD</th>
+        <th>Risque Propriété Intellectuelle</th>
+        <th>Risque IA Act</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">Si les visuels incluent des personnes reconnaissables générées à partir de vraies photos = violation potentielle RGPD.</div>
+          </div>
+        </td>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">L'outil IA a peut-être utilisé des œuvres protégées pour s'entraîner. Droits sur l'output flous en France.</div>
+          </div>
+        </td>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">Contenu généré par IA dans une campagne commerciale = transparence obligatoire envers le client et le public.</div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="risk-hint">Cliquer sur chaque cellule pour révéler l'analyse</p>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">18 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 19 — CAS 3
+     ══════════════════════════════════════════ -->
+<div class="slide slide-cas" id="s19">
+  <div class="logo">Summit Flow</div>
+  <h2>Cas 3 — Le script non relu</h2>
+  <div class="situation-box">
+    Une radio diffuse un script rédigé par IA sans relecture. Une information fausse passe à l'antenne.
+  </div>
+  <table class="risk-table">
+    <thead>
+      <tr>
+        <th>Risque RGPD</th>
+        <th>Risque Propriété Intellectuelle</th>
+        <th>Risque IA Act</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">Si l'info fausse concerne une personne identifiable = atteinte aux données personnelles et à la réputation.</div>
+          </div>
+        </td>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">Pas de droit d'auteur sur un texte IA, mais la responsabilité éditoriale reste entièrement humaine.</div>
+          </div>
+        </td>
+        <td>
+          <div class="risk-cell" onclick="revealCell(this)">
+            <div class="cell-prompt">🔒 Cliquer pour révéler</div>
+            <div class="cell-answer">L'éditeur reste responsable du contenu diffusé, IA ou non. Pas d'excuse "c'est l'IA qui a dit".</div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="risk-hint">Cliquer sur chaque cellule pour révéler l'analyse</p>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">19 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 20 — PAUSE 2
+     ══════════════════════════════════════════ -->
+<div class="slide slide-pause" id="s20">
+  <div class="logo">Summit Flow</div>
+  <h2>Pause ☕</h2>
+  <p class="pause-sub">Retour dans 10 minutes</p>
+  <div class="pause-timer-display" id="pt20">10:00</div>
+  <button class="pause-timer-start" id="ptb20" onclick="toggleTimer('pt20','ptb20',10)">▶ Démarrer</button>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">20 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 21 — SYNTHÈSE
+     ══════════════════════════════════════════ -->
+<div class="slide slide-synthese" id="s21">
+  <div class="logo">Summit Flow</div>
+  <h2>3 réflexes à garder pour la vie</h2>
+  <div class="reflex-cards" id="reflexCards">
+    <div class="reflex-card" id="rc1">
+      <div class="reflex-num">1</div>
+      <div class="reflex-text"><strong style="color:var(--teal)">Vérifier toujours</strong> — l'IA hallucine avec une confiance totale, sans jamais signaler qu'elle invente</div>
+    </div>
+    <div class="reflex-card" id="rc2">
+      <div class="reflex-num">2</div>
+      <div class="reflex-text"><strong style="color:var(--teal)">Ne jamais coller</strong> des données sensibles dans un LLM public — brief client, données perso, voix, visage</div>
+    </div>
+    <div class="reflex-card" id="rc3">
+      <div class="reflex-num">3</div>
+      <div class="reflex-text"><strong style="color:var(--teal)">Mentionner l'usage IA</strong> sur tout contenu destiné à un client ou au public — c'est la loi et c'est éthique</div>
+    </div>
+  </div>
+  <button class="synthese-btn" id="syntheseBtn" onclick="showNextReflex()">Afficher le réflexe suivant ›</button>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">21 / 22</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 22 — CLÔTURE
+     ══════════════════════════════════════════ -->
+<div class="slide slide-cloture" id="s22">
+  <div class="logo">Summit Flow</div>
+  <div class="cloture-particles" id="particles"></div>
+  <div class="cloture-lines" id="geoLines"></div>
+  <div class="cloture-content">
+    <div class="cloture-tag">Prochaine session</div>
+    <h2>La prochaine fois :<br>Prompt Engineering</h2>
+    <p class="cloture-sub">
+      Vous avez vu comment l'IA fonctionne.<br>
+      La prochaine session : vous apprenez à lui parler efficacement pour obtenir exactement ce que vous voulez.
+    </p>
+    <div class="cloture-question">
+      "Dans votre futur métier, quelle tâche vous voyez assistée par IA — et quel risque avez-vous maintenant en tête ?"
+    </div>
+    <div class="cloture-sig">Marie Jolly · <span>Summit Flow</span></div>
+  </div>
+  <button class="nav-btn prev" onclick="prevSlide()">‹</button>
+  <button class="nav-btn next" onclick="nextSlide()">›</button>
+  <div class="slide-num">22 / 22</div>
+</div>
+
+</div><!-- /slide-wrapper -->
+</div><!-- /presentation -->
+
+<script>
+// ─── STATE ───────────────────────────────────────────────
+const TOTAL = 22;
+let current = 1;
+const timers = {}; // { id: { intervalId, remaining, minutes } }
+
+// Notions reveal
+let notionIdx = 0;
+const notionRows = ['nr1','nr2','nr3','nr4','nr5'];
+
+// Synthèse reveal
+let reflexIdx = 0;
+
+// ─── NAVIGATION ──────────────────────────────────────────
+function showSlide(n) {
+  if (n < 1) n = 1;
+  if (n > TOTAL) n = TOTAL;
+
+  document.querySelectorAll('.slide').forEach(s => {
+    s.classList.remove('active');
+    s.style.display = '';
+  });
+
+  const target = document.getElementById('s' + n);
+  if (target) {
+    target.style.display = 'flex';
+    target.classList.add('active');
+  }
+
+  current = n;
+  updateProgress();
+
+  // Init particles on slide 22
+  if (n === 22) initParticles();
+  if (n === 21) resetSynthese();
+}
+
+function nextSlide() { showSlide(current + 1); }
+function prevSlide() { showSlide(current - 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+  if (e.key === 'f' || e.key === 'F') toggleFS();
+});
+
+// ─── PROGRESS BAR ────────────────────────────────────────
+function updateProgress() {
+  const pct = ((current - 1) / (TOTAL - 1)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+}
+
+// ─── FULLSCREEN ──────────────────────────────────────────
+function toggleFS() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+    document.getElementById('fs-btn').textContent = '✕ Quitter';
+  } else {
+    document.exitFullscreen();
+    document.getElementById('fs-btn').textContent = '⛶ Plein écran';
+  }
+}
+
+// ─── TOUR DE TABLE ───────────────────────────────────────
+function addTourCard() {
+  const input = document.getElementById('tourInput');
+  const val = input.value.trim();
+  if (!val) return;
+
+  const card = document.createElement('div');
+  card.className = 'tour-card';
+  card.textContent = val;
+  document.getElementById('tourCards').appendChild(card);
+  input.value = '';
+  input.focus();
+}
+
+document.getElementById('tourInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addTourCard();
+});
+
+// ─── NOTIONS REVEAL ──────────────────────────────────────
+function revealNotion() {
+  if (notionIdx >= notionRows.length) return;
+
+  // Remove active from previous
+  if (notionIdx > 0) {
+    const prev = document.getElementById(notionRows[notionIdx - 1]);
+    if (prev) prev.classList.remove('active');
+  }
+
+  const row = document.getElementById(notionRows[notionIdx]);
+  if (row) {
+    row.classList.add('visible', 'active');
+  }
+
+  notionIdx++;
+
+  const btn = document.getElementById('revealBtn');
+  if (notionIdx >= notionRows.length) {
+    btn.textContent = 'Tout révélé ✓';
+    btn.disabled = true;
+    // Remove active from last
+    const last = document.getElementById(notionRows[notionRows.length - 1]);
+    if (last) last.classList.remove('active');
+  } else {
+    btn.textContent = 'Révéler la suivante › (' + notionIdx + '/' + notionRows.length + ')';
+  }
+}
+
+// Reset notions when leaving slide 5
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // notions reset if we leave s5
+  });
+});
+
+// ─── TIMER ───────────────────────────────────────────────
+function toggleTimer(displayId, btnId, minutes) {
+  const key = displayId;
+
+  if (timers[key] && timers[key].running) {
+    // Stop
+    clearInterval(timers[key].intervalId);
+    timers[key].running = false;
+    const btn = document.getElementById(btnId);
+    btn.textContent = '▶ Reprendre';
+    btn.classList.remove('running');
+    return;
+  }
+
+  if (!timers[key]) {
+    timers[key] = { remaining: minutes * 60, running: false };
+  }
+
+  const display = document.getElementById(displayId);
+  const btn = document.getElementById(btnId);
+
+  timers[key].running = true;
+  btn.textContent = '⏸ Pause';
+  btn.classList.add('running');
+
+  timers[key].intervalId = setInterval(() => {
+    timers[key].remaining--;
+
+    const m = Math.floor(timers[key].remaining / 60);
+    const s = timers[key].remaining % 60;
+    display.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+
+    if (timers[key].remaining <= 300) {
+      display.classList.add('urgent');
+    }
+
+    if (timers[key].remaining <= 0) {
+      clearInterval(timers[key].intervalId);
+      timers[key].running = false;
+      display.textContent = '00:00';
+      btn.textContent = '✓ Terminé';
+      btn.classList.remove('running');
+      btn.disabled = true;
+    }
+  }, 1000);
+}
+
+// ─── TP STEPS ────────────────────────────────────────────
+function toggleStep(el) {
+  el.classList.toggle('done');
+}
+
+// ─── RISK CELLS ──────────────────────────────────────────
+function revealCell(el) {
+  if (el.classList.contains('revealed')) return;
+  el.classList.add('revealed');
+}
+
+// ─── SYNTHÈSE CARDS ──────────────────────────────────────
+function resetSynthese() {
+  reflexIdx = 0;
+  ['rc1','rc2','rc3'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('show');
+  });
+  const btn = document.getElementById('syntheseBtn');
+  if (btn) {
+    btn.textContent = 'Afficher le réflexe suivant ›';
+    btn.disabled = false;
+  }
+}
+
+function showNextReflex() {
+  const ids = ['rc1','rc2','rc3'];
+  if (reflexIdx >= ids.length) return;
+
+  const el = document.getElementById(ids[reflexIdx]);
+  if (el) el.classList.add('show');
+
+  reflexIdx++;
+
+  const btn = document.getElementById('syntheseBtn');
+  if (reflexIdx >= ids.length) {
+    btn.textContent = 'Tout affiché ✓';
+    btn.disabled = true;
+  } else {
+    btn.textContent = 'Afficher le réflexe suivant › (' + reflexIdx + '/3)';
+  }
+}
+
+// ─── PARTICLES (slide 22) ────────────────────────────────
+function initParticles() {
+  const container = document.getElementById('particles');
+  if (!container || container.children.length > 0) return;
+
+  const sizes = [20,30,45,60,80,100,15,25,35,50,70,90];
+  const positions = [
+    [10,20],[25,70],[40,15],[60,80],[75,30],[85,60],
+    [15,50],[55,40],[90,20],[35,85],[70,10],[50,95]
+  ];
+
+  sizes.forEach((size, i) => {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const [left, top] = positions[i % positions.length];
+    const delay = (i * 1.3) % 12;
+    const duration = 8 + (i % 6) * 2;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${left}%; top:${top}%;
+      animation-duration:${duration}s;
+      animation-delay:-${delay}s;
+    `;
+    container.appendChild(p);
+  });
+
+  const linesContainer = document.getElementById('geoLines');
+  if (linesContainer && linesContainer.children.length === 0) {
+    [20, 45, 70].forEach((top, i) => {
+      const line = document.createElement('div');
+      line.className = 'geo-line';
+      line.style.cssText = `
+        top:${top}%;
+        animation-duration:${6 + i * 2}s;
+        animation-delay:-${i * 1.5}s;
+      `;
+      linesContainer.appendChild(line);
+    });
+  }
+}
+
+// ─── INIT ────────────────────────────────────────────────
+showSlide(1);
+</script>
+</body>
+</html>
