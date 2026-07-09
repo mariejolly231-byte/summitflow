@@ -66,6 +66,10 @@ const About = () => {
                 <Award className="w-4 h-4 md:w-5 md:h-5 text-primary flex-shrink-0" />
                 <span>Certifiée RNCP niv.6</span>
               </div>
+              <div className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
+                <BadgeCheck className="w-4 h-4 md:w-5 md:h-5 text-primary flex-shrink-0" />
+                <span>Agrément CII</span>
+              </div>
             </div>
           </div>
         </div>
