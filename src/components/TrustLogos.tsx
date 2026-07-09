@@ -11,7 +11,7 @@ import creaiIdf from "@/assets/partners/creai-idf.png";
 import douarcheCo from "@/assets/partners/douarche-co.png";
 import slangues from "@/assets/partners/slangues.svg";
 
-type Logo = { src: string; alt: string; dark?: boolean };
+type Logo = { src: string; alt: string; dark?: boolean; showLabel?: boolean; boost?: boolean };
 
 const logos: Logo[] = [
   { src: gersDistribution, alt: "Gers Production Distribution" },
@@ -22,15 +22,15 @@ const logos: Logo[] = [
   { src: bgeSudOuest, alt: "BGE Sud-Ouest" },
   { src: tresoNumerique, alt: "Tréso Numérique" },
   { src: sudFormadia, alt: "Sud Formadia" },
-  { src: theIntelligenceAcademy, alt: "The Intelligence Academy", dark: true },
+  { src: theIntelligenceAcademy, alt: "The Intelligence Academy", dark: true, showLabel: true },
   { src: creaiIdf, alt: "CREAI Île-de-France" },
-  { src: douarcheCo, alt: "Douarche & Co Architectes Associés - Biarritz" },
+  { src: douarcheCo, alt: "Douarche & Co Architectes Associés - Biarritz", boost: true },
   { src: slangues, alt: "Slangues" },
 ];
 
 const LogoChip = ({ logo }: { logo: Logo }) => (
   <div
-    className={`h-28 md:h-32 w-full px-6 py-4 flex items-center justify-center rounded-xl border transition-colors ${
+    className={`h-32 md:h-36 w-64 md:w-72 shrink-0 px-6 py-4 flex flex-col items-center justify-center gap-1 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
       logo.dark
         ? "bg-foreground border-foreground/20 hover:border-primary/40"
         : "bg-background border-border/60 hover:border-primary/40"
@@ -40,12 +40,28 @@ const LogoChip = ({ logo }: { logo: Logo }) => (
       src={logo.src}
       alt={logo.alt}
       loading="lazy"
-      className="max-h-20 md:max-h-24 max-w-full object-contain"
+      className={`${
+        logo.boost
+          ? "max-h-28 md:max-h-32"
+          : logo.showLabel
+            ? "max-h-16 md:max-h-20"
+            : "max-h-20 md:max-h-24"
+      } max-w-full object-contain`}
     />
+    {logo.showLabel && (
+      <span
+        className={`text-xs md:text-sm font-medium tracking-wide ${
+          logo.dark ? "text-background" : "text-foreground"
+        }`}
+      >
+        {logo.alt}
+      </span>
+    )}
   </div>
 );
 
 const TrustLogos = () => {
+  const duplicated = [...logos, ...logos];
   return (
     <section id="clients-partenaires-toulouse" className="pt-16 md:pt-20 pb-6 md:pb-8">
       <div className="container mx-auto">
@@ -57,13 +73,25 @@ const TrustLogos = () => {
             Des structures accompagnées, partenaires ou prescriptrices.
           </p>
         </div>
+      </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 px-4 md:px-0">
-          {logos.map((logo) => (
-            <LogoChip key={logo.alt} logo={logo} />
+      <div className="relative overflow-hidden group">
+        <div className="absolute left-0 top-0 bottom-0 w-10 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-10 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <div className="flex gap-5 md:gap-8 animate-[trust-scroll_90s_linear_infinite] group-hover:[animation-play-state:paused] w-max py-2">
+          {duplicated.map((logo, i) => (
+            <LogoChip key={`${logo.alt}-${i}`} logo={logo} />
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes trust-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 };
