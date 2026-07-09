@@ -1,5 +1,6 @@
 import qualiopi from "@/assets/partners/qualiopi.jpg";
 import monCompteFormation from "@/assets/partners/mon-compte-formation.png";
+import { BadgeCheck } from "lucide-react";
 
 const TrainingCertifications = () => {
   return (

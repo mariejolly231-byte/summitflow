@@ -1,4 +1,4 @@
-import { MapPin, Award, Linkedin } from "lucide-react";
+import { MapPin, Award, Linkedin, BadgeCheck } from "lucide-react";
 import photoAbout from "@/assets/photo-about.webp";
 const About = () => {
   return <section id="no-code-ia-toulouse" className="py-12 md:py-16 relative overflow-hidden">
