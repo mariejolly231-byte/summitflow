@@ -8,7 +8,7 @@ import tresoNumerique from "@/assets/partners/treso-numerique.svg";
 import sudFormadia from "@/assets/partners/sud-formadia.png";
 import theIntelligenceAcademy from "@/assets/partners/the-intelligence-academy.png";
 import creaiIdf from "@/assets/partners/creai-idf.png";
-import douarcheCo from "@/assets/partners/douarche-co.png";
+import douarcheCoAsset from "@/assets/partners/douarche-co.png.asset.json";
 import slangues from "@/assets/partners/slangues.svg";
 
 type Logo = { src: string; alt: string; dark?: boolean; showLabel?: boolean; boost?: boolean };
@@ -24,7 +24,7 @@ const logos: Logo[] = [
   { src: sudFormadia, alt: "Sud Formadia" },
   { src: theIntelligenceAcademy, alt: "The Intelligence Academy", dark: true, showLabel: true },
   { src: creaiIdf, alt: "CREAI Île-de-France" },
-  { src: douarcheCo, alt: "Douarche & Co Architectes Associés - Biarritz", boost: true },
+  { src: douarcheCoAsset.url, alt: "Douarche & Co Architectes Associés - Biarritz", boost: true },
   { src: slangues, alt: "Slangues" },
 ];
 
