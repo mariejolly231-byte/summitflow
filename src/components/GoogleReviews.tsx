@@ -32,6 +32,21 @@ const reviews = [
     role: "Concepteur de solutions pour cabinets médicaux",
     text: "Excellente expérience avec Summit Flow. Nous avons automatisé tout mon parcours client, le gain de temps est incroyable. Merci.",
   },
+  {
+    name: "Emeline Bouchard",
+    role: "Participante atelier No-Code",
+    text: "J'ai participé à un atelier sur le No-Code animé par Marie. Elle est pédagogue et se met au niveau de ses apprenants pour leur faire comprendre des concepts parfois éloignés de notre réalité. Merci !",
+  },
+  {
+    name: "Jordi Portes",
+    role: "Entrepreneur",
+    text: "Très bonne formation pour découvrir les bases de l'IA et du No Code. Une excellente initiation pour les entrepreneurs qui souhaitent comprendre les possibilités de ces outils et commencer à les utiliser de manière concrète.",
+  },
+  {
+    name: "Cyndia Davidoff",
+    role: "Cliente accompagnée",
+    text: "Marie est experte, elle s'adapte et personnalise au cas par cas ! Merci merci. Je recommande.",
+  },
 ];
 
 const GoogleIcon = () => (
