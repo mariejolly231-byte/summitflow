@@ -24,7 +24,7 @@ const logos: Logo[] = [
   { src: sudFormadia, alt: "Sud Formadia" },
   { src: theIntelligenceAcademy, alt: "The Intelligence Academy", dark: true, showLabel: true },
   { src: creaiIdf, alt: "CREAI Île-de-France" },
-  { src: douarcheCo, alt: "Douarche & Co Architectes Associés - Biarritz", boost: true },
+  { src: douarcheCoAsset.url, alt: "Douarche & Co Architectes Associés - Biarritz", boost: true },
   { src: slangues, alt: "Slangues" },
 ];
 
