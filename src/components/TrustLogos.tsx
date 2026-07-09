@@ -5,6 +5,10 @@ import ecoleCube from "@/assets/partners/ecole-cube.png";
 import gersDistribution from "@/assets/partners/gers-distribution.png";
 import bgeSudOuest from "@/assets/partners/bge-sud-ouest.png";
 import tresoNumerique from "@/assets/partners/treso-numerique.svg";
+import sudFormadia from "@/assets/partners/sud-formadia.png";
+import theIntelligenceAcademy from "@/assets/partners/the-intelligence-academy.png";
+import creaiIdf from "@/assets/partners/creai-idf.png";
+import douarcheCo from "@/assets/partners/douarche-co.png";
 
 type Logo = { src: string; alt: string; dark?: boolean };
 
@@ -16,6 +20,10 @@ const logos: Logo[] = [
   { src: cciToulouse, alt: "CCI Toulouse Haute-Garonne", dark: true },
   { src: bgeSudOuest, alt: "BGE Sud-Ouest" },
   { src: tresoNumerique, alt: "Tréso Numérique" },
+  { src: sudFormadia, alt: "Sud Formadia" },
+  { src: theIntelligenceAcademy, alt: "The Intelligence Academy", dark: true },
+  { src: creaiIdf, alt: "CREAI Île-de-France" },
+  { src: douarcheCo, alt: "Douarche & Co Architectes Associés - Biarritz" },
 ];
 
 const LogoChip = ({ logo }: { logo: Logo }) => (
