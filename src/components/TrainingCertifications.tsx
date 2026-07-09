@@ -1,5 +1,6 @@
 import qualiopi from "@/assets/partners/qualiopi.jpg";
 import monCompteFormation from "@/assets/partners/mon-compte-formation.png";
+import { BadgeCheck } from "lucide-react";
 
 const TrainingCertifications = () => {
   return (
@@ -33,6 +34,16 @@ const TrainingCertifications = () => {
               <div>
                 <p className="font-semibold text-foreground">Mon Compte Formation</p>
                 <p className="text-sm text-muted-foreground">Mobilisation possible des droits CPF selon les sessions</p>
+              </div>
+            </div>
+
+            <div className="card-service flex items-center gap-5 animate-fade-up" style={{ animationDelay: "200ms" }}>
+              <div className="w-28 h-20 rounded-lg bg-background border border-border/60 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                <BadgeCheck className="w-12 h-12 text-primary" aria-label="Agrément Crédit Impôt Innovation" />
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">Agrément CII</p>
+                <p className="text-sm text-muted-foreground">Crédit Impôt Innovation - réduction fiscale sur la R&D</p>
               </div>
             </div>
           </div>

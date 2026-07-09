@@ -1,4 +1,4 @@
-import { MapPin, Award, Linkedin } from "lucide-react";
+import { MapPin, Award, Linkedin, BadgeCheck } from "lucide-react";
 import photoAbout from "@/assets/photo-about.webp";
 const About = () => {
   return <section id="no-code-ia-toulouse" className="py-12 md:py-16 relative overflow-hidden">
@@ -65,6 +65,10 @@ const About = () => {
               <div className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
                 <Award className="w-4 h-4 md:w-5 md:h-5 text-primary flex-shrink-0" />
                 <span>Certifiée RNCP niv.6</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm md:text-base text-muted-foreground">
+                <BadgeCheck className="w-4 h-4 md:w-5 md:h-5 text-primary flex-shrink-0" />
+                <span>Agrément CII</span>
               </div>
             </div>
           </div>
