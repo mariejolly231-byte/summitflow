@@ -8,7 +8,7 @@ import tresoNumerique from "@/assets/partners/treso-numerique.svg";
 import sudFormadia from "@/assets/partners/sud-formadia.png";
 import theIntelligenceAcademy from "@/assets/partners/the-intelligence-academy.png";
 import creaiIdf from "@/assets/partners/creai-idf.png";
-import douarcheCo from "@/assets/partners/douarche-co.png";
+import douarcheCoAsset from "@/assets/partners/douarche-co.png.asset.json";
 import slangues from "@/assets/partners/slangues.svg";
 
 type Logo = { src: string; alt: string; dark?: boolean; showLabel?: boolean; boost?: boolean };
