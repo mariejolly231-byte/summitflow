@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.webp";
 import qualiopiLogo from "@/assets/qualiopi.png";
 import monCompteFormationLogo from "@/assets/mon-compte-formation.png";
+import franceNumAsset from "@/assets/partners/activateur-france-num.png.asset.json";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -104,6 +105,12 @@ const Footer = () => {
               src={monCompteFormationLogo}
               alt="Mon Compte Formation"
               className="h-10 w-auto opacity-90"
+              loading="lazy"
+            />
+            <img
+              src={franceNumAsset.url}
+              alt="Activateur France Num"
+              className="h-10 w-auto opacity-90 bg-background rounded px-1"
               loading="lazy"
             />
           </div>

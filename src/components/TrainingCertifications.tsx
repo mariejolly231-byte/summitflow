@@ -1,5 +1,6 @@
 import qualiopi from "@/assets/partners/qualiopi.jpg";
 import monCompteFormation from "@/assets/partners/mon-compte-formation.png";
+import franceNumAsset from "@/assets/partners/activateur-france-num.png.asset.json";
 import { BadgeCheck } from "lucide-react";
 
 const TrainingCertifications = () => {
@@ -44,6 +45,16 @@ const TrainingCertifications = () => {
               <div>
                 <p className="font-semibold text-foreground">Agrément CII</p>
                 <p className="text-sm text-muted-foreground">Crédit Impôt Innovation - réduction fiscale sur la R&D</p>
+              </div>
+            </div>
+
+            <div className="card-service flex items-center gap-5 animate-fade-up" style={{ animationDelay: "300ms" }}>
+              <div className="w-28 h-20 rounded-lg bg-background border border-border/60 flex items-center justify-center flex-shrink-0 overflow-hidden p-2">
+                <img src={franceNumAsset.url} alt="Activateur France Num - accompagnement digital des TPE/PME" className="max-h-full max-w-full object-contain" />
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">Activateur France Num</p>
+                <p className="text-sm text-muted-foreground">Accompagnement digital labellisé pour les TPE/PME</p>
               </div>
             </div>
           </div>
