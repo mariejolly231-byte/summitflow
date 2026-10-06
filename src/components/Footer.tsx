@@ -99,7 +99,8 @@ const Footer = () => {
               <a
                 href="/certificat-qualiopi-altitude.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
+                download
                 aria-label="Télécharger le certificat Qualiopi d'ALTITUDE"
                 className="inline-flex"
               >
@@ -128,7 +129,8 @@ const Footer = () => {
               <a
                 href="/certificat-qualiopi-altitude.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
+                download
                 className="underline hover:text-background transition-colors"
               >
                 Télécharger le certificat

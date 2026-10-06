@@ -22,7 +22,8 @@ const TrainingCertifications = () => {
               <a
                 href="/certificat-qualiopi-altitude.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
+                download
                 aria-label="Télécharger le certificat Qualiopi d'ALTITUDE"
                 className="w-28 h-20 rounded-lg bg-background border border-border/60 flex items-center justify-center flex-shrink-0 overflow-hidden"
               >
@@ -31,11 +32,12 @@ const TrainingCertifications = () => {
               <div>
                 <p className="font-semibold text-foreground">Certification Qualiopi d'ALTITUDE</p>
                 <p className="text-sm text-muted-foreground">
-                  Formations réalisées sous la certification Qualiopi de la couveuse ALTITUDE, au titre de la catégorie actions de formation (certificat CertUp n° FRCM24436).{" "}
+                  Formations réalisées sous la certification Qualiopi de la couveuse ALTITUDE (certificat CertUp n° FRCM24436).{" "}
                   <a
                     href="/certificat-qualiopi-altitude.pdf"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
+                    download
                     className="text-primary hover:underline"
                   >
                     Télécharger le certificat
