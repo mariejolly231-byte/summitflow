@@ -53,7 +53,19 @@ const MentionsLegales = () => {
                 <p className="text-muted-foreground mb-1">SIREN : 424 845 949</p>
                 <p className="text-muted-foreground mb-1">SIRET du siège social : 424 845 949 00116</p>
                 <p className="text-muted-foreground mb-1">Numéro de TVA : FR54424845949</p>
-                <p className="text-muted-foreground mb-1">Adresse du siège social : 3 Chemin du Pigeonnier de la Cépière, Bât C, 1er étage, 31100 Toulouse</p>
+                <p className="text-muted-foreground mb-1">Numéro de déclaration d'activité (NDA) : 73310361931</p>
+                <p className="text-muted-foreground mb-1">
+                  Certification Qualiopi : certificat CertUp n° FRCM24436, catégorie actions de formation{" "}
+                  <a
+                    href="/certificat-qualiopi-altitude.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Télécharger le certificat
+                  </a>
+                </p>
+                <p className="text-muted-foreground">Adresse du siège social : 3 Chemin du Pigeonnier de la Cépière, Bât C, 1er étage, 31100 Toulouse</p>
                 <p className="text-muted-foreground">Dirigeant : Paul Serres</p>
               </div>
             </section>
