@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.webp";
 import qualiopiLogo from "@/assets/qualiopi.png";
 import monCompteFormationLogo from "@/assets/mon-compte-formation.png";
-import franceNumAsset from "@/assets/partners/activateur-france-num.png.asset.json";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
