@@ -117,7 +117,7 @@ const Footer = () => {
                 loading="lazy"
               />
               <img
-                src={franceNumAsset.url}
+                src="/activateur-france-num.png"
                 alt="Activateur France Num"
                 className="h-10 w-auto opacity-90 bg-background rounded px-1"
                 loading="lazy"

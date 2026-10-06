@@ -67,7 +67,7 @@ const TrainingCertifications = () => {
 
             <div className="card-service flex items-center gap-5 animate-fade-up" style={{ animationDelay: "300ms" }}>
               <div className="w-28 h-20 rounded-lg bg-background border border-border/60 flex items-center justify-center flex-shrink-0 overflow-hidden p-2">
-                <img src={franceNumAsset.url} alt="Activateur France Num - accompagnement digital des TPE/PME" className="max-h-full max-w-full object-contain" />
+                <img src="/activateur-france-num.png" alt="Activateur France Num - accompagnement digital des TPE/PME" className="max-h-full max-w-full object-contain" />
               </div>
               <div>
                 <p className="font-semibold text-foreground">Activateur France Num</p>
