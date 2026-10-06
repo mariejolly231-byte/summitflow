@@ -94,25 +94,46 @@ const Footer = () => {
               Politique de confidentialité
             </Link>
           </div>
-          <div className="flex items-center gap-4">
-            <img
-              src={qualiopiLogo}
-              alt="Certification Qualiopi"
-              className="h-10 w-auto opacity-90"
-              loading="lazy"
-            />
-            <img
-              src={monCompteFormationLogo}
-              alt="Mon Compte Formation"
-              className="h-10 w-auto opacity-90"
-              loading="lazy"
-            />
-            <img
-              src={franceNumAsset.url}
-              alt="Activateur France Num"
-              className="h-10 w-auto opacity-90 bg-background rounded px-1"
-              loading="lazy"
-            />
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-4">
+              <a
+                href="/certificat-qualiopi-altitude.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Télécharger le certificat Qualiopi d'ALTITUDE"
+                className="inline-flex"
+              >
+                <img
+                  src={qualiopiLogo}
+                  alt="Certification Qualiopi"
+                  className="h-10 w-auto opacity-90"
+                  loading="lazy"
+                />
+              </a>
+              <img
+                src={monCompteFormationLogo}
+                alt="Mon Compte Formation"
+                className="h-10 w-auto opacity-90"
+                loading="lazy"
+              />
+              <img
+                src={franceNumAsset.url}
+                alt="Activateur France Num"
+                className="h-10 w-auto opacity-90 bg-background rounded px-1"
+                loading="lazy"
+              />
+            </div>
+            <p className="text-xs text-background/50 max-w-md">
+              La certification qualité a été délivrée au titre de la catégorie d'action suivante : actions de formation.{" "}
+              <a
+                href="/certificat-qualiopi-altitude.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-background transition-colors"
+              >
+                Télécharger le certificat
+              </a>
+            </p>
           </div>
         </div>
 

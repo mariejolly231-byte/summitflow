@@ -38,7 +38,7 @@ const MentionsLegales = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">Éditeur du site</h2>
               <div className="bg-card border border-border rounded-xl p-6">
                 <p className="font-semibold text-foreground mb-2">Summit Flow</p>
-                <p className="text-muted-foreground mb-4">Activité portée par la couveuse d'entreprises ALTITUDE</p>
+                <p className="text-muted-foreground mb-4">Mme Marie JOLLY est titulaire d'un CAPE dans l'association Incubatest BGE (couveuse ALTITUDE).</p>
                 
                 <p className="text-muted-foreground mb-1"><strong className="text-foreground">Responsable de la publication :</strong></p>
                 <p className="text-muted-foreground mb-1">Marie Jolly</p>
@@ -160,7 +160,7 @@ const MentionsLegales = () => {
             </section>
 
             <p className="text-sm text-muted-foreground mt-12 pt-6 border-t border-border">
-              Dernière mise à jour : 15/12/2025
+              Dernière mise à jour : 06/10/2026
             </p>
           </div>
         </div>
