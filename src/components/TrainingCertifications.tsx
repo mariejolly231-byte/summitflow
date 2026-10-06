@@ -19,12 +19,28 @@ const TrainingCertifications = () => {
 
           <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
             <div className="card-service flex items-center gap-5 animate-fade-up">
-              <div className="w-28 h-20 rounded-lg bg-background border border-border/60 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                <img src={qualiopi} alt="Certification Qualiopi - processus certifié" className="max-h-full max-w-full object-contain p-1" />
-              </div>
+              <a
+                href="/certificat-qualiopi-altitude.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Télécharger le certificat Qualiopi d'ALTITUDE"
+                className="w-28 h-20 rounded-lg bg-background border border-border/60 flex items-center justify-center flex-shrink-0 overflow-hidden"
+              >
+                <img src={qualiopi} alt="Certification Qualiopi d'ALTITUDE - processus certifié" className="max-h-full max-w-full object-contain p-1" />
+              </a>
               <div>
-                <p className="font-semibold text-foreground">Démarche Qualiopi</p>
-                <p className="text-sm text-muted-foreground">Engagement qualité sur le processus de formation</p>
+                <p className="font-semibold text-foreground">Certification Qualiopi d'ALTITUDE</p>
+                <p className="text-sm text-muted-foreground">
+                  Formations réalisées sous la certification Qualiopi de la couveuse ALTITUDE, au titre de la catégorie actions de formation (certificat CertUp n° FRCM24436).{" "}
+                  <a
+                    href="/certificat-qualiopi-altitude.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Télécharger le certificat
+                  </a>
+                </p>
               </div>
             </div>
 
