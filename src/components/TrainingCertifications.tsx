@@ -22,7 +22,8 @@ const TrainingCertifications = () => {
               <a
                 href="/certificat-qualiopi-altitude.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
+                download
                 aria-label="Télécharger le certificat Qualiopi d'ALTITUDE"
                 className="w-28 h-20 rounded-lg bg-background border border-border/60 flex items-center justify-center flex-shrink-0 overflow-hidden"
               >
@@ -35,7 +36,8 @@ const TrainingCertifications = () => {
                   <a
                     href="/certificat-qualiopi-altitude.pdf"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
+                    download
                     className="text-primary hover:underline"
                   >
                     Télécharger le certificat
