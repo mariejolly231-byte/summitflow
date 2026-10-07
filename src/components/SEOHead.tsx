@@ -9,7 +9,7 @@ interface SEOHeadProps {
 export const SEOHead = ({ page = 'home' }: SEOHeadProps) => {
   const pageConfig = seoConfig[page];
   const keywords = 'keywords' in pageConfig ? pageConfig.keywords : undefined;
-  const ogImage = 'ogImage' in pageConfig ? pageConfig.ogImage : '/og-image.jpg';
+  const ogImage = 'ogImage' in pageConfig ? pageConfig.ogImage : '/og-image.png';
   
   return (
     <Helmet>
