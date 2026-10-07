@@ -6,31 +6,7 @@ export const seoConfig = {
     description: "Summit Flow accompagne les PME industrielles et techniques : audit IA et process terrain, simplification, automatisation et formation no-code & IA. Toulouse, Occitanie et distance.",
     keywords: "summit flow, no code pme industrielles, automatisation process industriels, audit ia terrain, formation no code ia occitanie, formation no code toulouse, conseil no code pme, simplification process, ia industrie pme",
     canonical: "https://www.summitflow.fr",
-    ogImage: "/og-image.jpg" // À créer
-  },
-  
-  services: {
-    title: "Services No Code & IA Toulouse | Automatisation & Applications Web",
-    description: "Solutions No Code et IA pour entreprises toulousaines : automatisation workflows, web apps Bubble, agents IA, optimisation processus. Expérience industrielle 10 ans.",
-    canonical: "https://www.summitflow.fr/#solutions-no-code-ia-toulouse"
-  },
-  
-  pricing: {
-    title: "Tarifs No Code Toulouse | Site Web, Web App & Automatisation",
-    description: "Tarifs transparents No Code à Toulouse : sites vitrines 500-1500€, web apps 2500-5000€, automatisations 390-2500€. Intervention rapide, maintenance incluse.",
-    canonical: "https://www.summitflow.fr/#tarifs-automatisation-toulouse"
-  },
-  
-  about: {
-    title: "À Propos | Ingénieure No Code & IA Toulouse | 10 ans Industrie",
-    description: "Marie Jolly, ingénieure industrielle certifiée RNCP en No Code & IA. 10 ans d'expérience aéronautique. Basée Sud Toulouse, spécialiste automatisation et web apps pour TPE/PME.",
-    canonical: "https://www.summitflow.fr/#no-code-ia-toulouse"
-  },
-  
-  contact: {
-    title: "Contact No Code Toulouse | Devis Gratuit Automatisation & Web App",
-    description: "Contactez votre expert No Code à Toulouse. Devis gratuit, RDV sous 48h. Intervention Sud Toulousain et Pyrénées. Automatisation, web apps, IA.",
-    canonical: "https://www.summitflow.fr/#contact-no-code-toulouse"
+    ogImage: "/og-image.png"
   },
 
   ressources: {
@@ -64,14 +40,15 @@ export const structuredData = {
   },
 
   organization: {
+    "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Summit Flow",
     "alternateName": "Summit Flow - No Code & IA Toulouse",
     "inLanguage": "fr-FR",
     "description": "Expert No Code et IA à Toulouse, spécialisé en automatisation et développement web sans code pour TPE et PME",
     "url": "https://www.summitflow.fr",
-    "logo": "https://www.summitflow.fr/logo.webp",
-    "image": "https://www.summitflow.fr/og-image.jpg",
+    "logo": "https://www.summitflow.fr/favicon.png",
+    "image": "https://www.summitflow.fr/og-image.png",
     "telephone": "+33687358849",
     "email": "contact@summitflow.fr",
     "address": {
@@ -193,18 +170,6 @@ export const structuredData = {
         "position": 1,
         "name": "Accueil",
         "item": "https://www.summitflow.fr"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Services No Code",
-        "item": "https://www.summitflow.fr/#solutions-no-code-ia-toulouse"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Contact",
-        "item": "https://www.summitflow.fr/#contact-no-code-toulouse"
       }
     ]
   },
@@ -263,7 +228,6 @@ export const structuredData = {
       "longitude": "1.3889"
     },
     "priceRange": "€€",
-    "servesCuisine": "Services numériques",
     "paymentAccepted": "Virement, Carte bancaire"
   }
 };
