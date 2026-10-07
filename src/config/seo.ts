@@ -47,7 +47,7 @@ export const structuredData = {
     "inLanguage": "fr-FR",
     "description": "Expert No Code et IA à Toulouse, spécialisé en automatisation et développement web sans code pour TPE et PME",
     "url": "https://www.summitflow.fr",
-    "logo": "https://www.summitflow.fr/favicon.png",
+    "logo": "https://www.summitflow.fr/logo.png",
     "image": "https://www.summitflow.fr/og-image.png",
     "telephone": "+33687358849",
     "email": "contact@summitflow.fr",
